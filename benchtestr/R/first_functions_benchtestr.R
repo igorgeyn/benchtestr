@@ -25,9 +25,6 @@ dplyr_manip <- function(df, var_half, var_double) {
            var_double_new = new_var2)
 }
 
-library(sensemakr)
-library(boot)
-library(randomizr)
 
 ## Nonparametric estimation of robustness value
 ## Slow, suggest putting R = 10 to test
@@ -40,6 +37,7 @@ benchmakr_rvq = function(sensitivity_stats = "rv_q",
                          bm_cov = "female", 
                          kd = 1:3,
                          R = 250){
+  require(sensemakr); require(boot); require(randomizr)
   slice = simple_ra(nrow(data), prob = slice_prop)
   boot_fun = function(data, slice){
     data = rbind(data, data[slice,])
