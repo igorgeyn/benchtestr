@@ -17,10 +17,10 @@ dplyr_manip <- function(df, var_half, var_double) {
   require('dplyr')
   var_half <- sym(var_half)
   var_double <- sym(var_double)
-  df_out <<- 
-    df %>% 
+  df_out <<-
+    df %>%
     mutate(new_var1 = !!var_half/2,
-           new_var2 = !!var_double*2) %>% 
+           new_var2 = !!var_double*2) %>%
     rename(var_half_new = new_var1,
            var_double_new = new_var2)
 }
@@ -32,10 +32,10 @@ require(sensemakr); require(boot); require(randomizr)
 benchmakr_rvq = function(sensitivity_stats = "rv_q",
                          data = darfur,
                          formula = "peacefactor ~ directlyharmed + age + farmer_dar + herder_dar +
-                         pastvoted + hhsize_darfur + female + village", 
-                         slice_prop = .5, 
-                         treatment = "directlyharmed", 
-                         bm_cov = "female", 
+                         pastvoted + hhsize_darfur + female + village",
+                         slice_prop = .5,
+                         treatment = "directlyharmed",
+                         bm_cov = "female",
                          kd = 1:3,
                          R = 250){
   slice = simple_ra(nrow(data), prob = slice_prop)
@@ -43,7 +43,7 @@ benchmakr_rvq = function(sensitivity_stats = "rv_q",
     data = rbind(data, data[slice,])
     model = lm(formula = as.formula(formula), data = data)
     out = sensemakr(model, treatment = treatment, benchmark_covariates = bm_cov, kd = kd)
-    #out = out[["sensitivity_stats"]][[sensitivity_stats]] %>% as.numeric()   # Not working, set "rv_q" by default  
+    #out = out[["sensitivity_stats"]][[sensitivity_stats]] %>% as.numeric()   # Not working, set "rv_q" by default
     out = out[["sensitivity_stats"]][["rv_q"]] %>% as.numeric()
     print(out)
   }
@@ -52,3 +52,14 @@ benchmakr_rvq = function(sensitivity_stats = "rv_q",
 }
 
 benchmakr_rvq_test = benchmakr_rvq(data = darfur, R = 10)
+
+## this is just a little toy function to get the counts of
+## treated and control from a df
+## for use in SE calculation, etc.
+get_group_counts <- function(df, treatment) {
+  treatment_count <<- length(df$treatment[df$treatment == 1])
+  control_count <<- length(df$treatment[df$treatment == 0])
+}
+
+
+
