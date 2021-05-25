@@ -22,6 +22,7 @@ devtools::install_github("igorgeyn/benchtestr")
 
 # remotes -- is lighter!
 install.packages('remotes')
+remove.packages('benchtestr')
 remotes::install_github("igorgeyn/benchtestr/benchtestr") # gotta check on these errors at some point
 
 load('nsw_dehejia_wahba')

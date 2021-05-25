@@ -1,11 +1,11 @@
 Package: benchtestr
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Benchmark Experimental Effects Using Observational Data
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Igor Geyna and Shing Hon Lam
+Maintainer: Igor Geyn <igorgeyn@gmail.com>
+Description: This is a package to benchmark experimental findings/effects using observational data. Analysts interested in causal inference may be familiar with using Lalonde (1986) and Dehejia and Wahba (1999) data on the National Work Study program (NWS) for similar purposes. This package wrangles together other similar datasets for benchmarking causal estimators, with a number of classical estimators included.
+    This package was produced as part of the Spring 2021 session of UCLA PS200C (Causal Inference) taught by Chad Hazlett and TA'd by Ciara Sterbenz.
+License: MIT
 Encoding: UTF-8
 LazyData: true
