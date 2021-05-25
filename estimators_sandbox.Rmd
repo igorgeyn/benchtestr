@@ -13,6 +13,22 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 
+### quickest way is to install the package
+### it comes with data
+
+# devtools
+library(devtools)
+devtools::install_github("igorgeyn/benchtestr")
+
+# remotes -- is lighter!
+install.packages('remotes')
+remotes::install_github("igorgeyn/benchtestr/benchtestr") # gotta check on these errors at some point
+
+load('nsw_dehejia_wahba')
+
+### using filepaths
+
+# from laptop (IG)
 load('C:/Users/Igor Geyn/Desktop/grad school/coursework/SPRING 21/benchtestr/benchtestr/data/nsw_dehejia_wahba.rda')
 load('C:/Users/Igor Geyn/Desktop/grad school/coursework/SPRING 21/benchtestr/benchtestr/data/psid_controls_dw.rda')
 load('C:/Users/Igor Geyn/Desktop/grad school/coursework/SPRING 21/benchtestr/benchtestr/data/cps_controls_dw.rda')
@@ -155,7 +171,7 @@ library(linearHypothesis)
 
 # ok to force outcome to be the same
 # change this to make the treatment the same as default; update with status
-exact_bal_estim <- function(df_exp, treat_exp, df_bench, treat_bench, 
+bal_estim <- function(df_exp, treat_exp, df_bench, treat_bench, 
                             outcome, match_meth, balance_vars, ...) {
  
   ## make the df with bench control
@@ -166,11 +182,6 @@ exact_bal_estim <- function(df_exp, treat_exp, df_bench, treat_bench,
     (df_exp %>% filter(!!sym(treat_exp)==1) %>% 
        select(all_of(balance_vars)))
     )
-  
-  # df_bench_for_use <- 
-  #   df_bench %>% 
-  #   filter(!!sym(treat_bench)==0) %>% 
-  #   rbind(df_exp)
   
   ### balance estimator
   
@@ -210,8 +221,8 @@ exact_bal_estim <- function(df_exp, treat_exp, df_bench, treat_bench,
   ## is there a way to run various things using MatchIt object and save them to a new 'exact_bal_estimate' object'?
   ## eg:
   
-  bal_plot <<- plot(summary(match_out), var.order = 'unmatched')
-  bal_table <<- as.data.frame(summary(match_out)[4]) # and then probably kable this df, and output as ASCII or w.e
+  bal_plot <- plot(summary(match_out), var.order = 'unmatched')
+  bal_table <- as.data.frame(summary(match_out)[4]) # and then probably kable this df, and output as ASCII or w.e
   
   ## also do want to allow users to compare balance between different samples?
   
@@ -229,12 +240,12 @@ balance_list <- c('treat', 're78','age','education', 'black', 'hispanic', 'marri
 exact_def <- ~black + hisp + married + re74 + re75
 
 # cem
-exact_bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
+bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
                 df_bench = psid_controls_dw, treat_bench = 'treat',
                 outcome = 're78', match_meth = 'cem', balance_vars = balance_list)
 
 # subclassification
-exact_bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
+bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
                 df_bench = psid_controls_dw, treat_bench = 'treat',
                 outcome = 're78', balance_vars = balance_list,
                 match_meth = 'subclass' #, subclass_arg = 5 # relax for user input later 
@@ -247,12 +258,12 @@ att_subclass <- lm(data = match.data(match_out_exp),
 coeftest(att_subclass, vcoc = vcovHC(att_subclass, type = "HC2"))
 
   # mahalonbis + exact (for plots)
-exact_bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
+bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
                 df_bench = psid_controls_dw, treat_bench = 'treat',
                 outcome = 're78', balance_vars = balance_list,
                 match_meth = 'exact', exact_list = exact_def) # exact_list = exact_var_list
 
-# exact_bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
+# bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
 #                 df_bench = psid_controls_dw, treat_bench = 'treat',
 #                 outcome = 're78', match_meth = 'nearest')
 
