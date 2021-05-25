@@ -1,0 +1,268 @@
+---
+title: "estimators_sandbox_052421"
+author: "Igor Geyn"
+date: "5/24/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Setting up data
+
+```{r}
+
+load('C:/Users/Igor Geyn/Desktop/grad school/coursework/SPRING 21/benchtestr/benchtestr/data/nsw_dehejia_wahba.rda')
+load('C:/Users/Igor Geyn/Desktop/grad school/coursework/SPRING 21/benchtestr/benchtestr/data/psid_controls_dw.rda')
+load('C:/Users/Igor Geyn/Desktop/grad school/coursework/SPRING 21/benchtestr/benchtestr/data/cps_controls_dw.rda')
+
+head(nsw_dehejia_wahba)
+head(psid_controls_dw)
+head(cps_controls_dw)
+
+```
+
+## Trying out estimators
+
+### 'Naive' DIM
+
+The goal here is just to create a pseudo control group from the PSID controls dataset that can be used to create a benchmark DIM. Should compare this DIM against the DIM obtained from the initial dataset.
+
+```{r}
+
+head(estimator_baseline)
+
+### grab the existing DIM estimator
+
+baseline_dim_estimator <- function(df_exp, df_base, treatment, outcome) {
+  require('dplyr')
+  # results_df <<- as.data.frame(matrix())
+  treatment_sym <- sym(treatment)
+  outcome_sym <- sym(outcome)
+  estimator_exp <<- df_exp %>%
+    group_by(!!treatment_sym) %>%
+    summarise(avg_earnings = mean(!!outcome_sym),
+              earnings_var = var(!!outcome_sym),
+              count = n())
+  
+  estimator_bench_cntrl <<- df_base %>% 
+    filter(!!treatment_sym == 0) %>% 
+    group_by(!!treatment_sym) %>% 
+    summarise(avg_earnings = mean(!!outcome_sym),
+              earnings_var = var(!!outcome_sym),
+              count = n())
+  
+  estimator_full <<- df_base %>%
+    group_by(!!treatment_sym) %>%
+    summarise(avg_earnings = mean(!!outcome_sym),
+              earnings_var = var(!!outcome_sym),
+              count = n())
+  
+  # need to input treatment_length fxn here
+  # need to input control_length fxn here
+
+  estimate_baseline <<- estimator_baseline$avg_earnings[2] - estimator_baseline$avg_earnings[1]
+  se_baseline <<- sqrt((estimator_baseline$earnings_var[1]/estimator_baseline$count[1])+
+                         (estimator_baseline$earnings_var[2]/estimator_baseline$count[2]))
+  
+  
+  estimate_benchmark_cntrl <<- estimator_baseline$avg_earnings[2] - estimator_bench_cntrl[1]
+  se_benchmark_cntrl <<- sqrt((estimator_baseline$earnings_var[2]/estimator_baseline$count[2])+
+                                (estimator_bench_cntrl$earnings_var[1])/estimator_bench_cntrl$count[1])
+  
+  # doesn't work -- full version
+  # estimate_benchmark <<- estimator_full$avg_earnings[2] - estimator_full$avg_earnings[1]
+  
+  results_exp <<- 
+    as.data.frame(cbind(as.character('experimental/baseline'), as.double(estimate_baseline), as.double(se_baseline))) %>% 
+    rename(data = V1, estimate = estimate_baseline, se = se_baseline)
+    # %>% rename(data = V1)
+  ## need to figure out why the var names are coming out weird
+  results_bench <<- 
+    as.data.frame(cbind(as.character('benchmark'), as.double(estimate_benchmark_cntrl), as.double(se_benchmark_cntrl))) # %>%
+    rename(data = '\benchmark\'', estimate = estimate_benchmark_cntrl, se = se_benchmark_cntrl)
+  
+  ## pending solution to above issue
+  ## binding manually for now
+  results_df_out <<- rbind(results_exp, results_bench)
+  
+}
+
+# this works!
+baseline_dim_estimator(df_exp = nsw_dehejia_wahba, df_base = psid_controls_dw,
+                       treatment = 'treat', outcome = 're78')
+
+### manual binding
+
+results_bench$"benchmark"
+
+class(results_bench)
+# huzzah!! this works now
+# having some problems with the quoted benchmark var [RESOLVED]
+results_bench <- results_bench %>% 
+  rename(data = ("\"benchmark\""),
+         estimate = treat,
+         se = se_benchmark_cntrl)
+# # trying another way [DEFUNCT]
+# var_names = c('data', 'estimate', 'se')
+# results_bench %>% make.names(var_names)
+
+results_df_out <<- rbind(results_exp, results_bench)
+
+#### #
+##### sandbox
+#####
+
+benchmark_dim_estimator <- function(df_base, treatment, outcome) {
+  require('dplyr')
+  benchmark_results_df <<- as.data.frame(matrix()) # eventually get rid of this
+  treatment_sym <- sym(treatment)
+  outcome_sym <- sym(outcome)
+  estimator_benchmark <<- df_base %>%
+    group_by(!!treatment_sym) %>%
+    summarise(avg_earnings = mean(!!outcome_sym),
+              earnings_var = var(!!outcome_sym),
+              count = n())
+  
+  estimate_benchmark <<- estimator_benchmark$avg_earnings[2] - estimator_benchmark$avg_earnings[1]
+  se_benchmark <<- sqrt((estimator_benchmark$earnings_var[1]/estimator_benchmark$count[1])+
+                         (estimator_benchmark$earnings_var[2]/estimator_benchmark$count[2]))
+  
+  benchmark_results_df <<- cbind('benchmark', estimate_benchmark, se_benchmark)
+  results_df <<- rbind(results_df,benchmark_results_df)
+}
+
+benchmark_dim_estimator(df_base = psid_controls_dw %>% filter(treat == 0),
+                        treatment = 'treat',
+                        outcome = 're78')
+
+```
+
+
+### Balancing
+
+Now going to try a few different balance-based estimators.
+
+```{r}
+
+library(MatchIt)
+library(linearHypothesis)
+
+### standard exact matching 
+### figure out the best way to let users pass params into this
+### eg Mahal dist
+
+# ok to force outcome to be the same
+# change this to make the treatment the same as default; update with status
+exact_bal_estim <- function(df_exp, treat_exp, df_bench, treat_bench, 
+                            outcome, match_meth, balance_vars, ...) {
+ 
+  ## make the df with bench control
+  
+  df_bench_for_use <<- rbind(
+    (df_bench %>% filter(!!sym(treat_bench)==0) %>% 
+       select(all_of(balance_vars))),
+    (df_exp %>% filter(!!sym(treat_exp)==1) %>% 
+       select(all_of(balance_vars)))
+    )
+  
+  # df_bench_for_use <- 
+  #   df_bench %>% 
+  #   filter(!!sym(treat_bench)==0) %>% 
+  #   rbind(df_exp)
+  
+  ### balance estimator
+  
+  ## testing
+  if (match_meth == 'cem') {
+    match_out_exp <<- matchit(treat ~ age + education + black + hispanic + married + re74 + re75,
+                            data = nsw_dehejia_wahba,
+                            method = match_meth)
+    match_out_bench <<- matchit(treat ~ age + education + black + hispanic + married + re74 + re75,
+                        data = df_bench_for_use,
+                        method = match_meth)
+    # print(match_meth)
+  }
+  else if (match_meth == 'exact') {
+    match_out_exp <<- matchit(treat ~ age + education + black + hispanic + married + re74 + re75,
+                            data = nsw_dehejia_wahba, estimand = 'ATT',
+                            method = match_meth, distance = 'mahalanobis', exact = exact_list, replace = TRUE)
+    match_out_bench <<- matchit(treat ~ age + education + black + hispanic + married + re74 + re75,
+                            data = df_bench_for_use, estimand = 'ATT',
+                            method = match_meth, distance = 'mahalanobis', exact = exact_list, replace = TRUE)
+    # print(match_meth)
+  }
+  else if (match_meth == 'subclass') {
+    match_out_exp <<- matchit(treat ~ age + education + black + hispanic + married + re74 + re75,
+                            data = nsw_dehejia_wahba, estimand = 'ATT',
+                            method = match_meth, subclass = 5)
+    match_out_bench <<- matchit(treat ~ age + education + black + hispanic + married + re74 + re75,
+                            data = df_bench_for_use, estimand = 'ATT',
+                            method = match_meth, subclass = 5) # relax this for user input later
+  }
+  
+  else {
+    print("You didn't give me a matching method I'm familiar with. Please select cem, exact, or subclass.")
+  }
+    
+  
+  ## is there a way to run various things using MatchIt object and save them to a new 'exact_bal_estimate' object'?
+  ## eg:
+  
+  bal_plot <<- plot(summary(match_out), var.order = 'unmatched')
+  bal_table <<- as.data.frame(summary(match_out)[4]) # and then probably kable this df, and output as ASCII or w.e
+  
+  ## also do want to allow users to compare balance between different samples?
+  
+  ## the actual estimator
+  
+  
+}
+
+## probably want to do something like ask users to pass a list of balance variables [DONE!]
+balance_list <- c('treat', 're78','age','education', 'black', 'hispanic', 'married',
+                're74', 're75'
+                # 'u74', 'u75' # not in this version of the data
+                )
+# exact_var_list <- c('age', 'education', 'black', 'hispanic', 'married')
+exact_def <- ~black + hisp + married + re74 + re75
+
+# cem
+exact_bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
+                df_bench = psid_controls_dw, treat_bench = 'treat',
+                outcome = 're78', match_meth = 'cem', balance_vars = balance_list)
+
+# subclassification
+exact_bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
+                df_bench = psid_controls_dw, treat_bench = 'treat',
+                outcome = 're78', balance_vars = balance_list,
+                match_meth = 'subclass' #, subclass_arg = 5 # relax for user input later 
+                )
+
+att_subclass <- lm(data = match.data(match_out_exp),
+                   re78 ~ treat + age + education + black + hispanic + married + re74 + re75,
+                   weights = weights)
+
+coeftest(att_subclass, vcoc = vcovHC(att_subclass, type = "HC2"))
+
+  # mahalonbis + exact (for plots)
+exact_bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
+                df_bench = psid_controls_dw, treat_bench = 'treat',
+                outcome = 're78', balance_vars = balance_list,
+                match_meth = 'exact', exact_list = exact_def) # exact_list = exact_var_list
+
+# exact_bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
+#                 df_bench = psid_controls_dw, treat_bench = 'treat',
+#                 outcome = 're78', match_meth = 'nearest')
+
+
+```
+
+
+
+
+
+
+
+
