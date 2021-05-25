@@ -1,0 +1,497 @@
+       GUIDE TO USING THE U.S. DEPARTMENT OF HEALTH AND HUMAN SERVICES
+
+           NATIONAL EVALUATION OF WELFARE-TO-WORK STRATEGIES (NEWWS)
+
+                 FIVE-YEAR FULL IMPACT SAMPLE PUBLIC USE FILE
+
+
+I.Introduction
+
+This memo briefly describes the public use analysis file and accompanying
+documentation for research on the five-year effects of 11 welfare-to-work
+programs on employment, earnings, welfare and Food Stamp receipt and
+expenditures, and combined income from these sources.  The 11 programs were
+operated during the 1990s in seven sites: Atlanta, Georgia; Columbus, Ohio;
+Detroit and Grand Rapids, Michigan; Oklahoma City, Oklahoma; Portland, Oregon;
+and Riverside, California.
+
+The ASCII data file (N5PI1809.TXT) contains sample members' background
+characteristics, indicators of membership in the key research samples,
+and outcomes calculated with administrative records over a five-year follow-up
+period. These data are available for all members of the impact sample in the
+seven sites (N=44,569).
+
+Findings based on calculations with these data were presented in five reports
+published by the U.S. Department of Health and Human Services, Office of the
+Assistant Secretary for Planning and Evaluation and Administration for Children
+and Families; and U.S. Department of Education, Office of the Under Secretary
+and Office of Vocational and Adult Education:
+
+Evaluating Alternative Welfare-to-Work Approaches: Two-Year Impacts for Eleven
+Programs, 2000.  (also referred to as the Two-Year Impact Report)
+
+Impacts on Young Children and Their Families Two Years After Enrollment:
+Findings from the Child Outcomes Study, 2000.
+
+Do Mandatory Welfare-to-Work Programs Affect the Well-Being of Children?
+A Synthesis of Child Research Conducted as Part of the National Evaluation of
+Welfare-to-Work Strategies, 2000.
+
+Improving Basic Skills: Adult Education in Eleven Welfare-to-Work Programs,
+2001.
+
+How Effective Are Different Welfare-to-Work Approaches?  Five-Year Adult and
+Child Impacts for Eleven Programs. Final Report, 2001. (also referred to as the
+Final Report)
+
+The reports and public use files were prepared by the Manpower Demonstration
+Research Corporation (MDRC) and Child Trends as part of the NEWWS Evaluation.
+MDRC is conducting the NEWWS Evaluation under a contract with the U.S.
+Department of Health and Human Services (HHS), funded by HHS under a
+competitive award, Contract No. HHS-100-89-0030.  HHS is also receiving funding
+for the evaluation from the U.S. Department of Education.  The study of one of
+the sites in the evaluation, Riverside County (California), is also conducted
+under a contract from the California Department of Social Services (CDSS).
+CDSS, in turn, is receiving funding from the California State Job Training
+Coordinating Council, the California Department of Education, HHS, and the
+Ford Foundation.
+
+As part of the NEWWS Evaluation, Child Trends is conducting the Child
+Outcomes Study under subcontract to MDRC.
+
+
+II. Research Design for the NEWWS Evaluation
+
+To test the effectiveness of welfare-to-work program strategies, the NEWWS
+Evaluation uses an unusually strong research design: a random assignment
+experiment. In each evaluation site, individuals who were required to
+participate in the program were assigned, by chance, to either a program group,
+which had access to employment and training services and whose members were
+required to participate in the program or risk a reduction in their monthly
+welfare grant, or to a control group, which received no services through the
+program but whose members could seek out such services on their own from the
+community.  Random assignment took place when welfare applicants and recipients
+showed up at a welfare office to enroll in the site's welfare-to-work program.
+
+This random assignment design assures that there are no systematic differences
+between the background characteristics of program and control group members when
+they enter the study. Thus, any subsequent differences in outcomes between the
+groups (called impacts) can be attributed with confidence to the effects of the
+program.
+
+Four sites implemented a three-way random assignment research design in order
+to test the relative effectiveness of two different program approaches. In the
+three-way design, an individual is assigned, by chance, to either one of two
+program groups or a control group. Members of the two program groups and the
+control group are subject to the same labor market conditions and other
+environmental factors, assuring that any differences in outcomes between the
+two program groups, or between either program group and the control group, were
+caused by the programs' design and implementation.
+
+Three of these four sites (Atlanta, Grand Rapids, and Riverside) operated a
+Labor Force Attachment (LFA) approach, which emphasized that the workplace is
+where welfare recipients can best learn work habits and skills and thus tried
+to place people in jobs quickly, even at low wages; and a Human Capital
+Development (HCD) approach, which emphasized education and training as a
+precursor to employment.  In Riverside, existing statewide rules mandated that
+only individuals who were "in need of basic education"- defined as not having
+a high school diploma or GED, having low scores on a welfare department math or
+reading literacy test, or requiring English-as-a-Second-Language (ESL)
+instruction- could be assigned to the HCD group. The LFA group in that site,
+however, includes both those who were determined to be "in need" and those "not
+in need."  (See memos that describe ways of estimating program impacts for
+further discussion of this issue.)
+
+Columbus used a three-way random assignment design to test the relative
+effectiveness of two different case management models. In the Traditional model
+the welfare department's employment and training and income maintenance
+functions are handled by two different workers, both of whom maintain relatively
+large caseloads. In the Integrated model one worker handles both the employment
+and training and income maintenance functions.  The integrated worker maintains
+a smaller caseload than either of the traditional workers and is expected to
+provide more intensive services.
+
+The remaining three sites in the evaluation (Oklahoma City, Detroit, and
+Portland) used random assignment to test the effectiveness of established
+programs. Instead of implementing a program designed to meet research protocols,
+as in the three-way sites, program administrators determined their
+welfare-to-work program goals and practices and randomly assigned individuals
+to either a group that entered the program or a non-program control group.
+
+Individuals were randomly assigned to programs over approximately a two-year
+period in each site.  The random assignment period for all sites includes the
+years 1991 through 1994.
+
+A. End of the Control Group Embargo on Program Services
+
+See Chapters 2 and 4 of the Final Report for more details:
+
+In six sites (not Riverside) all or most control group members who were still
+receiving welfare after year 3 became eligible for welfare-to-work program
+services; in other words, in these sites the control embargo was no longer in
+effect in years 4 and 5.
+
+Control group members who entered welfare-to-work programs at that time -
+whether those programs were education-focused or employment-focused - were
+likely to be assigned to job club and encouraged to find employment quickly.
+
+Sites implemented the end of the control group embargo differently:
+
+1) In Atlanta, Columbus, and Oklahoma City, there was a fixed date when
+the control group embargo was lifted.  In these sites, therefore, control group
+members randomly assigned during the early months of sample intake remained
+ineligible for services longer than control group members randomly assigned
+during the later months.
+
+2) In Detroit (for all control group members), Grand Rapids (for control group
+   members randomly assigned before 1993, and Portland (for a randomly selected
+   subsample of 3/4 of the control group), the control group embargo was lifted
+   at the third anniversary of the control group member's random assignment
+   date.
+
+
+3) In Grand Rapids (for control group members randomly assigned beginning in
+   January 1993), Portland (for a randomly selected subsample of 1/4 of the
+   control group), and Riverside (for all control group members) the control
+   group embargo remained in effect for 5 years after random assignment.
+
+
+
+III. Data Description
+
+The file is organized into 6 records:
+
+RECORD 1: RESEARCH SITE, RANDOM ASSIGNMENT YEAR, AND SAMPLE INDICATORS
+
+Sample indicators are included to facilitate merging the administrative records
+data with survey data that were collected for subsamples of the Full Impact
+Sample. (See below for list) Additional sample indicators pertain to issues
+that affect calculation and interpretation of longer-term and cumulative
+impacts.
+
+RECORD 2: BACKGROUND CHARACTERISTICS AND BASELINE TEST SCORES
+
+RECORD 3: PRIVATE OPINION SURVEY (ADMINISTERED AT RANDOM ASSIGNMENT)
+
+Impact calculations for all reports listed above controlled for several
+important background characteristics, including sample members': gender, age,
+race/ethnicity, prior educational attainment, and the number and ages of their
+children. Some impact analyses also controlled for sample members' baseline
+literacy and math test scores and responses to the Private Opinion Survey --
+each of which were administered immediately preceding random assignment.
+
+These measures may also be used to identify key subgroups.
+
+RECORD 4: WELFARE AND FOOD STAMP PAYMENTS
+
+RECORD 5: EMPLOYMENT AND EARNINGS
+
+RECORD 6: INCOME
+
+Records 4 through 6 contain data from statewide Unemployment Insurance (UI)
+earnings records and from state and county automated welfare and Food Stamp
+payment records.  The data include (1) outcome measures by quarter and year; and
+(2) cumulative outcomes for follow-up years 1 to 2, 1 to 3, and 1 to 5. These
+data were analyzed most extensively in the Two-Year Impact- and Final Reports.
+Records 4 and 5 also include measures of sample members' employment and earnings
+and receipt of welfare and Food Stamp payments for up to 2 years before random
+assignment. Most impact calculations in the above reports controlled for these
+pre-random assignment experiences.
+
+
+A. Data availability
+
+All sample members have 5 years of follow-up data from UI earnings records, but
+some sample members in Atlanta and Oklahoma City have fewer than 5 years of
+welfare and Food Stamp data.
+
+
+For the Final Report, MDRC decided to exclude two subgroups whose members had
+been included in the analysis for the Two-Year Impact Report:
+
+   Atlanta: All sample members randomly assigned after June 1993, because they
+   lacked five years of follow-up data for welfare and Food Stamp payments.
+
+
+   Portland: The 3/4 of control group members who became eligible for program
+   services after year 3.
+
+
+In addition, Oklahoma City sample members with fewer than 5 years of follow-up
+data for welfare and Food Stamp payments were excluded from calculations of
+program impacts on welfare, Food Stamps, and combined income.
+
+
+IMPORTANT:
+
+1) N2PI1809.TXT includes all available administrative records data on all sample
+members in the Full Impact Sample. Researchers may use the subsample indicators
+to choose:
+
+a) The Final Report impact sample (N=41,715):  FNRPTSMP=1
+
+b) The Full (Two-Year Report) Impact Sample (N=44,569):  FULLSAMP=1
+
+Researchers can also choose to include, exclude, or analyze separately any of
+the sites and subsamples defined by the length of the control group embargo:
+
+INEMB4T5 =  In longer-term control group embargo sample (4 to 5 years)
+
+INEMBLT4 =  In shorter-term control group embargo sample (3 to less than 4
+            years)
+
+
+IV. Using the Data
+
+Each sample member has a unique randomly-generated IDNUMBER (that varies from 1
+to 44569), which appears in columns 1-5 of each record of every data file.  The
+same sample member IDNUMBER is used on every file in which she (nearly all
+sample members are female) is included. These data sets may also be merged (by
+IDNUMBER) with other data sets from the NEWWS Two-Year and Five-Year Public Use
+Files, namely the:
+
+Two-Year Client Survey (CD #2)
+
+Two-Year Child Outcomes Study (COS) Survey (CD #3)
+
+Two-Year Literacy and Math Test Scores (CD #4)
+
+Five-Year Client Survey (CD #5)
+
+Five-Year Child Outcomes Study (COS)- and Teacher Surveys (CD #6)
+
+The research design for the NEWWS Evaluation is complicated. (See
+RES_MEMO.TXT for details).  In addition, methods for calculating program
+impacts differ by site. (See IMP_MEMO.TXT).
+
+We strongly suggest that users of this file do the following before conducting
+any further analyses on this and all NEWWS Evaluation Public Use File data
+sets:
+
+a. Read the _README files which give a brief description of all files
+included in this set.
+
+b. Read the reports, including chapters which describe the research designs,
+samples, and data sources.
+
+c. Review the codebooks, file layouts, output, tables, and memos.
+
+d. After reading the data into SAS or another statistical or econometric
+software package, replicate the sample sizes and means.
+
+
+V. Maintaining Sample Members' Confidentiality
+
+IDNUMBER is the only unique identifier in the NEWWS Evaluation Public Use Files.
+Other background data that could be used to identify individual sample members
+have been deleted or grouped into broader categories.  For example, sample
+members may be identified by site, but not by the specific welfare-to-work
+office in which they were randomly assigned.  In addition, the year in which
+the sample member was randomly assigned is available to researchers, but not
+her specific date of random assignment. See N5PI_CBK.TXT for further details.
+
+Values of some outcome measures have also been deleted or grouped into
+broader categories to protect sample members' confidentiality. For example,
+welfare and Food Stamp payment data that were originally collected by month
+were summed into quarterly totals for this public use file.  In addition,
+quarterly measures of total earnings, welfare payments, and Food Stamp
+payments have been rounded to the nearest $100.
+
+A copy of the original data used in the evaluation is available to researchers
+(on a restricted access basis) at the National Center for Health Statistics
+(NCHS). The equivalent data for N5PI1809.TXT are stored on two files:
+
+N2RI1213.TXT: contains background characteristics and administrative records
+data for follow-up years 1 and 2 and
+
+N5RI1515.TXT: contains administrative records data for follow-up years 3 to 5
+
+See www.aspe.hhs.gov/hsp/newws/data-info.htm for more information.
+
+IMPORTANT !!!:  Researchers who estimate program impacts with the data from the
+NEWWS Evaluation public use files will get slightly different results from
+those published in NEWWS Evaluation reports.  Results will also differ slightly
+from those which appear in the series of annotated tables stored on each CD.
+(Most of these tables were copied from reports.)  An example of the differences
+is presented in the following table:
+
+
+          National Evaluation of Welfare-to-Work Strategies
+
+                              Table 1
+
+             Comparison of Five-Year Impacts Calculated
+
+             With Public Use File Data and Original Data
+
+
+                                      Public Use     Original
+Site and Program                      File Data          Data
+
+                                 Ever Employed in Years 1 to 5 (%)
+
+Atlanta Labor Force Attachment              2.4*           2.8**
+Atlanta Human Capital Development           0.8            1.0
+
+Grand Rapids Labor Force Attachment         1.5            1.5
+Grand Rapids Human Capital Development      1.2            1.2
+
+Riverside Labor Force Attachment            8.3***         8.4***
+  Lacked high school diploma or
+  basic skills                              9.4***         9.4***
+Riverside Human Capital Development         5.8***         5.8***
+
+Columbus Integrated                         1.9**          1.9**
+Columbus Traditional                        1.1            1.0
+
+Detroit                                     2.6**          2.5**
+
+Oklahoma City                              -0.5           -0.5
+
+Portland                                    4.2**          4.1**
+
+
+                      Average Quarters of Employment in Years 1 to 5
+
+Atlanta Labor Force Attachment              0.7***         0.8***
+Atlanta Human Capital Development           0.5**          0.5**
+
+Grand Rapids Labor Force Attachment         0.7***         0.7***
+Grand Rapids Human Capital Development      0.3*           0.4*
+
+Riverside Labor Force Attachment            1.1***         1.1***
+  Lacked high school diploma or
+  basic skills                              1.3***         1.3***
+Riverside Human Capital Development         0.8***         0.8***
+
+Columbus Integrated                         0.4**          0.4**
+Columbus Traditional                        0.3*           0.3*
+
+Detroit                                     0.3            0.2
+
+Oklahoma City                              -0.1           -0.1
+
+Portland                                    1.6***         1.6***
+
+
+                               Total Earnings in Years 1 to 5 ($)
+
+Atlanta Labor Force Attachment            2,357***       2,459***
+Atlanta Human Capital Development         1,980**        2,017**
+
+Grand Rapids Labor Force Attachment       1,558*         1,552*
+Grand Rapids Human Capital Development      842            846
+
+Riverside Labor Force Attachment          2,518***       2,549***
+  Lacked high school diploma or
+  basic skills                            2,280***       2,281***
+Riverside Human Capital Development       1,360*         1,361*
+
+Columbus Integrated                       2,077***       2,055***
+Columbus Traditional                      1,439*         1,410*
+
+Detroit                                   1,491*         1,460*
+
+Oklahoma City                               118            115
+
+Portland                                  5,162***       5,150***
+
+
+             Average Number of Months Receiving Welfare in Years 1 to 5
+
+Atlanta Labor Force Attachment             -2.9***        -2.9***
+Atlanta Human Capital Development          -1.9***        -1.9***
+
+Grand Rapids Labor Force Attachment        -4.2***        -4.2***
+Grand Rapids Human Capital Development     -2.9***        -2.9***
+
+Riverside Labor Force Attachment           -3.2***        -3.2***
+  Lacked high school diploma or
+  basic skills                             -3.2***        -3.2***
+Riverside Human Capital Development        -3.3***        -3.3***
+
+Columbus Integrated                        -3.9***        -3.9***
+Columbus Traditional                       -2.5***        -2.5***
+
+Detroit                                    -1.6***        -1.6***
+
+Oklahoma City                                n/a            n/a
+
+Portland                                   -5.6***        -5.6***
+
+
+                         Total Welfare Payments in Years 1 to 5 ($)
+
+Atlanta Labor Force Attachment             -861***        -881***
+Atlanta Human Capital Development          -689***        -710***
+
+Grand Rapids Labor Force Attachment      -2,534***      -2,552***
+Grand Rapids Human Capital Development   -1,750***      -1,767***
+
+Riverside Labor Force Attachment         -2,717***      -2,710***
+  Lacked high school diploma or
+  basic skills                           -2,957***      -2,955***
+Riverside Human Capital Development      -2,956***      -2,949***
+
+Columbus Integrated                      -1,482***      -1,523***
+Columbus Traditional                     -1,074***      -1,105***
+
+Detroit                                    -582**         -561**
+
+Oklahoma City                              n/a            n/a
+
+Portland                                 -2,842***      -2,746***
+
+
+   Average Number of Months Receiving Food Stamps in Years 1 to 5
+
+Atlanta Labor Force Attachment             -1.4**         -1.4**
+Atlanta Human Capital Development          -1.2**         -1.2**
+
+Grand Rapids Labor Force Attachment        -3.3***        -3.3***
+Grand Rapids Human Capital Development     -2.1***        -2.1***
+
+Riverside Labor Force Attachment           -3.6***        -3.6***
+  Lacked high school diploma or
+  basic skills                             -3.5***        -3.5***
+Riverside Human Capital Development        -3.8***        -3.8***
+
+Columbus Integrated                        -3.4***        -3.4***
+Columbus Traditional                       -2.1***        -2.1***
+
+Detroit                                    -1.6***        -1.5***
+
+Oklahoma City                              n/a            n/a
+
+Portland                                   -3.1***        -3.1***
+
+
+                    Total Food Stamp Payments in Years 1 to 5 ($)
+
+Atlanta Labor Force Attachment             -420**         -428**
+Atlanta Human Capital Development          -168           -159
+
+Grand Rapids Labor Force Attachment        -620***        -615***
+Grand Rapids Human Capital Development     -384***        -387***
+
+Riverside Labor Force Attachment           -893***        -888***
+  Lacked high school diploma or
+  basic skills                             -938***        -928***
+Riverside Human Capital Development      -1,020***      -1,013***
+
+Columbus Integrated                      -1,010***      -1,025***
+Columbus Traditional                       -646***        -648***
+
+Detroit                                    -343**         -334**
+
+Oklahoma City                              n/a            n/a
+
+Portland                                   -816***        -827***
+
+
+Researchers should be aware that changes to background characteristics data
+limit the scope of some types of subgroup analysis.  Most notably, the public
+use file includes summary measures of the age of the sample member, the number
+of her children, and the age of each child at random assignment. Researchers
+requiring more specific data may use the restricted access versions of these
+files located at NCHS.

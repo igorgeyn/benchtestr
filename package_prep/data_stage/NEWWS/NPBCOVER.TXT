@@ -1,0 +1,367 @@
+        GUIDE TO USING THE U.S. DEPARTMENT OF HEALTH AND HUMAN SERVICES
+
+   NATIONAL EVALUATION OF WELFARE-TO-WORK STRATEGIES (NEWWS) PUBLIC USE FILES
+
+
+I. Introduction
+
+This memo briefly describes the 6-CD set of public use analysis files and
+accompanying documentation from the National Evaluation of Welfare-to-Work
+Strategies (NEWWS). The files contain the sample and outcome measures for
+analyzing the effects of 11 welfare-to-work programs on a comprehensive series
+of outcomes for adults and children. The 11 programs were operated during the
+1990s in seven sites: Atlanta, Georgia; Columbus, Ohio; Detroit and Grand
+Rapids, Michigan; Oklahoma City, Oklahoma; Portland, Oregon; and Riverside,
+California.
+
+Findings based on calculations with these data were presented in five reports
+published by the U.S. Department of Health and Human Services, Office of the
+Assistant Secretary for Planning and Evaluation and Administration for Children
+and Families; and U.S. Department of Education, Office of the Under Secretary
+and Office of Vocational and Adult Education:
+
+Evaluating Alternative Welfare-to-Work Approaches: Two-Year Impacts for Eleven
+Programs, 2000.
+
+Impacts on Young Children and Their Families Two Years After Enrollment:
+Findings from the Child Outcomes Study, 2000.
+
+Do Mandatory Welfare-to-Work Programs Affect the Well-Being of Children?
+A Synthesis of Child Research Conducted as Part of the National Evaluation of
+Welfare-to-Work Strategies, 2000.
+
+Improving Basic Skills: Adult Education in Eleven Welfare-to-Work Programs,
+2001.
+
+How Effective Are Different Welfare-to-Work Approaches?  Five-Year Adult and
+Child Impacts for Eleven Programs. Final Report, 2001.
+
+These reports and public use files were prepared by the Manpower Demonstration
+Research Corporation (MDRC) and Child Trends.  MDRC is conducting the NEWWS
+Evaluation under a contract with the U.S. Department of Health and Human
+Services (HHS), funded by HHS under a competitive award, Contract No.
+HHS-100-89-0030.  HHS is also receiving funding for the evaluation from the
+U.S. Department of Education.  The study of one of the sites in the evaluation,
+Riverside County (California), is also conducted under a contract from the
+California Department of Social Services (CDSS). CDSS, in turn, is receiving
+funding from the California State Job Training Coordinating Council, the
+California Department of Education, HHS, and the Ford Foundation.
+
+As part of the NEWWS Evaluation, Child Trends is conducting the Child Outcomes
+Study under subcontract to MDRC.
+
+II. Research Design for the NEWWS Evaluation
+
+To test the effectiveness of welfare-to-work program strategies, the NEWWS
+Evaluation uses an unusually strong research design: a random assignment
+experiment. In each evaluation site, individuals who were required to
+participate in the program were assigned, by chance, to either a program group,
+which had access to employment and training services and whose members were
+required to participate in the program or risk a reduction in their monthly
+welfare grant, or to a control group, which received no services through the
+program but whose members could seek out such services on their own from the
+community.  Random assignment took place when welfare applicants and recipients
+showed up at a welfare office to enroll in the site's welfare-to-work program.
+
+This random assignment design assures that there are no systematic differences
+between the background characteristics of program and control group members when
+they enter the study. Thus, any subsequent differences in outcomes between the
+groups (called impacts) can be attributed with confidence to the effects of the
+program.
+
+Four sites implemented a three-way random assignment research design in order
+to test the relative effectiveness of two different program approaches. In the
+three-way design, an individual is assigned, by chance, to either one of two
+program groups or a control group. Members of the two program groups and the
+control group are subject to the same labor market conditions and other
+environmental factors, assuring that any differences in outcomes between the
+two program groups, or between either program group and the control group, were
+caused by the programs' design and implementation.
+
+Three of these four sites (Atlanta, Grand Rapids, and Riverside) operated a
+Labor Force Attachment (LFA) approach, which emphasized that the workplace is
+where welfare recipients can best learn work habits and skills and thus tried
+to place people in jobs quickly, even at low wages; and a Human Capital
+Development (HCD) approach, which emphasized education and training as a
+precursor to employment.  In Riverside, existing statewide rules mandated that
+only individuals who were "in need of basic education"- defined as not having
+a high school diploma or GED, having low scores on a welfare department math or
+reading literacy test, or requiring English-as-a-Second-Language (ESL)
+instruction- could be assigned to the HCD group. The LFA group in that
+site, however, includes both those who were determined to be "in need"
+and those "not in need."  (See memos that describe ways of estimating
+program impacts for further discussion of this issue.)
+
+Columbus used a three-way random assignment design to test the relative
+effectiveness of two different case management models. In the Traditional model
+the welfare department's employment and training and income maintenance
+functions are handled by two different workers, both of whom maintain
+relatively large caseloads. In the Integrated model one worker handles
+both the employment and training and income maintenance functions.  The
+integrated worker maintains
+a smaller caseload than either of the traditional workers and is expected to
+provide more intensive services.
+
+The remaining three sites in the evaluation (Oklahoma City, Detroit, and
+Portland) used random assignment to test the effectiveness of established
+programs. Instead of implementing a program designed to meet research
+protocols, as in the three-way sites, program administrators determined their
+welfare-to-work program goals and practices and randomly assigned individuals
+to either a group that entered the program or a non-program control group.
+
+Individuals were randomly assigned to programs over approximately a two-year
+period in each site.  The random assignment period for all sites includes the
+years 1991 through 1994.
+
+
+III. Data Files
+
+The data are stored in six ASCII files.  The documentation for each file
+describes the types of data collected, the sample included, and the key
+outcome measures.  The documentation also includes suggestions on how to
+use the data to estimate program effects.
+
+CD #1: Five-Year Full Impact Sample File: contains background
+characteristics data and outcomes calculated with administrative records for all members of the
+impact sample in 7 sites (N=44,569). The file is organized into 6 records:
+
+RECORD 1: RESEARCH SITE, RANDOM ASSIGNMENT YEAR, AND SAMPLE INDICATORS
+
+RECORD 2: BACKGROUND CHARACTERISTICS AND BASELINE TEST SCORES
+
+RECORD 3: PRIVATE OPINION SURVEY (ADMINISTERED AT RANDOM ASSIGNMENT)
+
+RECORD 4: WELFARE AND FOOD STAMP PAYMENTS
+
+RECORD 5: EMPLOYMENT AND EARNINGS
+
+RECORD 6: INCOME
+
+CD #2: Two-Year Client Survey File: contains responses to a survey
+administered in 7 sites around the 2-year anniversary of the
+respondent's random assignment date  (N=9,675).  All respondents were
+selected from the Full Impact Sample. The file is organized into 18
+records:
+
+RECORD 1:  INTERVIEW DATE, LENGTH, MODE
+
+RECORD 2:  PARTICIPATION: JOB SEARCH, ABE, GED, AND HIGH SCHOOL
+
+RECORD 3:  PARTICIPATION: POST-SECONDARY EDUCATION, VOCATIONAL TRAINING,
+           WORK EXPERIENCE, OJT, ANY ACTIVITY
+
+RECORD 4:  PARTICIPATION: DATE AND HOURS MISSING DATA FLAGS
+
+RECORD 5:  ADDITIONAL BASIC EDUCATION VARIABLES
+
+RECORD 6:  DEGREE RECEIPT
+
+RECORD 7:  EMPLOYMENT: SOURCE VARIABLES
+
+RECORD 8:  EMPLOYMENT: CREATED VARIABLES
+
+RECORD 9:  EMPLOYMENT: DATA PROBLEM FLAGS
+
+RECORD 10: CHILD CARE FOR EMPLOYMENT
+
+RECORD 11: HOUSEHOLD COMPOSITION
+
+RECORD 12: INCOME FOR HOUSEHOLD MEMBERS 1-9 YES/NO VARIABLES
+
+RECORD 13: INCOME AMOUNTS FOR HOUSEHOLD MEMBERS 1-9 DOLLAR VARIABLES
+
+RECORD 14: INCOME SUMMARY VARIABLES
+
+RECORD 15: INCOME PROBLEM FLAGS
+
+RECORD 16: TRANSITIONAL AND NON-CASH BENEFITS AND HEALTH CARE COVERAGE
+
+RECORD 17: CHILD OUTCOMES (ALL CHILDREN)
+
+RECORD 18: ATTITUDES TOWARD WORK AND WELFARE AND INFORMATION ON SANCTIONS
+
+
+CD #3: Two-Year Child Outcomes Study (COS) Survey File: contains
+information concerning the health, social, behavioral, and intellectual
+development of the respondent's "focal child," a child aged 3 to 5 years as of the date of
+random assignment. Data were recorded in 3 sites around the two-year anniversary
+of random assignment from the mother's survey responses, interviewer
+observations, and standardized tests administered to the focal child (N=3,018).
+The file is organized into 14 records:
+
+RECORD 1: OUTCOMES
+
+RECORD 2: TARGETED INTERVENING MECHANISMS
+
+RECORD 3: NON-TARGETED INTERVENING MECHANISMS
+
+RECORD 4: HISTORY OF CHILD CARE ARRANGEMENTS FOR FOCAL CHILD (SECTION AA)
+
+RECORD 5: CURRENT CHILD CARE ARRANGEMENTS FOR FOCAL CHILD (SECTION BB)
+
+RECORD 6: CHILD SUPPORT FOR FOCAL CHILD (SECTION CC)
+
+RECORD 7: FOCAL CHILD'S HEALTH AND HEALTH CARE (SECTION DD)
+
+RECORD 8: PARENTING OF FOCAL CHILD (SECTION EE)
+
+RECORD 9: SELF-ADMINISTERED QUESTIONNAIRE, PARTS 1 AND 2, PARENTING (SECTION FF)
+
+RECORD 10: SELF-ADMINISTERED QUESTIONNAIRE, PART 3 DEPRESSIVE SYMPTOMS
+           (SECTION GG)
+
+RECORD 11: SELF-ADMINISTERED QUESTIONNAIRE, PART 4, CHILD POSITIVE AND
+           PROBLEM BEHAVIOR (SECTION: HH)
+
+RECORD 12: INTERVIEWER ASSESSMENT
+
+RECORD 13: SUBGROUPS
+
+RECORD 14: COVARIATES
+
+Note: the Child Outcomes Study sample is nested within the Two-Year Client
+Survey and Full Impact samples.
+
+
+CD #4: Two-Year Literacy and Math Test Score File: contains one record
+and a total of 2,923 sample members in 3 sites. The key outcome measures are the
+scores from the TALS Document Literacy test and the CASAS Math test.
+Respondents took one or both tests after completing a Two-Year Client Survey
+interview.
+
+CD #5: Five-Year Client Survey File: contains responses recorded from
+survey interviews administered in 4 sites around the 5-year anniversary
+of random assignment (N=5,463). Respondents were selected from the Full
+Impact Sample.  Most Five-Year Survey respondents also responded to the
+Two-Year Client Survey. The survey file covers the following subjects:
+
+RECORD 1: INTERVIEW DATE, LENGTH, MODE AND OTHER BACKGROUND INFORMATION
+
+RECORD 2: PARTICIPATION IN EMPLOYMENT-RELATED ACTIVITIES AND ATTITUDES
+          TOWARD WORK AND WELFARE
+
+RECORD 3: DEGREE ATTAINMENT
+
+RECORD 4: EMPLOYMENT AND EARNINGS
+
+RECORD 5: CHILD CARE
+
+RECORD 6: WELFARE RECEIPT
+
+RECORD 7: MEDICAL COVERAGE
+
+RECORD 8: HOUSEHOLD COMPOSITION
+
+RECORD 9: INCOME
+
+RECORD 10: OUTCOMES FOR ALL OF RESPONDENTS' CHILDREN
+
+
+CD #6: Five-Year Child Outcomes Study (COS) Survey File: contains
+survey-based measures of the focal child's developmental outcomes, child care, and child
+activities. The Five-Year COS includes a total of 2,332 respondents in 3 sites;
+1,472 of these respondents also have survey data available from the teachers of
+their focal child.  All COS sample members were selected from the Full Impact
+Sample. Each COS sample member also responded to the Five-Year Client Survey.
+Most also responded to the Two-Year Client- and COS Surveys.
+
+The file contains 14 records of data for each COS sample member:
+
+RECORD 1:  OUTCOMES FOR FOCAL CHILD: SUMMARY MEASURES
+
+RECORD 2:  FOCAL CHILD'S ACTIVITIES AND CHILD CARE ARRANGEMENTS: SUMMARY MEASURES
+
+RECORD 3:  FOCAL CHILD'S ACTIVITIES AND CHILD CARE ARRANGEMENTS: SOURCE
+           DATA (SECTION A)
+
+RECORD 4:  FATHER OF FOCAL CHILD'S INVOLVEMENT AND CHILD SUPPORT
+           (SECTION B)
+
+RECORD 5:  RESPONDENT'S SELF-ADMINISTERED QUESTIONNAIRE: NEIGHBORHOOD
+           (SECTION AA)
+
+RECORD 6:  RESPONDENT'S SELF-ADMINISTERED QUESTIONNAIRE: DEPRESSIVE
+           SYMPTOMS (SECTION BB)
+
+RECORD 7:  RESPONDENT'S SELF-ADMINISTERED QUESTIONNAIRE: PARENTING
+           (SECTION CC)
+
+RECORD 8:  RESPONDENT'S SELF-ADMINISTERED QUESTIONNAIRE: FOCAL CHILD'S
+           HEALTH AND HEALTH CARE (SECTION DD)
+
+RECORD 9:  RESPONDENT'S SELF-ADMINISTERED QUESTIONNAIRE: FATHER OF FOCAL
+           CHILD'S INVOLVEMENT (SECTION FF)
+
+RECORD 10: RESPONDENT'S SELF-ADMINISTERED QUESTIONNAIRE: RESPONDENT'S
+           EXPERIENCE OF BARRIERS TO WORK FROM OR ABUSE BY INTIMATE
+           PARTNERS AND OTHER (SECTION GG)
+
+RECORD 11: FOCAL CHILD'S SELF-ADMINISTERED QUESTIONNAIRE
+
+RECORD 12: INTERVIEWER ASSESSMENT (SECTION IA)
+
+RECORD 13: FOCAL CHILD'S TEACHER SURVEY
+
+Note: Record 13 is blank (except for IDNUMBER and record number) for COS
+families who were not included in the Teacher Survey.
+
+RECORD 14: BACKGROUND INFORMATION AND SAMPLE WEIGHTS
+
+
+IV. Using the Data
+
+Each sample member has a unique randomly-generated IDNUMBER (that varies from 1
+to 44,569), which appears in columns 1-5 of each record of every file.
+The same sample member IDNUMBER is used on every file in which she
+(nearly all sample members are female) is included. Researchers may
+build any number of research analysis files by merging records by
+IDNUMBER. The Full Impact Sample File contains indicators of membership
+in each of the key research samples.  These measures will be helpful in
+constructing analysis files.
+
+We strongly suggest that users of this file do the following before conducting
+any further analyses with NEWWS Evaluation Public Use File data:
+
+1. Read the _README files which give a brief description of all files included
+   on each CD.
+
+2. Read the reports, including chapters which describe the research designs,
+   samples, and data sources.
+
+3. Review the codebooks, file layouts, output, tables, and memos.
+
+4. After reading the data into SAS or another statistical or econometric
+   software package, replicate the sample sizes and means.
+
+
+V. Maintaining Sample Members' Confidentiality
+
+IDNUMBER is the only unique identifier in the NEWWS Evaluation Public Use Files.
+Other background data that could be used to identify individual sample members
+have been deleted or grouped into broader categories.  For example, the
+year in which the sample member was randomly assigned is available to
+researchers, but not her specific date of random assignment.  Values of some
+outcome measures have also been deleted or grouped into broader categories to
+protect sample members' confidentiality. For example, quarterly measures of
+total earnings, welfare payments, and Food Stamp payments have been rounded
+to the nearest $100.  See the cover memos and codebooks for each public use file
+for more specific information on how data were changed.
+
+
+IMPORTANT !!!: Researchers who estimate program impacts with the data from the
+NEWWS Evaluation public use files will get slightly different results from
+those published in NEWWS Evaluation reports.  Results will also differ
+slightly from those which appear in the series of annotated tables stored on
+each CD.  (Most of these tables are copied from reports.)
+
+The cover memo for the Five-Year Full Impact Sample File contains a comparison
+of impact estimates calculated with the original data and estimates calculated
+with data stored on the NEWWS Evaluation public use files.
+
+
+VI. Restricted Access Files
+
+A copy of the original data used in the evaluation is available to researchers
+(on a restricted access basis) at the National Center for Health Statistics.
+See www.aspe.hhs.gov/hsp/newws/data-info.htm for more information.
+

@@ -1,0 +1,132 @@
+NEWWS Portland Evaluation
+Table 1
+Two-Year Impacts on Employment, Earnings, AFDC/TANF, Food Stamps, and
+Combined Income for AFDC-FGs
+
+                                        ExperimentalControl Difference  Percentage
+Outcome                                      Group    Group   (Impact)    Change (%)
+
+Ever employed in years 1-2 (%)                 72.1  60.9     11.2***       18.4          VEMPQ2T9
+  Year 1 (quarters 2-5)                        57.7  47.5     10.1***       21.3          VEMPQ2T5
+  Year 2 (quarters 6-9)                        62.0  49.5     12.5***       25.3          VEMPQ6T9
+
+Quarters employed in years 1-2                 3.34  2.61     0.73***       28.1          KEMPQ2T9
+  Year 1 (quarters 2-5)                        1.52  1.20     0.32***       26.6          KEMPQ2T5
+  Year 2 (quarters 6-9)                        1.82  1.41     0.41***       29.3          KEMPQ6T9
+
+Employed (%)
+  Quarter 2                                    33.2  25.5      7.8***       30.5          EMPQ2
+  Quarter 3                                    37.4  29.4      8.0***       27.3          EMPQ3
+  Quarter 4                                    39.3  32.2      7.1***       22.2          EMPQ4
+  Quarter 5                                    42.0  33.0      9.0***       27.4          EMPQ5
+  Quarter 6                                    45.0  33.8     11.1***       32.9          EMPQ6
+  Quarter 7                                    45.7  36.4      9.3***       25.7          EMPQ7
+  Quarter 8                                    45.2  35.3     10.0***       28.2          EMPQ8
+  Quarter 9                                    46.5  35.6     10.9***       30.6          EMPQ9
+
+Earnings in years 1-2 ($)                     7,136 5,307    1,829***       34.5          EARNQ2T9
+  Year 1 (quarters 2-5)                       2,758 2,110      648***       30.7          EARNQ2T5
+  Year 2 (quarters 6-9)                       4,378 3,197    1,181***       36.9          EARNQ6T9
+
+  Quarter 2                                     447   355       91***       25.7          EARN2
+  Quarter 3                                     667   503      164***       32.6          EARN3
+  Quarter 4                                     781   589      192***       32.6          EARN4
+  Quarter 5                                     864   663      201***       30.4          EARN5
+  Quarter 6                                   1,012   746      266***       35.7          EARN6
+  Quarter 7                                   1,083   787      295***       37.5          EARN7
+  Quarter 8                                   1,125   815      310***       38.1          EARN8
+  Quarter 9                                   1,158   849      309***       36.4          EARN9
+
+
+
+
+
+
+
+
+
+
+                                                                     (continued)
+
+Table 1 (continued)
+
+                                        ExperimentaControDifference  Percentage
+Outcome                                      Group Group (Impact)    Change (%)
+
+Ever received AFDC/TANF in years 1-2 (%)       93.5  94.4     -0.9          -0.9          VRECC2T9
+  Year 1 (quarters 2-5)                        93.1  93.9     -0.8          -0.9          VRECC2T5
+  Year 2 (quarters 6-9)                        60.4  69.0     -8.6***      -12.5          VRECC6T9
+
+Months received AFDC/TANF in years 1-2        13.13 15.61    -2.48***      -15.9          KRECC2T9
+  Year 1 (quarters 2-5)                        8.02  9.02    -1.00***      -11.1          KRECC2T5
+  Year 2 (quarters 6-9)                        5.11  6.59    -1.48***      -22.4          KRECC6T9
+
+Received AFDC/TANF (%)
+  Quarter 2                                    91.1  93.0     -1.9**        -2.1          RECC2
+  Quarter 3                                    76.0  83.3     -7.2***       -8.7          RECC3
+  Quarter 4                                    67.5  75.6     -8.0***      -10.7          RECC4
+  Quarter 5                                    60.3  70.1     -9.8***      -13.9          RECC5
+  Quarter 6                                    54.0  65.0    -11.0***      -16.9          RECC6
+  Quarter 7                                    49.3  61.1    -11.8***      -19.4          RECC7
+  Quarter 8                                    45.5  57.3    -11.8***      -20.6          RECC8
+  Quarter 9                                    41.4  53.3    -11.9***      -22.4          RECC9
+
+AFDC/TANF amount received in years 1-2 (      5,825 7,049   -1,224***      -17.4          ADCC2T9
+  Year 1 (quarters 2-5)                       3,573 4,062     -489***      -12.0          ADCC2T5
+  Year 2 (quarters 6-9)                       2,252 2,987     -735***      -24.6          ADCC6T9
+
+  Quarter 2                                   1,128 1,177      -49***       -4.2          ADCC2
+  Quarter 3                                     917 1,043     -126***      -12.1          ADCC3
+  Quarter 4                                     806   958     -152***      -15.8          ADCC4
+  Quarter 5                                     723   885     -162***      -18.3          ADCC5
+  Quarter 6                                     640   825     -185***      -22.4          ADCC6
+  Quarter 7                                     581   763     -182***      -23.9          ADCC7
+  Quarter 8                                     535   725     -190***      -26.2          ADCC8
+  Quarter 9                                     496   675     -178***      -26.4          ADCC9
+
+                                                                     (continued)
+
+Table 1 (continued)
+
+                                        ExperimentaControDifference  Percentage
+Outcome                                      Group Group (Impact)    Change (%)
+
+Ever received Food Stamps in years 1-2 (       93.8  94.1     -0.3          -0.3          VRFSC2T9
+  Year 1 (quarters 2-5)                        93.0  93.3     -0.2          -0.3          VRFSC2T5
+  Year 2 (quarters 6-9)                        73.7  77.7     -4.0***       -5.1          VRFSC6T9
+
+Months received Food Stamps in years 1-2      16.13 17.39    -1.26***       -7.3          KRFSC2T9
+  Year 1 (quarters 2-5)                        9.11  9.62    -0.52***       -5.4          KRFSC2T5
+  Year 2 (quarters 6-9)                        7.03  7.77    -0.74***       -9.6          KRFSC6T9
+
+Received Food Stamps (%)
+  Quarter 2                                    91.7  91.9     -0.1          -0.1          RFSC2
+  Quarter 3                                    82.4  86.0     -3.6***       -4.2          RFSC3
+  Quarter 4                                    76.7  80.5     -3.8***       -4.7          RFSC4
+  Quarter 5                                    71.7  77.3     -5.6***       -7.3          RFSC5
+  Quarter 6                                    67.1  73.5     -6.4***       -8.7          RFSC6
+  Quarter 7                                    64.2  70.7     -6.5***       -9.2          RFSC7
+  Quarter 8                                    61.6  66.4     -4.7***       -7.1          RFSC8
+  Quarter 9                                    58.8  63.5     -4.7***       -7.4          RFSC9
+
+Food Stamp amount received in years 1-2       3,957 4,376     -420***       -9.6          FSC2T9
+  Year 1 (quarters 2-5)                       2,231 2,414     -182***       -7.5          FSC2T5
+  Year 2 (quarters 6-9)                       1,725 1,963     -237***      -12.1          FSC6T9
+
+  Quarter 2                                     645   668      -24***       -3.6          FSC2
+  Quarter 3                                     566   618      -51***       -8.3          FSC3
+  Quarter 4                                     531   579      -48***       -8.3          FSC4
+  Quarter 5                                     490   549      -59***      -10.7          FSC5
+  Quarter 6                                     457   525      -67***      -12.8          FSC6
+  Quarter 7                                     443   504      -62***      -12.2          FSC7
+  Quarter 8                                     423   482      -59***      -12.3          FSC8
+  Quarter 9                                     402   452      -49***      -10.9          FSC9
+
+Average combined income in years 1-2 ($)     16,918 16,732     1860          1.1          INCC2T9
+
+Sample size                                   3,529 2,018
+
+
+
+
+

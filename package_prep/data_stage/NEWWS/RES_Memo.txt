@@ -1,0 +1,184 @@
+                 Research Design for the NEWWS Evaluation
+
+To test the effectiveness of welfare-to-work program strategies, this
+evaluation uses an unusually strong research design: a random assignment
+experiment. In each evaluation site, individuals who were required to
+participate in the program were assigned, by chance, to either a program
+group, which had access to employment and training services and whose
+members were required to participate in the program or risk a reduction
+in their monthly welfare grant, or a control group, which received no
+services through the program but whose members could seek out such
+services on their own from the community. This random assignment
+design assures that there are no systematic differences between the
+background characteristics of program and control group members when
+they enter the study. Thus, any subsequent differences in outcomes
+between the groups (called impacts) can be attributed with confidence
+to the effects of the program.
+
+Four sites implemented a three-way random assignment research design
+in order to test the relative effectiveness of two different program
+approaches. In the three-way design, an individual is assigned,
+by chance, to either one of two program groups or a control group.
+Members of the two program groups and the control group are subject
+to the same labor market conditions and other environmental factors,
+assuring that any differences in outcomes between the two program
+groups, or between either program group and the control group, were
+caused by the programs' design and implementation.
+
+Three of these four sites (Atlanta, Grand Rapids, and Riverside)
+ran two programs that used extreme versions of the employment- and
+education-focused approaches described in the impact reports: a
+Labor Force Attachment (LFA) approach, which emphasizes that the
+workplace is where welfare recipients can best learn work habits and
+skills and thus tries to place people in jobs quickly, even at low
+wages; and a Human Capital Development (HCD) approach, which emphasizes
+education and training as a precursor to employment and invests in the
+"human capital" of welfare recipients to enable them to retain jobs and
+have a better chance of advancement.
+
+In Riverside existing statewide rules mandated that only individuals
+who were "in need of basic education" - defined as not having a high
+school diploma or GED, having low scores on a welfare department math
+or reading literacy test, or requiring English-as-a-Second-Language
+instruction - could be assigned to the HCD group. The LFA group in that
+site, however, includes both those who were determined to be "in need"
+and those "not in need." For the measures included in this report,
+results for the segment of the LFA group in Riverside who were
+determined to be in need of basic education are included so that direct
+comparisons between the LFA and HCD groups in that site can be made.
+Further, direct comparisons between results of the Riverside HCD program
+and those of other programs in this evaluation can be made only with
+those who lacked a high school diploma or GED in the other programs.
+
+Columbus used a three-way random assignment design to test the
+relative effectiveness of two different case management models. In the
+Traditional model the welfare department's employment and training and
+income maintenance functions are handled by two different workers, both
+of whom maintain relatively large caseloads; in the Integrated model
+one worker handles both the employment and income maintenance functions.
+The integrated worker maintains a smaller caseload than either of the
+traditional workers and is expected to provide more intensive services.
+
+The remaining three sites in the evaluation (Oklahoma City, Detroit,
+and Portland) used random assignment to test the effectiveness of
+established programs. Instead of implementing a program designed to
+meet research protocols, as in the three-way sites, program
+administrators determined their welfare-to-work program goals and
+practices and randomly assigned individuals to either a group that
+entered the program or a non-program control group.
+
+Individuals were randomly assigned to programs over approximately
+a two-year period in each site. Random assignment for the evaluation
+began in June 1991 in Riverside, California, and ended in December
+1994 in Portland, Oregon. Thus, the results presented
+in this report cover the calendar period from June 1991 (the first
+month of the first sample member's entry in the program) to December
+1996 (the last month of a two-year follow-up for the last sample member
+randomly assigned in Portland).
+
+The differences in procedures used to randomly assign clients in this
+evaluation affected the sample composition and, thus, comparability
+of the sites and programs. In five of the seven sites welfare applicants
+and recipients who met the demographic criteria to be mandated to
+participate were randomly assigned while attending a program orientation
+at the employment and training office. In Columbus and Oklahoma City
+individuals were randomly assigned at the income maintenance office,
+before they were assigned to an orientation.
+
+Not all individuals assigned to participate in welfare-to-work programs
+actually attend an orientation; some individuals who do not attend may
+leave the welfare rolls shortly after being referred to the program, may
+have had their applications denied, or may not have a good reason for
+not attending.  For example, long waiting lists for orientation "slots"
+can create a situation in which the more employable individuals on
+the caseload can find jobs on their own and exit welfare before being
+randomly assigned, leaving more "disadvantaged" individuals to enroll
+in the program. In three programs for which these data are available
+(Riverside, Grand Rapids, and the Columbus Traditional program) about
+two-thirds of those required to attend an orientation actually did so.
+The Columbus Integrated program, however, compelled about five-sixths
+of sample members to attend an orientation.  Because outcomes in this
+report are reported as averages for all sample members in a group, the
+different capacities of the Integrated and Traditional groups to enroll
+individuals are reflected in their participation and subsequent
+employment, earnings, and welfare outcomes.
+
+Because Oklahoma City, unlike all other sites, randomly assigned only
+applicants, including those whose application for assistance was not yet
+approved, two points need to be considered. First, the impact estimates
+include a larger proportion of people who never received an welfare payment
+after being randomly assigned for reasons unconnected to the welfare-
+to-work program's effects. About 30 percent of the sample in Oklahoma
+City were denied cash assistance shortly after being randomly assigned.
+Second, past research has shown that welfare-to-work programs work
+differently for recent applicants, who tend to be less disadvantaged,
+than for individuals who were already receiving welfare.
+
+
+Issues for Estimating Impacts in Riverside (see also: technical memo on estimating impacts)
+
+The Riverside design has implications for calculating LFA impacts.
+The outcomes and impacts for sample members in the other six sites are
+unweighted. In Riverside, however, outcomes are weighted averages of
+the outcomes for both LFAs found to be in need and those found not to
+be in need of basic education at baseline. This weighting scheme
+compensates for the overrepresentation of those determined not to need
+basic education among the LFA and LFA-control groups.
+
+Under the Riverside program design, impacts cannot be correctly
+calculated in an unweighted regression model (that is, one that includes
+LFAs, HCDs, and controls and counts all observations with equal weight).
+Instead, the full sample LFA impact is calculated as (Wneed * BLFAneed)
++ (Wnot * BLFAnot). In this equation, BLFAneed represents the impact
+for the "in need" LFAs and BLFAnot the impact for the "not in need"
+LFAs. Wneed, the weight for the "in need" sample, equals the fraction
+of LFAs, HCDs, and controls who were classified by program staff as in
+need of basic education at baseline, and Wnot, the weight for the "not
+in need" sample, equals 1 - Wneed.
+
+The Riverside LFA full sample impacts are generated in a regression that
+includes all Riverside sample members, whereas the HCD full sample
+impacts are estimated in a regression that includes only sample members
+determined to need basic education.
+
+
+
+Issues for Estimating Impacts in Portland (see also: technical memo on estimating impacts)
+
+The full impact sample in Portland includes
+
+3,529 program group members:  63.6 percent
+
+2,018 control group members:  36.4 percent
+
+Portland initially randomly assigned half of the sample to the program group and
+half to the control group.  On September 1, 1993, Portland changed the
+random assignment ratio to 75 percent program group and 25 percent control group.
+Researchers should account for this change when estimating outcomes and impacts,
+either by
+
+1) Weighting the sample to even out the proportions of program group members and
+   control group members before and after September 1, 1993
+
+or
+
+2) Control for the difference in random assignment ratios when running impact
+   regressions or similar procedures.
+
+MDRC used method (2) by including a dummy variable: PORTCOH2=1 if randomly assigned
+after the change in random assignment ratio.
+
+
+
+SITE            RESEARCH GROUPS               DUMMY VARIABLE NAMES
+
+Atlanta         LFA, HCD, Control             J, B, C2
+Grand Rapids    LFA, HCD, Control             J, B, C2
+Riverside       LFA, HCD, Control             J, B, C2
+
+Columbus        Integrated, Traditional,      I, T, C2
+                Control
+
+Detroit         Program, Control              P, C2
+Oklahoma City   Program, Control              P, C2
+Portland        Program, Control              P, C2

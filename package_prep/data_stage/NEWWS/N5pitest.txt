@@ -1,0 +1,537 @@
+                   INTERPRETATION OF READING AND MATH SCORES
+
+
+Part 1: Interpretation of TALS and CASAS Reading Scores
+
+[Most of this section comes from:]
+
+Calibrating Scores on Two Tests of Adult Literacy:
+An Equating Study of the Test of
+Adult Literacy Skills (TALS) Document Test and
+the Comprehensive Adult Student Assessment System (CASAS)
+GAIN Appraisal Reading Test (Form 2)
+
+A report prepared for the Manpower Demonstration Research Corporation
+
+by: Walter Haney
+Larry Ludlow
+Anastasia Raczek
+Sonia Stryker,
+and Ann Jones
+
+Boston College
+Program in Educational Research, Measurement and Evaluation
+Campion Hall
+Chestnut Hill, MA 02167
+
+October 1994
+
+[revised October 1996]
+
+
+I.Introduction
+
+Amid widespread concern over the learning and skills of American workers,
+the education of adults has been receiving increased attention in
+national education policy.  In 1985, California established its Greater
+Avenues for Independence (GAIN) Program which emphasized mandatory
+participation in basic education for weflare recipients who were
+consided to need it. Similar emphasis on education for welfare recipients
+was embodied in the federal Family Support Act of 1988 and the Job
+Opportunities and Basic Skills Training (JOBS) program established under
+that Act.  And on Mach 31, 1994, President Clinton signed the Educate
+America Act, which for the first time establishes national education
+goals as a part of federal law.The sixth of these eight national
+education goals is that by the year 2000 "every adult Amercian will be
+literate and will possess the knowledge and skills necessary to compete
+in a global economy and exercise the rights and responsibilities of
+citizenship."
+
+Such aspirations for a literate citizenry and workforce, and programs
+aimed at helping attain them, have prompted renewed attention to the
+problem of how to measure the literacy of adults.  As several different
+test  of "adult literacy" are available and are used in connection with
+various adult education programs, questions quickly arise about the
+comparability of scores on the different tests of adult literacy.
+
+The purpose of this report is to present the results of a study of two
+relatively new tests of adult literacy:namely the Test of Adult Literacy
+Skills (TALS) Document Test (Form B) and the Comprehensive Adult Student
+Assessment System (CASAS) GAIN Appraisal Reading Test (Form 2), both used
+in conjunction with a national evaluation of the Job Opportunities and
+Basic Skills Training (JOBS) program.  The specific purpose of the study
+was to equate the scores on both tests for a sample of GAIN registrants from
+Riverside, California, using a variety of traditional and item response
+theory equating methods.
+
+In this introduction we provide some background on:
+
+*the JOBS program and its evaluation;
+
+*the two tests whose comparability we are investigating; and
+
+*the art of test equating.
+
+The JOBS Program and Its Evaluation
+
+The JOBS program began operation in 1989.  Its aim is to increase the
+literacy, self-sufficiency and employment prospects of people receiving
+Aid to Families with Dependent Children (AFDC), the nation's largest cash
+welfare program, supported with federal and state funds.  Within AFDC,
+single parents are enrolled in the family group (AFDC-FG) program, while
+two-parent families are enrolled in the AFDC-U (Unemployed Parent) program.
+Under the Family Support Act of 1988, the federal government defines
+parameters and expectations for state JOBS programs; the states determine
+the sequence and content of program services and decide how to target
+various parts of the AFDC population.  JOBS program activities may include
+adult education (adult basic education, preparation for taking the high
+school equivalency General Educational Development or GED test, and
+English instruction for speakers of other languages), post-secondary
+education, jobs skills training, job search workshops, on-the-job training,
+and unpaid work experience.  Based on the Family Support Act's premise
+that welfare involves an obligation on the part of those who receive income
+and services, it requires all AFDC recipients whose children are at least
+three years of age (age one at state option) to participate in JOBS to the
+extent that resources permit, and AFDC payments are to be reduced for people
+who do not cooperate with their assigned program activities (exemptions may be
+granted to recipients who meet specified criteria). Thus the JOBS program is
+broad in its coverage and in its emphasis on developing human resources and
+employment prospects welfare recipients.
+
+To analyze the effectiveness of the JOBS welfare-to-work program, a
+longitudinal evaluation is being conducted by the Manpower Demonstration
+Research Corporation (MDRC) in several communities, usingrandom assignment
+of welfare recipients to treatment and control conditions.  The study
+is being funded by the U.S. Department of Health and Human Services (HHS)
+and the U.S. Department of Education.  The study of one of the communities
+in the evaluation, Riverside, California, is also being funded by the
+California Department of Social Services (which in turn received funding
+from the California Department of Education, the California State Job
+Training Coordinating Council, HHS, and the Ford Foundation)
+
+A key issue in the JOBS evaluation is whether JOBS has different impacts
+on different types of welfare recipients.  A particularly important question
+is whether the education, training and job search activities in
+JOBS may have different effects on people who enter JOBS with lower literacy
+than on people who enter with higher literacy.  To examine this hypothesis
+regarding the impacts of JOBS on "subgroups" with high and low literacy,
+it is necessary to measure the literacy of people in the evaluation before
+they are randomly assigned. This has been done in four JOBS evaluation sites;
+however, two different tests were used in these sites, making it difficult
+to define literacy subgroups using a consistent measure. (Different tests
+were used in different sites because in California and Oregon, state
+regulations require the use of CASAS tests; the TALS Document Literacy test was
+selected for use in other evaluation sites by MDRC and the federal agencies
+funding  the evaluation.) Therefore, in order to examine one of the prime
+questions about the impact of JOBS, it is necessary to understand the
+relationship between welfare recipients' scores on the TALS and CASAS tests
+that they took when they entered the JOBS program. An additional reason for
+seeking to understand the equivalence of CASAS and TALS test scores is
+to facilitate comparison of test-takers at different JOBS evaluation sites.
+Finally, from a methodological perspective, we were interested in how
+well a variety of both traditional and item response theory methods of test
+equating worked to calibrate scores on these two tests of adult literacy.
+For these reasons, the MDRC asked us to undertake a study of the
+comparability of scores on these two measures of adult literacy.  This
+report is a product of our inquiry.
+
+The Two Tests
+
+The two tests that are the focus of our inquiry are, as mentioned, the
+CASAS GAIN Appraisal Reading Test (form 2) and the TALS Document Literacy
+Test. Hence it is useful here to provide a brief introduction to
+these instruments. More detail on the psychometric properties of these
+instruments will be presented in chapter 2 of this report.
+
+The CASAS GAIN Appraisal Reading Test (form 2) was developed by a California
+organization known as the Comprehensive Adult Student Assessment System or
+CASAS. CASAS began as a consortium of education providers in California in 1980
+with the aim of developing assessments with a functional as opposed to academic
+focus. In addition to tests used in adult education programs, the CASAS system
+encompasses a list of competencies developed from the recommendations of adult
+basic education and English as a Second Language educational program staff in
+the CASAS consortium, as well as a corresponding curriculum index. In this
+report, however, wefocus on the CASAS reading test used in connection with the
+evaluation of JOBS, namely, the CASAS GAIN Appraisal Reading Test (form 2).
+
+CASAS tests are constructed from [an] item bank of more than 5,000 test
+items. Each test item has an established difficulty level based on extensive
+field testing and analysis. The psychometric theory used to establish this
+difficulty level is Item Response Theory (IRT) through which each item
+is assigned a difficulty level on a common scale….CASAS tests are developed
+to have established difficulty levels primarily for learners at or below
+high school graduation level. .. . The basic and functional context of CASAS
+test items includes applied reading, math and listening in a variety of
+situations. Most CASAS tests are group administered and untimed, but
+generally take approximately 30 to 40 minutes to administer. (Stiles,
+Rickard, Kharde, Posey & Martois, 1990, p. 5)
+
+In some JOBS sites, both CASAS reading and math tests are used to determine
+whether AFDC registrants are lacking in basic skills and thus are in need
+of education services. For example in the GAIN program in California (GAIN
+became California's version of JOBS after passage of the JOBS legislation in
+1988),
+
+Registrants who lack a high school diploma or a GED, score below 215 on
+either the reading or mathematics basic skills test or are not proficient
+in English are determined by GAIN regulations to be in need of basic
+education. ...A score lower than 215 on the reading or mathematics test
+is a criterion used by the GAIN program to determine that individuals are
+in need of basic education. According to CASAS, those who function below
+215 are at low literacy levels and have difficulty pursuing programs or
+jobs other than those that require only minimal literacy skills. (Martinson
+& Friedlander, 1994, p. 8)
+
+Though both the CASAS reading and math tests are used in some JOBS sites
+(for example throughout California in the GAIN program), our study focuses
+on the CASAS reading test titled the "GAIN Appraisal Reading Test
+(Form 2)" (hereafter we refer to this instrument as the CASAS Reading test.)1
+This 15-page test contains 30 multiple-choice items and takes 30 minutes to
+administer.  Questions on the test require test-takers to answer questions
+related to filling out a job application and an employee injury report;
+interpreting a graph, a portion of an employee handbook, a performance
+appraisal form and a picture of filing cabinets; applying for a social
+security card number; and reading job ads, a table of contents, a work
+experience record, and articles about job promotion and income tax.
+According to the CASAS content specifications for this instrument, 23 of the
+thirty items with "employment" life skills competencies, three deal with
+"government and law", two with "consumer economics" and two with "community
+resources" life skills.2
+
+The TALS Document Literacy Test was developed by the Educational Testing
+Service (ETS). The TALS tests grew out of the 1986 survey of young adult
+literacy conducted by ETS as part of the National Assessment of Educational
+Progress. More recently TALS instruments have also been used in a national
+study funded by the U.S. Department of Labor (Kirsch & Jungeblut, 1992) and
+in the National Adult Literacy Survey (Kolstad, 1993).  Like the CASAS tests,
+the TALS instruments have been developed using Item Response Theory, and
+focus on a competency-based approach to assessment, rather than a grade-level
+classification approach that had previously been used in many adult literacy
+
+_____________________________________________________________________________________
+[footnotes:]
+
+1We should note that this instrument has previously been referred to also as
+the "GAIN 2 Appraisal Program Reading" test, but after checking with people
+at MDRC and at CASAS, we have been told that "GAIN Appraisal Reading Test
+(Form 2)" is the most appropriate full name for this instrument.
+2 CASAS (n.d.), "Test Content by Item -Gain Reading and Math Appraisal,
+Form 2.
+
+_____________________________________________________________________________________
+
+
+
+instruments. ETS tests of adult literacy have covered three different aspects of
+literacy, namely those related to the reading and interpretation of prose,
+ofdocuments, and of text containing quantitative information.  However, the
+TALS test used in the MDRC evaluation of the JOBS program covered only document
+literacy.
+
+The specific instrument employed is titled the "ETS Tests of Applied Literacy
+Skills Form B Document Literacy" (hereafter referred to as the TALS Document
+test).  This 15-page test has two parts, each taking 20 minutes to administer,
+with 14 items in part 1 and 12 items in part 2, for a total of 26 items
+administered in a total of 40 minutes.  The tasks embodied in the TALS
+Document test involve reading and interpreting graphs, filling out a
+savings bank withdrawal form, interpreting a page of telephone billing
+information, and reading a map of a shuttle bus route.
+
+In sum, the CASAS Reading test and the TALS Document test have many
+similarities. Both were developed using IRT (which will be discussed more
+fully in section 5), employ a competency-based approach to assessment,
+involve similar kinds of " real-life" as opposed to academic tasks,
+take approximately the same time to administer (30 versus 40 minutes),
+and are of about the same length (each is 15 pages, but with the CASAS
+test having 30 items and the TALS 26).  At the same time, these two
+instruments have significant differences. While the CASAS Reading test is
+entirely multiple- choice in format, the TALS Document test is entirely
+short answer fill-in in format. Also, while the CASAS test was created to
+be used mainly with adults functioning below the level of high school
+completion, the TALS test was developed to be used with a broader
+population of adults.  As we explain in the next section, these differences,
+though seemingly minor, have important consequences for an effort such as ours
+to equate scores on the two instruments.
+
+
+Description of Literacy Levels on TALS Document Literacy Test
+
+Level and      Description of Tasks
+Score Range    Required by Test Items          Examples of Test Tasks
+
+Level 1        Tasks at this level are         Enter account information
+0-225          the least demanding.            on a bank's savings
+               They typically require the      withdrawal form. (200)
+               reader to make a literal
+               match between a single
+               piece of information
+               stated in a question
+               and information
+               provided in text, or to
+               enter information from
+               personal knowledge.
+
+
+Level 2        Tasks at this level also        Using a line graph of car
+226-275        involve a single piece of       prices, determine when the
+               information; however,           price of a particular car
+               several plausible choices       peaked. (268)
+               for matching that are not
+               correct may be presented.
+               Also, the match may not be
+               literal and may require
+               drawing inferences from
+               the text.
+
+
+Level 3        Tasks require the matching      Using hospital campus map
+276-325        of more than two pieces of      and its legend, identify a
+               information. The information    building that houses a
+               is presented in more complex    specified medical department.
+               displays and is more subtly     (288)
+               differentiated.
+
+
+Level 4        Tasks require multiple-         Circle information relating to
+326-375        feature matching and            rates on a page from a telephone
+               integrating information from    book. (358)
+               complex displays; however,
+               the degree to which the reader
+               must draw inferences is
+               increased from the previous
+               level.
+
+
+Level 5        Tasks require a high degree of  Interpolate information on a line
+376-500        inferential reasoning and       graph to determine profits in a
+               integrating information from    specified year. (408)
+               several sources. Tasks at this
+               level require the ability to
+               process information with a high
+               degree of consistency using
+               several documents.
+
+Source: Descriptions of literacy levels are adapted from Kirsch, Jungeblut,
+and Campbell, 1992; the examples of test tasks are given in Educational
+Testing Service, 1992.
+
+
+
+One Best Calibration Table?
+
+Given these results, is it possible to derive one best calibration table
+showing the relationship between CASAS raw scores and TALS scaled scores?
+Our answer to this question is an equivocal yes
+
+The answer is equivocal for the simple reason that before deciding upon the
+merits of one equating strategy versus others, one must consider not just
+the abstract characteristics of statistical distributions such as those
+discussed above, but the purpose of equating.  Our understanding of MDRC's
+interest in the results of this equating study is that results are to be
+used not to make decisions about individual examinees, but instead to
+allow comparisons among groups of examinees tested with the two instruments
+in different JOBS sites.  Given this purpose, it obviously would have been
+preferable to have equating data from more than a single JOBS site,
+but our comparison of the distribution of CASAS scores in the equating
+study sample with scores of broader GAIN/JOBS samples in California at least
+suggests the plausibility of generalizing our results to broader populations
+of examinees in California.
+
+Therefore we proceeded to construct a single calibration table as follows.
+Each of the equating strategies employed has some strengths.  For some
+purposes one approach might be preferred over others.  However, for
+the broad analytical purposes that MDRC apparently has in mind for the
+results of this study, we think that greater weight ought to be placed on
+the convergence of results across the four equating methods employed.
+
+
+NOTE: Sample members with a TALS scaled score of below 275 or a CASAS
+scaled score of below 215 have a value of 1 on the measure LOWREAD.
+
+
+CASAS SCALED CASAS RAW  TALS SCALED      READING              LOW READING
+  SCORE        SCORE       SCORE          LEVEL                  SCORE
+                        (NEAREST 10)
+     .          .            .             .                       .
+   174          1           120      LEVEL 1:120-225    1:LOW LITERACY SCORE
+   182          2           120      LEVEL 1:120-225    1:LOW LITERACY SCORE
+   187          3           130      LEVEL 1:120-225    1:LOW LITERACY SCORE
+   191          4           140      LEVEL 1:120-225    1:LOW LITERACY SCORE
+   193          5           160      LEVEL 1:120-225    1:LOW LITERACY SCORE
+   194          5           160      LEVEL 1:120-225    1:LOW LITERACY SCORE
+   196          6           160      LEVEL 1:120-225    1:LOW LITERACY SCORE
+   198          7           170      LEVEL 1:120-225    1:LOW LITERACY SCORE
+   199          7           170      LEVEL 1:120-225    1:LOW LITERACY SCORE
+   201          8           180      LEVEL 1:120-225    1:LOW LITERACY SCORE
+   203          9           180      LEVEL 1:120-225    1:LOW LITERACY SCORE
+   205         10           190      LEVEL 1:120-225    1:LOW LITERACY SCORE
+   207         11           200      LEVEL 1:120-225    1:LOW LITERACY SCORE
+   209         12           210      LEVEL 1:120-225    1:LOW LITERACY SCORE
+   210         13           210      LEVEL 1:120-225    1:LOW LITERACY SCORE
+   211         13           210      LEVEL 1:120-225    1:LOW LITERACY SCORE
+   212         14           220      LEVEL 1:120-225    1:LOW LITERACY SCORE
+   214         15           230      LEVEL 2:226-275    1:LOW LITERACY SCORE
+   216         16           230      LEVEL 2:226-275                       0
+   217         17           230      LEVEL 2:226-275                       0
+   218         17           230      LEVEL 2:226-275                       0
+   219         18           240      LEVEL 2:226-275                       0
+   220         18           240      LEVEL 2:226-275                       0
+   221         19           250      LEVEL 2:226-275                       0
+   223         20           260      LEVEL 2:226-275                       0
+   225         21           260      LEVEL 2:226-275                       0
+   227         22           270      LEVEL 2:226-275                       0
+   229         23           270      LEVEL 2:226-275                       0
+   231         24           280      LEVEL 3:276-325                       0
+   232         24           280      LEVEL 3:276-325                       0
+   234         25           290      LEVEL 3:276-325                       0
+   237         26           300      LEVEL 3:276-325                       0
+   240         27           310      LEVEL 3:276-325                       0
+   241         27           310      LEVEL 3:276-325                       0
+   245         28           330      LEVEL 4:326-375                       0
+   246         28           330      LEVEL 4:326-375                       0
+   253         29           350      LEVEL 4:326-375                       0
+   254         30           370      LEVEL 4:326-375                       0
+
+*Denotes two cases for which analytical and judgmental summaries yielded
+different TALS scaled scores.
+
+NOTE: Only the summary measure LOWREAD is available on the public use file
+version.  Researchers who wish to analyze the specific scores and levels should
+use the restricted access version of the file, housed at the National Center for
+Health Statistics.
+
+See www.aspe.hhs.gov/hsp/newws/data-info.htm for more information.
+
+Calibrating Scores, 10/94 p. 87.
+
+figure 6.1 and tried to construct a final table calibrating CASAS raw scores
+with TALS scaled scores. One adopted an analytical approach, calculating the
+mean of results across the four equating methods, for each CASAS raw score to
+the nearest 1.0, 5.0 and 10.0 points on the TALS scaled score scale.  The
+other member of our team adopted a judgemental approach.  Starting with the
+presumption that a final equating table ought to include values of TALS scores
+that are actually reported (that is, only 10's), and with the observation that
+the Rasch results tend to yield results that were too hight at the lower end of
+the scale, this analyst derived results shown in Table 6.4.
+
+	Despite the differences in these two independent approaches to summarizing
+our four different methods of equating CASAS and TALS (when the analytical
+summary results are rounded to the nearest 10), the results shown in
+Table 6.4 are remarkably similar.  For 31 possible CASAS raw scores
+(0-30), the two approaches yield identical TALS scaled scores (assuming
+rounding to the nearest 10) in all but two cases.  The two differences
+occurred for CASAS raw scores of five and eight.  This outcome is an
+indirect reflection of the point made previously, namely that the small
+number of persons in the equating study sample scoring in the low end
+of CASAS raw score scale makes equating results highly sensitive to
+the assumptions implicit in the different equating methods...
+and hence to assumptions made about the merits of the different
+equating methods.
+
+This leads us to three concluding points.  First, results shown in
+Table 6.4 for the top two thirds of the CASAS raw score scale (above
+raw scores of 12) are surely much more trustworthy than results for lower
+CASAS raw scores.  Second, the fact that two of the authors -- who had
+been working together for several months on this study – came up with
+slightly different summaries of four different sets of equating results,
+amply illustrates the role of qualitative judgment as opposed to simple
+quantitative analysis in the art of test equating.  And finally, this result
+clearly indicates why this inquiry and hence the title of the report --despite
+frequent reference to methods of test equating --is best thought of as an
+exercise in test calibration.  In its general meaning, calibration means
+graduation of a gauge while making allowances for irregularities.  Making
+allowance for irregularities can never be reduced completely to rules. It
+requires considerable judgment.  And our judgment is that while the CASAS and
+TALS tests can be reasonably well calibrated, they cannot be directly
+equated.
+
+
+Part 2: Interpretation of the CASAS Math Scores
+
+The Comprehensive Adult Student Assessment System (CASAS) Math test was
+developed by a consortium of education providers in California.  The test
+has a functional as opposed to academic focus. In addition to tests used in
+adult education programs, the CASAS system encompasses a list of competencies
+developed from the recommendations of adult basic education and English as
+a second language educational program staff in the CASAS consortium, as
+well as a corresponding curriculum index.
+
+The CASAS tests administered at random assignment and at two years were
+constructed from an item bank of more than 5,000 test items. Each test item had
+an established difficulty level based on extensive field testing and analysis.
+The psychometric theory used to establish this difficulty level was Item
+Response Theory (IRT) through which each item was assigned a difficulty level
+on a common scale. CASAS tests were developed to have established difficulty
+levels primarily for learners at or below high school graduation level.
+
+
+CASAS Math Test Score Scale Characteristics and Interpretation
+
+Note: Sample members with a CASAS Math score of below 215 have a value of 1 on
+the measure LOWMATH.
+
+
+Score Range    Description of Score Range
+(Level)
+
+
+Below 200      Persons in this score range have difficulty with basic
+(Level 1)      literacy and computational skills necessary to function
+               in employment and in the community. They have difficulty
+               providing basic personal identification in written form
+               (e.g., job applications), are not able to compute wages
+               and deductions on paychecks, and cannot follow simple
+               basic written directions and safety procedures.
+
+
+200-214        Persons in this score range have low literacy skills. They
+(Level 2)      can fill out simple forms and demonstrate some basic
+               computation. They have difficulty completing tasks that
+               require more than minimal literacy and computation skills.
+
+
+215-224        Persons in this score range are functioning above a basic
+(Level 3)      literacy level, and are able to handle most survival needs
+               and many social skills. They have difficulty following more
+               complex sets of directions and are functioning below a high
+               school level. They are able to, or could learn to, read
+               simple directions, signs, and maps; read a simple menu;
+               calculate a single simple operation when numbers are given;
+               make simple change; fill out simple forms requiring basic
+               personal information; and write out a simple telephone
+               message. They would have difficulty calculating gas mileage,
+               reconciling a bank statement, or writing a letter or service
+               order.
+
+
+225-235        Persons in this score range are able to handle basic reading,
+(Level 4)      writing, and computational tasks in their life roles and can
+               qualify for entry-level employment. They are able to, or
+               could learn to, interpret simple charts, graphs, and labels;
+               read a simple handbook for employees; interpret a payroll
+               stub; complete a simple order form and do calculations;
+               reconcile a bank statement; fill out medical information
+               forms and basic job applications; and follow basic oral and
+               written instructions and diagrams. They have difficulty
+               following complex, multi-step diagrams and instructions,
+               maintaining a family budget, or writing an accident or
+               incident report.
+
+
+236 and above  Persons in this score range are able to perform tasks that
+(Level 4)      involve oral and written instructions in both familiar and
+               unfamiliar situations.  They are able to, or could learn to,
+               read and follow multi-step directions; read and interpret
+               common legal forms and manuals; use math in business, such
+               as calculating discounts; create and use tables and graphs;
+               communicate their personal opinion in written form; and write
+               an accident or incident report.
+
+Source: Comprehensive Adult Student Assessment System (CASAS), 1990; Oregon
+State Board of Education, 1992.
+
+
+NOTE: Only the summary measure LOWMATH is available on the public use file
+version.  Researchers who wish to analyze the specific scores and levels should
+use the restricted access version of the file, housed at the National Center for
+Health Statistics.

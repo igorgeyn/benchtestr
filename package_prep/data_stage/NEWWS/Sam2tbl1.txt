@@ -1,0 +1,73 @@
+National Evaluation of Welfare-to-Work Strategies
+
+Table 1
+Overview of Sample Sizes, by Site and Research Group
+
+Site and Program                Impact      Client     Child      Private     Baseline
+                                Sample      Survey     Outcomes   Opinion     Test
+                                            Sample     Study      Survey
+                                                       Sample     Sample
+Atlanta
+ Random assignment period       01/07/92   03/12/92   03/12/92    03/12/92    03/12/92
+                               -01/27/94  -01/27/94  -01/27/94   -01/27/94   -01/27/94
+ Labor Force Attachment          1887         804        396        1646        1673
+ Human Capital Development       1935        1113        520        1686        1721
+ Control                         1946        1086        506        1701        1735
+  Full sample                    5768        3003       1422        5033        5129
+
+Grand Rapids
+ Random assignment period       09/25/91    03/25/92   03/25/92   03/25/92    03/25/92
+                               -01/31/94   -01/31/94  -01/31/94  -01/31/94   -01/12/94
+ Labor Force Attachment          1557         574        225        1061        1062
+ Human Capital Development       1542         574        205        1050        1050
+ Control                         1455         584        216         985         981
+  Full sample                    4554        1732        646        3096        3093
+
+Riverside
+ Random assignment period       06/18/91    09/03/91   09/03/91   02/18/92    06/18/91
+                               -06/30/93   -05/27/93  -05/27/93  -06/30/93   -06/30/93
+ Labor Force Attachment          3384         564        208        2090        2895
+ Human Capital Development       1596         621        256         970        1319
+ Control                         3342        1114        486        2042        2857
+  Full sample                    8322        2299        950        5102        7071
+
+Columbus
+ Random assignment period       09/21/92    01/04/93
+                               -07/29/94   -12/29/93
+Integrated                       2513         371
+ Traditional                     2570         366
+ Control                         2159         357
+  Full sample                    7242        1094
+
+Detroit
+ Random assignment period       05/12/92    01/24/93
+                               -06/30/94   -12/20/93
+ Program                         2226         210
+ Control                         2233         216
+  Full sample                    4459         426
+                                                                                              (continued)
+
+
+Table 1 (continued)
+
+
+Site and Program                Impact      Client     Child      Private     Baseline
+                                Sample      Survey     Outcomes   Opinion     Test
+                                            Sample     Survey     Survey
+                                                       Sample     Sample
+Oklahoma City
+ Random assignment period       09/09/91    06/01/92
+                               -05/28/93   -05/24/93
+ Program                         4309         259
+ Control                         4368         252
+  Full sample                    8677         511
+
+Portland
+ Random assignment period       02/16/93    03/03/93              02/16/93     02/16/93
+                               -12/31/94   -02/28/94             -09/14/94    -12/28/94
+ Program                         3529         297                   3325         3362
+ Control                         2018         313                   1905         1922
+  Full sample                    5547         610                   5230         5284
+
+Total Sample Size               44,569      9,675      3,018       18,461       20,577
+

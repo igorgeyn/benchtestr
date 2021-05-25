@@ -33,7 +33,7 @@ naive_dim_comparison <- function(df1, df2, treatment, outcome) {
 
   # create df2 and bind treatment-only from df1 to it
   dim_estimator_df2 <- df2 %>%
-    filter(!is.na(!!treatment_sym) & !is.na(!!outcome_sym)) %>%
+    # filter(!is.na(!!treatment_sym) & !is.na(!!outcome_sym)) %>%
     # select(c(!!treatment_sym, !!outcome_sym)) %>%
     select(c('treat', 're78')) %>%
     rbind(df1_treated_only) %>%

@@ -1,0 +1,161 @@
+---
+title: "benchtestr_playground"
+author: "Igor Geyn"
+date: "5/14/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## What is this?
+
+This .RMD serves to play around with `benchtestr` a bit. We can then translate some of this into our vignette, etc.
+
+### Example 1
+
+Let's try some of our toy functions just to make sure they work!
+
+```{r}
+
+adding_two(15)
+
+story_mod(50)
+
+# this is going to create a global object called `df_out`
+dplyr_manip(df = nsw_dehejia_wahba, var_half = 're78', var_double = 're74')
+
+head(df_out)
+summary(df_out$var_half_new)
+summary(df_out$var_double_new)
+
+```
+
+```{r}
+
+library(rlang)
+
+### trying out the naive_dim estimator
+
+type_explorer <- function(df1, df2, treatment, outcome) {
+  
+  treatment_sym = sym(treatment)
+  outcome_sym = sym(outcome)
+  
+  treatment_quo = quo(treatment_sym)
+  outcome_quo = quo(outcome_sym)
+  
+  # print(df1)
+  # print(df2)
+  # print(treatment)
+  # print(outcome)
+  # 
+  # print(treatment_sym)
+  # print(outcome_sym)
+  
+  # print(treatment_quo)
+  # print(outcome_quo)
+  print(quo_get_expr(treatment_quo))
+  print(quo_get_expr(outcome_quo))
+  
+  # print(class(df1))
+  # print(class(df2))
+  # print(class(treatment))
+  # print(class(outcome))
+  # print(class(treatment_sym))
+  # print(class(outcome_sym))
+  # print(class(treatment_quo))
+  # print(class(outcome_quo))
+  
+}
+
+type_explorer(df1 = nsw_dehejia_wahba, df2 = nsw_psid_control,
+              treatment = 'treat', outcome = 're78')
+
+length_getter <- function(df1, df2, treatment, outcome,
+                          df_string) {
+  
+  # get length of treated and control in df1
+  treat_count_df1 <<- length(sym(df_string)$treatment[sym(df_string)$treatment == 1])
+  control_count_df1 <<- length(sym(df_string)$treatment[sym(df_string)$treatment == 0])
+  
+  treat_count_df1 <<- length(sym(df_string)$treatment[sym(df_string)$treatment == 1])
+  control_count_df1 <<- length(sym(df_string)$treatment[sym(df_string)$treatment == 0])
+  
+}
+
+length_getter(df1 = nsw_dehejia_wahba, 
+              treatment = 'treat',
+              df_string = 'nsw_dehejia_wahba')
+
+naive_dim_comparison <- function(df1, df2, treatment, outcome) {
+  # initialize a df for final output
+  final_output <<- as.data.frame(matrix())
+  treatment_sym <- sym(treatment)
+  outcome_sym <- sym(outcome)
+  dim_estimator_df1 <- df1 %>%
+    group_by(!!treatment_sym) %>%
+    summarise(avg_earnings = mean(!!outcome_sym),
+              earnings_var = var(!!outcome_sym),
+              count = n())
+
+  # need to input treatment_length fxn here
+  # need to input control_length fxn here
+
+  dim_estimate1 <<- dim_estimator_df1$avg_earnings[2] - dim_estimator_df1$avg_earnings[1]
+  se_dim <<- sqrt((dim_estimator_df1[1,3]/length(df1$quo(treatment)[df1$quo(treatment) == 1])) +
+                    (dim_estimator_df1[2,3]/length(df1$quo(treatment)[df1$quo(treatment) == 0])))
+}
+
+# also want the standalone created version for now:
+# BLAH BLAH BLAH
+
+nsw_psid_control <- rbind(nsw_dehejia_wahba %>% filter(treat == 1) %>% select(c('treat', 're78')), 
+                          psid_controls_dw %>% select(c('treat', 're78')))
+
+naive_dim_comparison(df1 = nsw_dehejia_wahba, df2 = nsw_psid_control, 
+                     treatment = 'treat', outcome = 're78')
+
+dim_estimate1
+se_dim
+
+```
+
+```{r}
+
+se_dim <<- sqrt((dim_estimator_df1[1,3]/length(nsw_dehejia_wahba$treat[nsw_dehejia_wahba$treat == 1])) +
+                  (dim_estimator_df1[2,3]/length(nsw_dehejia_wahba$treat[nsw_dehejia_wahba$treat == 0])))
+
+se_dim
+```
+
+
+```{r}
+  # create the df of treatment-only from df1
+  df1_treated_only <- df1 %>%
+    filter(treat == 1) %>%
+    # select(c(treatment, outcome))
+    select(c('treat', 're78'))
+
+  # create df2 and bind treatment-only from df1 to it
+  dim_estimator_df2 <- df2 %>%
+    # filter(!is.na(!!treatment_sym) & !is.na(!!outcome_sym)) %>%
+    # select(c(!!treatment_sym, !!outcome_sym)) %>%
+    select(c('treat', 're78')) %>%
+    rbind(df1_treated_only) %>%
+    group_by(!!treatment_sym) %>%
+    summarise(avg_earnings = mean(!!outcome_sym, na.rm = TRUE),
+              earnings_var = var(!!outcome_sym, na.rm = TRUE),
+              count = n())
+
+  # need to input treatment_length fxn here
+  # need to input control_length fxn here
+
+  dim_estimate2 <<- dim_estimator_df2$avg_earnings[2] - dim_estimator_df2$avg_earnings[1]
+
+}
+
+```
+
+

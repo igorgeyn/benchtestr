@@ -1,0 +1,443 @@
+ADDITIONAL INFORMATION ON OUTCOME MEASURES CALCULATED WITH ADMINISTRATIVE DATA
+
+
+NOTE: Some of the measures described below are only available in the restricted
+access version of the file, housed at the National Center for Health Statistics.
+These will be indicated with: [N/A FOR PUF].
+
+I. General information
+
+Quarter 1 is the quarter of random assignment
+
+MDRC did not include data for quarter 1 in impact estimates, because quarter
+1 could include earnings or payments from months immediately preceding
+random assignment. Thus:
+
+Year 1= Q2  through Q5
+Year 2= Q6  through Q9
+Year 3= Q10 through Q13
+Year 4= Q14 through Q17
+Year 5= Q18 through Q21
+
+
+II. Monthly outcomes (welfare and Food Stamps) [N/A FOR PUF]
+
+Month 1= the month of random assignment
+
+Monthly payment measures for the random assignment month or later
+have an M in the variable name
+
+ADCM1-ADCM63: total welfare payments, months 1-63  [N/A FOR PUF]
+
+RECM1-RECM63: received a welfare payment, months 1-63  [N/A FOR PUF]
+
+FSM1-FSM63:   total Food Stamps, months 1-63 [N/A FOR PUF]
+
+RFSM1-RFS63:  received Food Stamps, months 1-63 [N/A FOR PUF]
+
+Monthly payment measures for up to 24 months prior to the month of
+random assignment have a PM in the variable name
+
+ADCPM24 to ADCPM1: total welfare payments  [N/A FOR PUF]
+
+FSPM24 to FSPM1: total Food Stamps  [N/A FOR PUF]
+
+
+III. Summing monthly welfare and Food Stamps data into quarters
+
+
+Monthly welfare and Food Stamp payment variables (FSPM24 TO FSM63 AND
+ADCPM24 TO ADCM63) are shifted to match the months included in calendar
+quarters. (This was done because UI earnings are reported quarterly.)
+The shifted variables have an FM (fiscal month) in their variable name.
+
+[All FM measuers: N/A FOR PUF]: These measures are used for summing welfare
+and Food Stamp payments into quarterly and yearly totals.
+
+For example:
+
+   PERSON 1 IS RANDOMLY ASSIGNED ON APRIL 5, 1991.
+
+   EARN1 SHOWS EARNINGS FOR APRIL THROUGH JUNE, 1991.
+
+   ADCM1 THROUGH ADCM3 AND FSM1 THROUGH FSM3 SHOW PAYMENTS FOR APRIL, MAY,
+   AND JUNE, 1991.
+
+   NO PROBLEMS WITH THIS PERSON: ADCFM1=ADCM1, ADCFM2=ADCM2, ADCFM3=ADCM3,
+   FSFM1=FSM1, FSFM2=FSM2, AND FSFM3=FSM3.
+
+   BUT:
+
+
+   PERSON 2 IS RANDOMLY ASSIGNED ON MAY 15, 1991.
+
+   EARN1 SHOWS EARNINGS FOR APRIL THROUGH JUNE 1991.
+
+   ADCM1 THROUGH ADCM3 AND FSM1 THROUGH FSM3 SHOW PAYMENTS FOR MAY, JUNE,
+   AND JULY, 1991.
+
+   HERE, THE FIRST QUARTER OF EARNINGS INCLUDES DIFFERENT MONTHS FROM THE
+   FIRST 3 MONTHS OF AFDC AND FOOD STAMPS.
+
+   THEREFORE: ADCFM1=ADCPM1 AND FSFM1=FSPM1 (PAYMENTS FOR APRIL 1991);
+   ADCFM2=ADCM1 AND FSFM2=FSM1 (PAYMENTS FOR MAY 1991);
+   ADCFM3=ADCM2 AND FSFM3=FSM2 (PAYMENTS FOR JUNE 1991);
+
+   AND SO ON, BACKWARDS THROUGH PRIOR QUARTERS AND FORWARD THROUGH THE
+   FOLLOW-UP.
+
+
+
+   PERSON 3 IS RANDOMLY ASSIGNED ON JUNE 31, 1991.
+
+   EARN1 SHOWS EARNINGS FOR APRIL THROUGH JUNE 1991.
+
+   ADCM1 THROUGH ADCM3 AND FSM1 THROUGH FSM3 SHOW PAYMENTS FOR JUNE, JULY,
+   AND AUGUST, 1991.
+
+   HERE, THE FIRST QUARTER OF EARNINGS INCLUDES DIFFERENT MONTHS FROM THE
+   FIRST 3 MONTHS OF AFDC AND FOOD STAMPS.
+
+   THEREFORE: ADCFM1=ADCPM2 AND FSFM1=FSPM2 (PAYMENTS FOR APRIL 1991);
+   ADCFM2=ADCPM1 AND FSFM2=FSPM1 (PAYMENTS FOR MAY 1991);
+   ADCFM3=ADCM1 AND FSFM3=FSM1 (PAYMENTS FOR JUNE 1991);
+
+
+NOTE: MDRC considered fiscal month 4 (first month of the calendar quarter
+following random assignment) as the start month for summing welfare and
+Food Stamp payments or for counting months of receipt after random
+assignment.
+
+
+Below is a summary of key series of outcome measures created in this file
+and the naming convention for the series:
+
+IV. Quarterly outcomes
+
+Summary measures for follow-up quarters:
+
+
+1) total earnings:  EARN1-EARN21
+
+2) total welfare payments:  ADCC1-ADCC21
+
+3) total Food Stamps:  FSC1-FSC21
+
+4) ever employed:   EMPQ1-EMPQ21
+
+5) ever received a welfare payment : RECC1-RECC21
+
+6) ever received Food Stamps : RFSC1-RFSC21
+
+7) combined income from earnings, welfare, and Food Stamps: INCC1-INCC21
+
+8) earnings and welfare status: EYAN1-21, EYAY1-21, ENAY1-21, ENAN1-21
+
+   where
+   E=was employed
+   A=received welfare
+   Y=yes
+   N=no
+
+   Also:
+
+  FSONLY1-21: Food Stamps only
+
+  NOINC1-21: No income from earnings, welfare, or Food Stamps
+
+
+
+For series (1) through (6) MDRC also collected up to 8 quarters
+of pre-random assignment history for each sample member.
+These measures have a P in the variable name:
+
+PEARN:   earnings
+EMPPQ:   employment
+ADCPC:   total welfare payments
+RECPC:   received welfare
+FSPC:    total Food Stamp payments
+RFSPC:   receied Food Stamps
+
+
+
+V. Cumulative vars for years 1,2,3,4,5, 1-2 yrs, 1-3 yrs, and 1-5 yrs.
+
+Often, the names of these measures include
+
+1) a prefix to show the type of measure:
+
+V=ever (0/1)
+
+K= number of months or quarters
+
+G= average per month or quarter or percent or proportion of a follow-up
+period
+
+
+2) a stem (see quarterly measures)
+
+ADC:  total welfare payment
+
+EARN: total earnings
+
+FS:   total Food Stamps
+
+EMP:  employed
+
+EMPA4QY: employed in all 4 quarters
+
+REC:  received welfare
+
+RFS:  received Food Stamps
+
+EYAN: employed and did not receive welfare
+
+EYAY: employed and received welfare
+
+ENAN: not employed, did not receive welfare
+
+ENAY: not employed and received welfare
+
+ANFY: received Food Stamps but not welfare
+
+EITC: estimated Earned Income Tax Credits (assuming an 80 percent take
+up rate)
+
+
+SSTX: estimated payroll taxes= .0765 * earnings
+
+INC:  combined income from earnings, welfare, and Food Stamps
+
+INSC: combined income from earnings (minus estimated payroll taxes),
+      welfare, Food Stamps, and estimated EITC (assuming an 80 percent
+      take-up rate; see below for more information)
+
+PS:   combined income (INSC...) compared to poverty threshold (see below
+      for more information)
+
+
+3)  a suffix that describes the follow-up period:
+
+Year 1:  2T5, Y1, 1
+Year 2:  6T9, Y2, 2
+Year 3: 1013, Y3, 3
+Year 4: 1417, Y4, 4
+Year 5: 1821, Y5, 5
+
+Years 1-2: 2T9
+Years 1-3: 2T13
+Years 1-5: 2T21
+
+
+VI. Cumulative measures for the year prior to random assignment:
+
+NOTE: measures with the prefix YR refer to the 4 calendar quarters
+before the quarter of random assignment
+
+
+YREARN:   total earnings
+YREARNSQ: total earnings squared (used as a covariate in impact regressions)
+YREMP:    ever employed
+
+
+YRADC:    total welfare payments
+YRREC:    ever received welfare
+YRKREC:   number of months of welfare receipt
+
+YRFS:     total Food Stamps payments
+YRRFS:    ever received Food Stamps
+YRKRFS:   number of months of Food Stamps receipt
+
+
+
+
+VII. Additional cumulative measures:
+
+1) first employment spells vars for 1-2 years, 1-3 years and
+   1-5 years.
+
+        First qtr of employment in _ yrs    (FJQQ_) and
+        No. of qtrs in 1st employment spell (KFJQ_)
+
+2) welfare receipt vars for 1-2 years, 1-3 years and 1-5 years.
+         1st mo. off AFDC (FMOFM_) [N/A FOR PUF]
+         Ever off AFDC    (VOFFM_)
+         Received AFDC _yrs continuously  (R_YRCONT)
+         Ever off received in last month of year_   (VOVRFM_) [N/A FOR PUF]
+
+3) earnings distribution dummy vars:
+
+ERN_0   : $0
+ER_LT2K : $1-$1,999
+ER_LT5K : $2,000-$4,999
+ER_LT10K: $5,000-$9,999
+ER_LT20K: $10,000-$19,999
+ER_GE20K: $20,000 or more
+
+Also:
+
+ER_GE10K: $10,000 or more
+
+
+VIII.  Estimating EITC
+
+
+The Earned Income Tax Credit (EITC) is available to low-income working
+taxpayers.  Three factors determine the amount of the credit:
+
+        1) the gross taxable income of the taxpayer (EARN...)
+        2) the year in which the credit was issued
+        3) the number of children the taxpayer has  (CHCNT)
+
+MDRC applied the rules for calculating EITC (obtained from the Green
+Books for 1996, 1998, and 1999).
+
+
+EITC varies according to three different scenarios:
+
+        1)  If earnings are less than or equal to the minimum income at
+            which the maximum credit can be received, then the EITC
+            equals the credit rate times earnings.
+
+        2)  If earnings are greater than the minimum income at which
+            the maximum credit can be received yet less than or equal to
+            the  beginning of the phase-out range, then the EITC equals the
+            maximum credit rate.
+
+        3)  If earnings fall within the phase-out range, then the
+            EITC equals the maximum credit rate minus a certain percentage
+            (the phase-out rate) of income above the beginning of the range.
+
+For example, taxpayers with one child in 1996 could claim a credit in
+1996 of 34 percent (the credit rate) of their earnings up to $6,330,
+resulting in a maximum credit of $2,152.  The maximum credit was available
+for those with earnings between $6,330 and $11,610.  At $11,610 of earnings
+the credit began to phase down at a rate of 15.98 percent of the amount of
+earnings above that amount.  The credit was phased down to 0 at $25,078
+(1996 Green Book, page 804).
+
+MDRC based the value of each sample member's EITC on her total earnings for
+each follow-up year (EARNQ2T5, EARNQ6T9, EARN1013, EARN1417, EARN1821).
+MDRC applied the rules for calculating the EITC for the calendar year in
+which the 3rd quarter of each follow-up year occurred.
+
+More specifically:
+
+         Includes  Reference
+         Quarters  Quarter
+Year 1   2 - 5          4
+Year 2   6 - 9          8
+Year 3  10 -13         12
+Year 4  14 -17         16
+Year 5  18 -21         20
+
+
+As we were unsure how many sample members actually received EITC (the
+credit is not automatically issued to eligible taxpayers but must be
+requested), we estimated the take-up rate (percentage of employed sample
+members who received the EITC):
+
+For the primary analyses, we assumed an 80 percent take-up rate,
+based on John Karl Scholz, "In-Work Benefits in the United States:
+The Earned Income Tax Credit," Economic Journal 106 (January, 1996):
+156-169.
+
+When creating the EITC measures, we multiplied each sample member's
+estimated EITC by 0.8.
+
+
+
+IX. Estimating income above poverty
+
+
+The poverty threshold is determined by the U.S. Census Bureau.  It
+is updated annually and varies by family size.
+
+Dummy variables were created that indicate what percent of the poverty
+threshold total income represented.  Sample members with more than three
+children were assigned the same poverty thresholds as those with exactly
+three children.  Sample members with no children were treated like those
+with one child.
+
+It should be noted that these estimates differ from official estimates of
+poverty because here income includes Food Stamps and (for some measures)
+payroll taxes, which are left out of official income calculations used to
+determine the poverty threshold, and excludes otehr sources that are
+typically counted.
+
+The method for assigning poverty levels (POVLVLyy) is similar to that for
+EITC in that it is based on when qtr 4, 8, 12, 16, and 20 occur.  (see above
+for details).
+
+Next, sample members' income was expressed as a percentage of the poverty
+threshold.  As noted above, different income was calculated in different
+ways, and different comparisons of income to poverty were made.
+
+
+X. Employment retention and advancement outcomes
+
+
+A. Employment spells: A spell is a continuous series of quarters with earnings
+greater than $0.
+
+EMPSPL   = Number of employment spells in years 1 to 5  (range: 1 to 8)
+
+KEMPSPn  = Number of quarters in employment spell N     (range: 1 to 20)
+
+SEMPSPn  = Starting quarter of employment spell N       (range: 2 to 21)
+
+EEMPSPn  = Ending quarter of employment spell N         (range: 2 to 21)
+
+
+B. Average earnings per quarter of employment by follow-up year
+
+GERNqqqq = average earnings per quarter of employment  (year 3, year 4, year 5)
+
+
+C. Additional employment retention measures
+
+
+VEM9QY35 = Employed at least 9 (of 12) quarters in years 3 to 5
+
+VEM9QN35 = Employed after random assignment but less than 9 quarters in years
+           3 to 5
+
+EYNEMP21 = Employed after random assignment but not employed in quarter 21 (last
+           quarter of year 5)
+
+
+
+D. Earnings growth
+
+In the NEWWS Final Report, earnings growth was measured by comparing the
+earnings of a sample member's first "measured" quarter of employment - i.e., a
+quarter that did not begin or end an employment spell - and her last
+"measured" quarter of employment. For sample members with 4 or more measured
+quarters of employment, the average of the first two and the last two quarters
+were compared.  No calculation was made if the sample member never worked for
+pay after random assignment or had 0 or 1 measured quarters of employment.
+
+
+TOTCONT  = Total number of measured quarters of employment
+
+TOTCNT01 = (0/1): Employed but with less than 2 measured quarters of employment
+
+XGFCNERN = Earnings for the first measured quarter(s) of employment (initialized
+           to $0)
+
+XGLCNERN = Earnings for the last measured quarter(s) of employment (initialized
+           to $0)
+
+XLFGCDIF = Difference: last MINUS first measured quarter(s) of employment
+           (initialized to $0)
+
+LFGHGHER = (0/1): Increase of $100 or more from first to last measured
+           quarter(s) of employment
+
+LFGLOWER = (0/1): Decrease of $100 or more from first to last measured
+           quarter(s) of employment
+
+LFGNOCHG = (0/1): Change of less than +/- $100 from first to last measured
+           quarter(s) of employment (=0 if VEMP2T21=0 [never employed] or if
+           (TOTCNT01=1)
+

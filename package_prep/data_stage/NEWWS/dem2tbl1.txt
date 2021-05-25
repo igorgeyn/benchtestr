@@ -1,0 +1,120 @@
+National Evaluation of Welfare-to-Work Strategies
+Two-Year Impact Sample Public Use File
+
+Table Demog
+Selected Characteristics of Sample Members
+
+Characteristic                               Variable NamAtlanta Grand    RiversideColumbus  Detroit Oklahoma    Portland
+
+Demographic characteristics
+
+Gender (%)
+ Male                                        MALE             3.6      4.2     10.6      6.5      3.3        6.9       6.8
+ Female                                      FEMALE          96.4     95.8     89.4     93.5     96.7       93.1      93.2
+
+Age (%)
+ Under 19                                    AGELT19          0.0      5.4      0.9      0.2      2.9        9.8       0.0
+ 19-24                                       AGE1924         10.2     34.2     15.5     12.9     26.2       27.0      22.7
+ 25-34                                       AGE2534         54.2     40.6     49.7     55.7     43.3       42.9      52.1
+ 35-44                                       AGE3544         29.8     16.5     27.8     26.8     22.7       17.3      21.6
+ 45 or over                                  AGE4559          5.9      3.3      6.1      4.4      5.0        2.9       3.5
+
+Average age (years)                          AGEP            32.7     28.2     32.0     31.8     30.0       28.1      30.3
+
+Ethnicity (%)
+ White                                       WHITE            3.7     50.1     49.0     46.5     11.0       59.4      69.6
+ Hispanic                                    HISPANIC         0.8      8.0     30.2      0.4      0.8        4.3       3.9
+ Black                                       BLACK           94.9     39.3     16.7     52.0     87.3       28.9      20.2
+ Black Hispanic                              BLACKHIS         0.1      0.3      0.0      0.0      0.0        0.3       0.3
+ Native American/Alaskan Native              NATIVE           0.1      1.5      1.4      0.1      0.2        6.4       2.9
+ Asian/Pacific Islander                      ASIAN            0.2      0.4      2.7      0.8      0.2        0.6       2.1
+ Other                                       OTHER            0.2      0.5      0.0      0.3      0.6        0.1       1.2
+
+Family status
+
+Marital status (%)
+ Never married                               NEVMAR          59.7     57.9     32.5     50.2     68.0       34.3      47.9
+ Married, living with spouse                 MARLIVW          1.4      3.3      8.1      8.2      2.7        3.8       1.6
+ Separated                                   SEPARAT         20.8     18.4     31.4     22.3     15.8       35.7      21.2
+ Divorced                                    DIVORCED        16.7     19.3     26.5     18.6     12.3       25.2      28.6
+ Widowed                                     WIDOWED          1.5      1.0      1.5      0.8      1.2        1.0       0.7
+                                                                                                                (continued)
+Table Demog (continued)
+
+Characteristic                               Variable NamAtlanta Grand    RiversideColumbus  Detroit Oklahoma    Portland
+
+Number of children
+ 1                                           ONECHILD        37.4     46.9     38.6     40.0     43.7       50.6      39.9
+ 2                                           TWOCHILD        33.0     35.3     32.0     33.4     29.6       30.5      33.5
+ 3 or more                                   THRCHILD        29.6     17.9     29.4     26.6     26.7       18.9      26.6
+
+Average number of children                   NCHLDGRP         2.1      1.8      2.0      2.0      2.0        1.7       2.0
+
+Has any child age 0-5                        CHLD0T5         42.5     67.9     56.0     46.9     64.3       65.1      68.2
+Has any child age 6-11                       JCHLD611        62.2     38.3     56.2     57.3     44.3       40.5      47.7
+Has any child age 12-18                      JCHLD18         45.2     26.2     37.0     39.4     34.0       23.9      25.5
+
+Age of youngest child (%)
+ 2 or under                                  YCHLDLT3         0.3     46.3      6.2      1.8     39.3       41.4      40.5
+ 3 to 5                                      YCHLD3T5        42.2     21.6     49.8     45.1     25.0       23.8      27.7
+ 6 or over                                   YCHLDGE6        57.5     32.1     44.0     53.1     35.7       34.9      31.8
+
+Had a child as a teenager                    BIRTH19U        41.4     48.4     32.8     37.5     44.2       47.1      32.4
+
+Labor force status
+
+Worked full time for 6 months or more
+for one employer (%)                         WRKFT6MO        72.6     63.8     71.0     42.5     48.1       68.8      77.0
+
+Any earnings in past 12 months (%)           BERNV           28.2     46.0     40.7     28.2     21.1       69.0      39.0
+
+Currently employed (%)                       CUREMP           7.5     11.4     11.2      4.0      6.8        8.6       9.4
+
+Education status
+
+Received high school diploma or GED (%)      HSDIP           60.9     59.0     56.2     57.4     56.5       55.1      65.9
+
+Highest degree/diploma earned (%)
+ GEDa                                        GED              5.5      8.2      9.2      7.0     10.7       11.3      21.6
+ High school diploma                         HSD             47.2     45.9     41.8     44.6     37.0       38.2      33.7
+ Technical/AA/2-year college                 TECDIP           6.8      4.1      4.3      4.6      8.0        4.3       9.3
+ 4-year (or more) college                    COLLEGE          1.8      0.9      0.9      1.6      1.1        1.6       1.7
+ None of the above                           NODEGREE        38.7     40.9     43.8     42.3     43.2       44.6      33.7
+
+Highest grade completed in school (average)  GRADE           11.3     11.4     11.0     11.2     11.2       11.1      11.2
+                                                                                                                (continued)
+
+Table Demog (continued)
+
+Characteristic                               Variable NamAtlanta Grand    RiversideColumbus  Detroit Oklahoma    Portland
+
+Enrolled in education or training in past
+12 months (%)                                ANY12           13.3     39.2     19.6      9.5     20.0       23.7      20.7
+
+Currently enrolled in education or training (ANYCUR           8.5     34.8     14.1      7.8     28.2       12.9      13.1
+
+Public assistance status
+
+Total prior AFDC receipt (%)b
+ None                                        OADCNONE         0.3      0.1      1.0     10.0      2.8       44.4       1.2
+ Less than 1 year                            OADCLT1Y        24.0     22.1     33.8      8.3     13.7       18.8      20.2
+ 1 year or more but less than 2 years        OADC1T2Y         9.7     18.6     11.3      9.0      9.1       12.5      16.3
+ 2 years or more but less than 5 years       OADC2T5Y        23.7     30.0     26.4     27.9     24.0       15.3      32.7
+ 5 years or more but less than 10 years      OADC5T10        20.9     16.4     15.6     22.7     22.5        6.5      21.2
+ 10 years or more                            OADCGE11        21.4     12.8     11.8     22.1     27.9        2.5       8.5
+
+Raised as a child in a household receiving AFAFDCHGT0        26.1     32.8     19.5     27.0     40.1       21.7      25.0
+
+First spell of AFDC receipt (%)c             NEWDISC          8.7     27.9     23.5      9.6      4.1       42.0       7.2
+
+Housing status
+
+Current housing status (%)
+ Public housing                              PUBHOUS         32.8      2.6      2.5     15.2      5.5        5.3       7.5
+ Subsidized housing                          SUBHOUS         23.1     13.0      7.0     24.7      1.1        6.7      19.1
+ Emergency or temporary housing              EMGHOUS          1.4      2.4      1.4      1.4      0.8       14.4       3.4
+ None of the above                           OTHHOUS         42.7     82.1     89.1     58.7     92.6       73.7      70.1
+
+Sample size                                                  5768     4554     8322     7242     4459       8677      5547
+
+

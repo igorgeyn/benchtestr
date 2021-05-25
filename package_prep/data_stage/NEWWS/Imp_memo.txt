@@ -1,0 +1,761 @@
+***********************************************************************************************************
+
+                               HOW MDRC ESTIMATED IMPACTS
+
+
+***********************************************************************************************************;
+
+
+/*  FOR ALL SITES: */
+
+This is the standard list of baseline demographic covariates for the impact regression model:
+
+
+
+                MARSTAT    /* SINGLE PARENT, EVER MARRIED */
+                TWOCHILD   /* TWO CHILDREN                */
+                THRCHILD   /* THREE OR MORE CHILDREN      */
+                CHLD0T5    /* ANY CHILD 0-5 YEARS OLD     */
+                BLACK      /* BLACK                       */
+                NOTBW      /* NOT BLACK OR WHITE          */
+                AGEP       /* AGE AT RANDOM ASSIGNMENT    */
+                FEMALE     /* FEMALE                      */
+                HSDIP      /* HS DIPLOMA-GED              */  ;
+
+Some sample members have missing values for these measures. These must be imputed prior
+to calculating impacts.  The public use file contains imputed values for these measures
+based on mean substitution by site and the sample member's educational attainment at
+random assignment.  (The imputed values are decimals between 0 and 1.)  If you choose to
+use MDRC's imputations, substitute
+
+
+               XMARSTAT    /* SINGLE PARENT, EVER MARRIED */
+               XTWOCHLD    /* TWO CHILDREN                */
+               XTHRCHLD    /* THREE OR MORE CHILDREN      */
+               XCHLD0T5    /* ANY CHILD 0-5 YEARS OLD     */
+               XBLACK      /* BLACK                       */
+               XNOTBW      /* NOT BLACK OR WHITE          */
+               XAGEP       /* AGE AT RANDOM ASSIGNMENT    */
+               XFEMALE     /* FEMALE                      */
+               XHSDIP      /* HS DIPLOMA-GED              */  ;
+
+/* IMPORTANT:
+MDRC changed the values of some covariates on the public use version of the
+file to protect sample members' confidentiality.  (See N5PI_CBK.TXT for details)
+*/
+
+
+
+/* COVARIATES CALCULATED FROM ADMINISTRATIVE RECORDS */
+
+This is the standard list of covariates created from administrative records:
+
+
+                YREMP      /*  EMPLOYED IN YEAR PRIOR TO RA?               */
+                EMPPQ1     /*  EMPLOYED IN PRE-RA QUARTER 1                */
+                YREARN     /*  YEAR PRIOR TO RA EARNINGS                   */
+                YREARNSQ   /*  YEAR PRIOR TO RA EARNINGS SQUARED           */
+                PEARN1     /*  EARNINGS: RELATIVE PRE-RA QUARTER 1         */
+                RECPC1     /*  RECEIVED AFDC IN FISC QTR 1 BEFORE RA       */
+                YRREC      /*  RECEIVED AFDC DURING YEAR PRIOR TO RA?      */
+                GYRADC     /*  AVG AFDC PER MTH RECVED YEAR PRIOR TO RA    */
+                YRKREC     /*  # OF MTHS RECEIVED AFDC YEAR PRIOR TO RA    */
+                YRRFS      /*  RECEIVED FOOD STAMPS YEAR PRIOR TO RA?      */
+                GYRFS      /*  AVERAGE FOOD STAMPS PER MONTH RECEIVED      */
+                YRKRFS     /*  NUMBER OF MONTHS RECEIVING FS PRIOR YEAR    */ ;
+
+There are no missing values for these measures.
+
+
+*****************************************************************************************
+
+
+
+      TO ESTIMATE IMPACTS FOR THE ATLANTA AND GRAND RAPIDS LFA AND HCD APPROACHES:
+
+
+*****************************************************************************************;
+
+For Atlanta:  select ALPHSITE=1
+
+For Grand Rapids: select ALPHSITE=4
+
+
+
+**** MDRC 2/01: RESEARCH GROUP DUMMY VARIABLES ;
+
+
+                B          /*  HUMAN CAPITAL DEVELOPMENT GROUP  */
+                J          /*  LABOR FORCE ATTACHMENT GROUP     */
+                C2         /*  CONTROL GROUP                    */   ;
+
+
+
+**** MDRC 2/01: CALCULATE THE MEANS OF DEPENDENT VARIABLES AND RESEARCH GROUP DUMMIES
+                AND COVARIATES;
+
+
+**** MDRC 2/01: MDRC RAN OLS REGRESSIONS;
+
+
+[Dependent variable]= B+J+[baseline demographic covariates]+ [administrative records covariates]
+
+
+and included an F-Test to determine whether the differences in impacts between LFA and HCD
+were statistically significant.
+
+
+
+**** MDRC 2/01
+The regression coefficients associated with the dummy vaiables B and J show
+the impacts of the HCD and LFA programs, respectively.
+
+The report tables show adjusted means.  To estimate adjusted means for each dependent variable:
+
+1) Adjusted mean for control group=
+
+ADJMEANC=
+
+GDEPVAR -       (COEFOFB        * MEANOFB) -    (COEFOFJ        * MEANOFJ)
+
+site mean       HCD impact=     proportion      LFA impact=     proportion
+of dependent    coefficient     of HCDs in      coefficient     of LFAs in
+variable        of B from       the sample=     of J from       the sample=
+from            regression      Mean of B       regression      Mean of J
+MEANS           output          from            output          from
+output                          MEANS                           MEANS
+                                output                          output
+
+
+2) Adjusted mean for HCD group=
+
+ADJMEANB        =       ADJMEANC      +       COEFOFB
+
+
+
+
+3) Adjusted mean for LFA group=
+
+ADJMEANJ        =       ADJMEANC      +       COEFOFJ
+
+
+
+
+
+
+
+
+
+*****************************************************************************************
+
+
+
+      TO ESTIMATE IMPACTS FOR THE RIVERSIDE LFA APPROACH:
+
+
+*****************************************************************************************;
+
+
+NOTE: Estimating impacts for Riverside LFA is relatively complex because Riverside's
+      research design involved different sampling ratios for sample members determined
+
+      to need basic education:       1/3 LFA   1/3  HCD    1/3 Control
+
+      not to need basic education:   1/2 LFA     0  HCD    1/2 Control
+
+
+Where need for basic education=
+
+no high school diploma or GED certificate (HSDIP=0)
+
+OR
+
+below minimum score on baseline literacy test (LOWREAD=1)
+
+OR
+
+below minimum score on baseline math test (LOWMATH=1)
+
+OR
+
+non-English speaker (LIMENG=1)
+
+
+
+In Riverside the proportion of in-need and not in-need for the full impact sample=
+
+TABLE OF NEED BY RES2
+
+NEED (Riv - Need basic educ)
+          RES2(Research Group-phone2)
+Frequency
+Percent
+Row Pct
+Col Pct    2:HCD    3:LFA    6:CTL     Total
+
+
+             1596     1586     1539     4721
+            19.18    19.06    18.49    56.73
+IN-NEED     33.81    33.59    32.60
+           100.00    46.87    46.05
+
+                0     1798     1803     3601
+NOT          0.00    21.61    21.67    43.27
+IN-NEED      0.00    49.93    50.07
+             0.00    53.13    53.95
+
+Total        1596     3384     3342     8322
+            19.18    40.66    40.16   100.00
+
+
+It should be expected that impacts for LFA for the in-need group will differ from
+impacts for the not-in-need group  (see impact tables).
+
+
+IMPORTANT!!!:
+
+To make the impacts for LFA generalizable to the full impact sample,
+it is necessary to
+
+1) Weight the results for in-need to equal 56.73 percent of the full sample impact
+
+2) Weight the results for not-in-need to equal 43.27 percent of the full sample impact
+
+
+NOTE: This weighting strategy should be repeated (but with different weights) when
+running impacts for subgroups, because the proportions of in-need and not in-need will
+vary.
+
+There are a number of ways to implement this weighting strategy:
+
+
+
+MDRC chose to apply the weights after impacts were run:
+
+
+
+Select: ALPHSITE=7
+
+Include all LFAs, HCDs, and control group members in the calculations.
+
+
+Include an extra series of baseline demographic covariates:
+
+
+
+
+        NEED           /* =1 if in-need of basic education     */
+
+
+
+*MDRC 2/01 Variables in the NEEDCOV series will be part of the Riverside LFA
+           regression model.  They should correspond exactly to the vars in the
+           standard series except for HSDIP (see above note for more info).
+           Whenever you add/delete vars to/from the standard list, be sure
+           to also add/delete the corresponding vars to/from the extra list. ;
+
+                       /* Additional covariates for the         */
+        nYREMP         /* Riverside LFA regression model.       */
+        nEMPPQ1        /* They are the cross products of the    */
+        nYREARN        /* dummy variable NEED (=1 if in need of */
+        nYRERNSQ       /* basic education, else=0)              */
+        nPEARN1        /* and each of the standard covariates.  */
+        nRECPC1
+        nYRREC
+        nGYRADC
+        nYRKREC
+        nYRRFS
+        nGYRFS
+        nYRKRFS
+        nMARSTAT
+        nTWOCHLD
+        nTHRCHLD
+        nCHLD0T5
+        nBLACK
+        nNOTBW
+        nAGEP
+        nFEMALE ;
+
+
+
+**** MDRC 2/01: RESEARCH GROUP DUMMY VARIABLES ;
+
+          BNEED      /*  HCD IN NEED OF BASIC EDUCATION (100% OF HCDs)  */
+          JNEED      /*  LFA IN NEED OF BASIC EDUCATION   */
+          JNONEED    /*  LFA NOT IN NEED OF BASIC EDUCATION   */
+          C2         /*  CONTROL GROUP                    */   ;
+
+
+
+
+**** MDRC 2/01: CALCULATE THE MEANS OF DEPENDENT VARIABLES AND RESEARCH GROUP DUMMIES
+                AND COVARIATES THREE TIMES:
+
+1) Include all LFAs, HCDs, and control group members
+
+2) Include only LFAs, HCDs, and control group members in need of basic education (NEED=1)
+
+3) Include only LFAs and control group members not in need of basic education (NEED=0)
+
+
+**** MDRC 2/01: MDRC RAN OLS REGRESSIONS;
+
+
+[Dependent variable]= BNEED     +
+                      JNEED     +
+                      JNONEED   +
+                      [baseline demographic covariates]   +
+                      [administrative records covariates] +
+                      NEED      +
+                      [NEEDCOV  covariates ]
+
+
+
+Note:  MDRC included HCDs in the regression but DID NOT report the impacts and
+       adjusted means for HCDs from the output.
+
+       See below:
+
+            TO ESTIMATE IMPACTS FOR THE RIVERSIDE HCD APPROACH AND
+            FOR THE LFA APPROACH FOR SAMPLE MEMBERS IN NEED OF BASIC EDUCATION
+
+       for more information.
+
+
+**********************************************************************
+
+    TO CALCULATE WEIGHTED IMPACTS, SIGNIFICANCE
+    LEVELS, AND WEIGHTED MEANS FOR THE RIVERSIDE LFA PROGRAM.
+
+*********************************************************************
+
+    Let
+
+    NJIMP =   the average impact for LFAs
+
+    JinIMP=   the average impact for LFAs in need of basic education
+              (the coefficient of JNEED)
+
+    INNEEDWT= the proportion of the full sample
+              in need of basic education (from MEANS output)
+
+    JnoIMP=   the average impact for LFAs not in need of basic education
+              (the coefficient of JNONEED)
+
+    NONEEDWT= the proportion of the full sample
+              not in need of basic education (from MEANS output)
+
+
+
+
+
+Steps A and B calculate the weighted impact for LFAs
+
+
+A.  The LFA impact is the weighted average of the in need
+    LFA impact and the not in need LFA impact. You will need
+    to calculate these weighted means with a spreadsheet, calculator, or
+    through additional programming, using the following formulas:
+
+
+
+    The  weighted LFA impact=
+
+    NJIMP = (INNEEDWT*JINIMP) + (NONEEDWT*JNOIMP)
+
+
+
+
+
+B.  To determine whether weighted impacts are significant, use the
+    F statistic for the model that tests whether the weighted in need
+    and not in need impacts are significant:
+
+    TEST  INNEEDWT*JNEED + NONEEDWT*JNONEED = 0
+
+
+Steps C through E calculate the adjusted means for control group members:
+
+Let:
+    CMEAN=    the adjusted mean for control group members
+
+    CMEANIN=  the adjusted mean for control group members in need of basic education (NEED=1)
+
+    CMEANNOT= the adjusted mean for control group members
+              not in need of basic education (NEED=0)
+
+    MEANNEED= the unadjusted mean of the dependent variable for all LFAs, HCDs, and
+              control group members in need of basic education (NEED=1)
+
+    MEANNOT=  the unadjusted mean of the dependent variable for all LFAs and
+              control group members not in need of basic education (NEED=0)
+
+
+    JINSHARE= the proportion of LFAs in the in-need sample (NEED=1)
+
+    JNOSHARE= the proportion of LFAs in the not in-need sample (NEED=0)
+
+    BIMP=     the average impact for HCDs  (the coefficient for BNEED)
+
+    HCDSHARE= the proportion of HCDs in the in-need sample (NEED=1)
+
+
+
+
+C.  Calculate the adjusted Control mean for the in need sample.
+    Subtract the following from the mean of the in need sample:
+    (See formula below.)
+
+       (1) the proportion of LFAs in the in need sample multiplied by the
+           impact for the in need sample, and
+
+       (2) the proportion of HCDs in the in need sample multiplied by
+           the HCD impact.
+
+       CMEANIN = MEANNEED - (JINSHARE*JINIMP) - (HCDSHARE*BIMP)
+
+D.  Calculate the adjusted Control mean for the not in need sample.
+    Subtract the percent of LFAs in the not in need sample multiplied by the
+    impact for the not in need sample from the mean of the not in
+    need sample.
+
+       CMEANNOT= MEANNOT  - (JNOSHARE*JNOIMP)
+
+E.  Calculate the weighted Control mean for the full LFA sample.
+    Add the control mean of the in need sample multiplied by the in
+    need weight to the control mean of the not in need sample multiplied
+    by the not in need weight.
+
+       CMEAN = INNEEDWT*CMEANIN + NONEEDWT*CMEANNOT
+
+
+Steps F through H calculate the adjusted means for LFAs:
+
+
+Let:
+    JMEAN=    the adjusted mean for all LFAs
+
+    JMEANIN=  the adjusted mean for LFAs in need of basic education (NEED=1)
+
+    JMEANNOT= the adjusted mean for LFAs not in need of basic education (NEED=0)
+
+
+F. Calculate the adjusted LFA full sample mean. Add the weighted
+   Control mean to the weighted LFA impact for the full sample.
+
+     JMEAN = CMEAN + NJIMP
+
+
+FYI:
+
+
+G. Calculate the adjusted LFA mean for the in need sample. Add the
+   adjusted Control mean of the in need sample to the in need LFA impact.
+
+     JMEANIN = CMEANIN  + JINIMP
+
+H. Calculate the adjusted LFA mean for the not in need sample. Add the
+   adjusted Control mean of the not in need sample to the not in need
+   LFA impact.
+
+     JMEANNOT= CMEANNOT + JNOIMP
+
+
+
+I. To calculate the percentage change of the impact (PJIMP) divide the weighted
+   LFA impact by the weighted Control mean and multiply by 100.
+
+          PJIMP = (NJIMP / CMEAN) * 100
+
+
+
+NOTE: It is also possible to weight the sample ahead of time and run
+PROC GLM weighted (in SAS) or its equivalent in other statistical packages.
+
+The file includes the weight variable RILFACW with the following values for the
+full sample:
+
+
+The formula for the weight=   /* see table above */
+
+
+HCDs:                    1.00
+
+LFA IN-NEED:             56.73 / 46.87 = 1.21041266
+
+LFA NOT-IN-NEED:         43.27 / 53.13 = 0.81439683
+
+CONTROL IN NEED:         56.73 / 46.05 = 1.23189619
+
+CONTROL NOT-IN-NEED:     43.27 / 53.95 = 0.80205865
+
+
+After weighting LFAs and control group members have the same proportion of in-need and
+not in-need as the full sample (LFA+HCD+control group combined).
+
+
+But this weight variable can only be used for estimating impacts for the full sample.
+A different weight would need to be calculated for estimating impacts for subgroups,
+because the proportion of in-need and not in-need will vary.
+
+
+
+
+*****************************************************************************************
+
+
+            TO ESTIMATE IMPACTS FOR THE RIVERSIDE HCD APPROACH AND
+            FOR THE LFA APPROACH FOR SAMPLE MEMBERS IN NEED OF BASIC EDUCATION
+
+
+*****************************************************************************************
+
+
+IMPORTANT !!!:  ONLY SAMPLE MEMBERS IN NEED OF BASIC EDUCATION SHOULD BE INCLUDED
+                IN THE CALCULATIONS
+
+
+Select: ALPHSITE=7  AND NEED=1
+
+
+MDRC deleted HSDIP from the standard list of baseline demographic covariates when
+estimating impacts for HCD and LFA in-need. The vast majority  of in-need sample members
+do not have a HS DIPLOMA or GED (HSDIP=0), and HSDIP is highly correlated with
+other independent variables.  All other covars for Riverside HCDs are the same
+as those of other sites.
+
+
+**** MDRC 2/01: RESEARCH GROUP DUMMY VARIABLES ;
+
+
+                B          /*  HUMAN CAPITAL DEVELOPMENT GROUP  */
+                J          /*  LABOR FORCE ATTACHMENT GROUP     */
+                C2         /*  CONTROL GROUP                    */   ;
+
+
+**** MDRC 2/01: CALCULATE THE MEANS OF DEPENDENT VARIABLES AND RESEARCH GROUP DUMMIES
+                AND COVARIATES;
+
+
+**** MDRC 2/01: MDRC RAN OLS REGRESSIONS;
+
+
+[Dependent variable]= B+J+[baseline demographic covariates]+ [administrative records covariates]
+
+
+and included an F-Test to determine whether the differences in impacts between LFA and HCD
+were statistically significant.
+
+
+
+**** MDRC 2/01
+The regression coefficients associated with the dummy vaiables B and J show
+the impacts of the HCD and LFA programs, respectively.
+
+The report tables show adjusted means.  To estimate adjusted means for each dependent variable:
+
+1) Adjusted mean for control group=
+
+ADJMEANC=
+
+GDEPVAR -       (COEFOFB        * MEANOFB) -    (COEFOFJ        * MEANOFJ)
+
+site mean       HCD impact=     proportion      LFA impact=     proportion
+of dependent    coefficient     of HCDs in      coefficient     of LFAs in
+variable        of B from       the sample=     of J from       the sample=
+from            regression      Mean of B       regression      Mean of J
+MEANS           output          from            output          from
+output                          MEANS                           MEANS
+                                output                          output
+
+
+2) Adjusted mean for HCD group=
+
+ADJMEANB        =       ADJMEANC      +       COEFOFB
+
+
+
+
+3) Adjusted mean for LFA group=
+
+ADJMEANJ        =       ADJMEANC      +       COEFOFJ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*****************************************************************************************
+
+
+
+      TO ESTIMATE IMPACTS FOR THE COLUMBUS INTEGRATED AND TRADITIONAL APPROACHES:
+
+
+*****************************************************************************************;
+
+
+Select ALPHSITE=2
+
+
+
+**** MDRC 2/01: RESEARCH GROUP DUMMY VARIABLES ;
+
+
+                I          /*  INTEGRATED CASE MANAGEMENT GROUP */
+                T          /*  TRADITIONAL CASE MANAGEMENT GROUP*/
+                C2         /*  CONTROL GROUP                    */   ;
+
+
+**** MDRC 2/01: CALCULATE THE MEANS OF DEPENDENT VARIABLES AND RESEARCH GROUP DUMMIES
+                AND COVARIATES;
+
+
+**** MDRC 2/01: MDRC RAN OLS REGRESSIONS;
+
+
+[Dependent variable]= I+T+[baseline demographic covariates]+[administrative records covariates]
+
+
+and included an F-Test to determine whether the differences in impacts between INTEGRATED and
+TRADITIONAL were statistically significant.
+
+
+
+**** MDRC 2/01
+The regression coefficients associated with the dummy vaiables I and T show
+the impacts of the INTEGRATED and TRADITIONAL programs, respectively.
+
+The report tables show adjusted means.  To estimate adjusted means for each dependent variable:
+
+**** MDRC 2/01
+The regression coefficients associated with the dummy vaiables I and T show
+the impacts of the INTEGRATED and TRADITIONAL programs, respectively.
+
+To estimate adjusted means for each dependent variable:
+
+1) Adjusted mean for control group=
+
+ADJMEANC=
+
+GDEPVAR -       (COEFOFI        * MEANOFI) -    (COEFOFT        * MEANOFT)
+
+site mean       I impact=       proportion      T impact=       proportion
+of dependent    coefficient     of I's in       coefficient     of Ts in
+variable        of I from       the sample=     of T from       the sample=
+from            regression      Mean of I       regression      Mean of T
+MEANS           output          from            output          from
+output                          MEANS                           MEANS
+                                output                          output
+
+
+2) Adjusted mean for INTEGRATED group=
+
+ADJMEANI        =       ADJMEANC      +       COEFOFI
+
+
+
+
+3) Adjusted mean for TRADITIONAL group=
+
+ADJMEANT        =       ADJMEANC      +       COEFOFT
+
+
+
+
+
+
+*****************************************************************************************
+
+
+
+    TO ESTIMATE IMPACTS FOR THE DETROIT, OKLAHOMA CITY, AND PORTLAND PROGRAMS:
+
+
+*****************************************************************************************;
+
+
+For Detroit: Select ALPHSITE=3
+
+For Oklahoma City: Select ALPHSITE=5
+
+For Portland: Select ALPHSITE=6
+
+
+**** MDRC 2/01
+
+FOR PORTLAND ONLY:
+
+Add to list of background demographic covariates:
+
+PORTCOH2          /* randomly assigned after change in random assignment ratio   */
+
+
+
+
+**** MDRC 2/01: RESEARCH GROUP DUMMY VARIABLES ;
+
+
+                P          /*  PROGRAM GROUP                    */
+                C2         /*  CONTROL GROUP                    */   ;
+
+
+
+
+
+
+**** MDRC 2/01: CALCULATE THE MEANS OF DEPENDENT VARIABLES AND RESEARCH GROUP DUMMIES
+                AND COVARIATES;
+
+
+**** MDRC 2/01: MDRC RAN OLS REGRESSIONS;
+
+
+[Dependent variable]= P  [baseline demographic covariates] [administrative records covariates]
+
+
+
+**** MDRC 2/01
+The regression coefficients associated with the dummy vaiable P shows
+the impact of the Program on the program group.
+
+To estimate adjusted means for each dependent variable:
+
+1) Adjusted mean for control group=
+
+ADJMEANC=
+
+GDEPVAR -       (COEFOFP           * MEANOFP)
+
+site mean       Program impact=    proportion
+of dependent    coefficient        of P's in
+variable        of P from          the sample=
+from            regression         Mean of P
+MEANS           output             from
+output                             MEANS
+                                   output
+
+
+2) Adjusted mean for Program group=
+
+ADJMEANP        =       ADJMEANC      +       COEFOFP
+
+
+
+
