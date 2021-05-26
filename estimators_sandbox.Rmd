@@ -24,8 +24,9 @@ devtools::install_github("igorgeyn/benchtestr")
 install.packages('remotes')
 remove.packages('benchtestr')
 remotes::install_github("igorgeyn/benchtestr/benchtestr") # gotta check on these errors at some point
-
 load('nsw_dehejia_wahba')
+
+# having issues with package installation
 
 ### using filepaths
 
@@ -33,6 +34,11 @@ load('nsw_dehejia_wahba')
 load('C:/Users/Igor Geyn/Desktop/grad school/coursework/SPRING 21/benchtestr/benchtestr/data/nsw_dehejia_wahba.rda')
 load('C:/Users/Igor Geyn/Desktop/grad school/coursework/SPRING 21/benchtestr/benchtestr/data/psid_controls_dw.rda')
 load('C:/Users/Igor Geyn/Desktop/grad school/coursework/SPRING 21/benchtestr/benchtestr/data/cps_controls_dw.rda')
+
+# from desktop (IG)
+load('C:/Users/Igor/Desktop/grad school/coursework/SP21/200C/package/benchmarkr/benchtestr/data/nsw_dehejia_wahba.rda')
+load('C:/Users/Igor/Desktop/grad school/coursework/SP21/200C/package/benchmarkr/benchtestr/data/psid_controls_dw.rda')
+load('C:/Users/Igor/Desktop/grad school/coursework/SP21/200C/package/benchmarkr/benchtestr/data/cps_controls_dw.rda')
 
 head(nsw_dehejia_wahba)
 head(psid_controls_dw)
@@ -63,37 +69,34 @@ baseline_dim_estimator <- function(df_exp, df_base, treatment, outcome) {
               earnings_var = var(!!outcome_sym),
               count = n())
   
+    estimator_full <<- df_base %>%
+    group_by(!!treatment_sym) %>%
+    summarise(avg_earnings = mean(!!outcome_sym),
+              earnings_var = var(!!outcome_sym),
+              count = n())
+  
   estimator_bench_cntrl <<- df_base %>% 
     filter(!!treatment_sym == 0) %>% 
     group_by(!!treatment_sym) %>% 
     summarise(avg_earnings = mean(!!outcome_sym),
               earnings_var = var(!!outcome_sym),
               count = n())
-  
-  estimator_full <<- df_base %>%
-    group_by(!!treatment_sym) %>%
-    summarise(avg_earnings = mean(!!outcome_sym),
-              earnings_var = var(!!outcome_sym),
-              count = n())
-  
-  # need to input treatment_length fxn here
-  # need to input control_length fxn here
 
-  estimate_baseline <<- estimator_baseline$avg_earnings[2] - estimator_baseline$avg_earnings[1]
-  se_baseline <<- sqrt((estimator_baseline$earnings_var[1]/estimator_baseline$count[1])+
-                         (estimator_baseline$earnings_var[2]/estimator_baseline$count[2]))
+  estimate_full <<- estimator_full$avg_earnings[2] - estimator_full$avg_earnings[1]
+  se_full <<- sqrt((estimator_full$earnings_var[1]/estimator_full$count[1])+
+                         (estimator_full$earnings_var[2]/estimator_full$count[2]))
   
   
-  estimate_benchmark_cntrl <<- estimator_baseline$avg_earnings[2] - estimator_bench_cntrl[1]
-  se_benchmark_cntrl <<- sqrt((estimator_baseline$earnings_var[2]/estimator_baseline$count[2])+
+  estimate_benchmark_cntrl <<- estimator_full$avg_earnings[2] - estimator_bench_cntrl[1]
+  se_benchmark_cntrl <<- sqrt((estimator_full$earnings_var[2]/estimator_full$count[2])+
                                 (estimator_bench_cntrl$earnings_var[1])/estimator_bench_cntrl$count[1])
   
   # doesn't work -- full version
   # estimate_benchmark <<- estimator_full$avg_earnings[2] - estimator_full$avg_earnings[1]
   
   results_exp <<- 
-    as.data.frame(cbind(as.character('experimental/baseline'), as.double(estimate_baseline), as.double(se_baseline))) %>% 
-    rename(data = V1, estimate = estimate_baseline, se = se_baseline)
+    as.data.frame(cbind(as.character('experimental/baseline'), as.double(estimate_full), as.double(se_full))) %>% 
+    rename(data = V1, estimate = estimate_full, se = se_full)
     # %>% rename(data = V1)
   ## need to figure out why the var names are coming out weird
   results_bench <<- 
@@ -157,14 +160,15 @@ benchmark_dim_estimator(df_base = psid_controls_dw %>% filter(treat == 0),
 ```
 
 
-### Balancing
+### Matching
 
-Now going to try a few different balance-based estimators.
+Now going to try a few different matching-based estimators.
 
 ```{r}
 
 library(MatchIt)
-library(linearHypothesis)
+library(car)
+library(lmtest)
 
 ### standard exact matching 
 ### figure out the best way to let users pass params into this
@@ -222,13 +226,36 @@ bal_estim <- function(df_exp, treat_exp, df_bench, treat_bench,
   ## is there a way to run various things using MatchIt object and save them to a new 'exact_bal_estimate' object'?
   ## eg:
   
-  bal_plot <- plot(summary(match_out), var.order = 'unmatched')
-  bal_table <- as.data.frame(summary(match_out)[4]) # and then probably kable this df, and output as ASCII or w.e
   
-  ## also do want to allow users to compare balance between different samples?
+  ## preparing the plots
+  bal_plot_exp <- plot(summary(match_out_exp), var.order = 'unmatched')
+  bal_plot_bench <- plot(summary(match_out_bench), var.order = 'unmatched')
+  ## preparing the tables
+  bal_table_exp <- 
+    as.data.frame(summary(match_out_exp)[4]) %>% # and then probably kable this df, and output as ASCII or w.e
+    mutate(data = 'experimental')
+  bal_table_bench <- 
+    as.data.frame(summary(match_out_bench)[4]) %>% 
+    mutate(data = 'observational_benchmark')
+  
+  ## outputs
+  plots <<- list(bal_plot_exp, bal_plot_bench)
+  bal_tables <<- rbind(bal_table_exp, bal_table_bench)
+  # didn't seem to stick on global out, but OK on `return`:
+  # names(bal_tables) <- c('matched_means_treated', 'matched_means_control', 'matched_diff_means',
+  #                        'matched_variance_ratio', 'matched_eCDF_mean', 'matched_eCDF_max',
+  #                        'matched_std_pair_dist', 'data_source')
+  # return(plots)
+  # return(bal_tables)
+  
+  ## QUESTION: Do we want to allow users to compare balance between different samples?
   
   ## the actual estimator
   
+  if (estim_meth = 'lm') {
+    att = lm(data = match.data(match_out_exp), formula = lm_estim, weights = weights)
+    lmtest::coeftest(att, vcov = vcovHC(att, type = "HC2"))
+  }
   
 }
 
@@ -245,19 +272,6 @@ bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
                 df_bench = psid_controls_dw, treat_bench = 'treat',
                 outcome = 're78', match_meth = 'cem', balance_vars = balance_list)
 
-# subclassification
-bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
-                df_bench = psid_controls_dw, treat_bench = 'treat',
-                outcome = 're78', balance_vars = balance_list,
-                match_meth = 'subclass' #, subclass_arg = 5 # relax for user input later 
-                )
-
-att_subclass <- lm(data = match.data(match_out_exp),
-                   re78 ~ treat + age + education + black + hispanic + married + re74 + re75,
-                   weights = weights)
-
-coeftest(att_subclass, vcoc = vcovHC(att_subclass, type = "HC2"))
-
   # mahalonbis + exact (for plots)
 bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
                 df_bench = psid_controls_dw, treat_bench = 'treat',
@@ -272,6 +286,50 @@ bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
 ```
 
 
+```{r}
+
+### getting estimates out of the matched data
+
+## define an lm to use throughout:
+
+lm_estim <- re78 ~ treat + age + education + black + hispanic + married + re74 + re75
+
+## estimation using subclass:
+
+# matching
+bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
+                df_bench = psid_controls_dw, treat_bench = 'treat',
+                outcome = 're78', balance_vars = balance_list,
+                match_meth = 'subclass' #, subclass_arg = 5 # relax for user input later 
+                )
+
+
+match_out_bench
+match_out_exp
+
+head(match.data(match_out_bench))
+head(match.data(match_out_exp))
+
+summary(match_out_bench$weights)
+summary(match_out_exp$weights)
+
+# inspection
+
+plot(match_out_exp, 
+     # type = "hist"
+     type = "qq"
+     )
+plot(match_out_bench, type = "hist")
+
+# estimation
+att_subclass <- lm(data = match.data(match_out_exp),
+                   formula = lm_estim,
+                   weights = weights)
+
+lmtest::coeftest(att_subclass, vcoc = vcovHC(att_subclass, type = "HC2"))
+
+
+```
 
 
 
