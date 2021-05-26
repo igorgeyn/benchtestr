@@ -158,4 +158,23 @@ se_dim
 
 ```
 
+## Data on negative campaign ads
+
+Pulling in data on negative campaign ads from Experimental estimation of heterogeneous treatment effects related to self-selection.
+
+```{r}
+
+# install.packages('Rtools')
+library(devtools)
+
+install.packages('GK2011')
+library('GK2011')
+
+remotes::install_github("leeper/GK2011") # gotta check on these errors at some point
+data(ajps)
+
+head(ajps)
+
+```
+
 

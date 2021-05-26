@@ -164,6 +164,8 @@ benchmark_dim_estimator(df_base = psid_controls_dw %>% filter(treat == 0),
 
 Now going to try a few different matching-based estimators.
 
+#### Balance function
+
 ```{r}
 
 library(MatchIt)
@@ -176,7 +178,7 @@ library(lmtest)
 
 # ok to force outcome to be the same
 # change this to make the treatment the same as default; update with status
-bal_estim <- function(df_exp, treat_exp, df_bench, treat_bench, 
+bal_match <- function(df_exp, treat_exp, df_bench, treat_bench, 
                             outcome, match_meth, balance_vars, ...) {
  
   ## make the df with bench control
@@ -249,14 +251,6 @@ bal_estim <- function(df_exp, treat_exp, df_bench, treat_bench,
   # return(bal_tables)
   
   ## QUESTION: Do we want to allow users to compare balance between different samples?
-  
-  ## the actual estimator
-  
-  if (estim_meth = 'lm') {
-    att = lm(data = match.data(match_out_exp), formula = lm_estim, weights = weights)
-    lmtest::coeftest(att, vcov = vcovHC(att, type = "HC2"))
-  }
-  
 }
 
 ## probably want to do something like ask users to pass a list of balance variables [DONE!]
@@ -281,6 +275,105 @@ bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
 # bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
 #                 df_bench = psid_controls_dw, treat_bench = 'treat',
 #                 outcome = 're78', match_meth = 'nearest')
+
+```
+
+#### Estimator function
+
+Writing a function for estimating on matched / `matchit` objects.
+
+```{r}
+
+bal_estim <- function(match_objects, estim_meth, formula, ...) {
+  ## want to let users pass a vector of match objects
+  ## for lm, estimation formula should be passed from outside (no need to specify)
+  
+  if (estim_meth == 'logit' | estim_meth == 'glm') {
+    att_list <- list()
+    att_summary_obj_list <- list()
+    for (m in match_objects) {
+      att = glm(data = match, formula = lm_estim, weights = weights)
+      att_summary_obj = lmtest::coeftest(att, vcov = vcovHC(att, type = "HC2")) # user can use add'l arguments to specify SE type
+      att_list <- append(att_list, att) # is it better to `return` this?
+      att_summary_obj_list <- append(att_summary_obj_list, att_summary_obj)
+    }
+    att_list <<- att_list
+    att_summary_obj_list <<- att_summary_obj_list
+    print('Your list of ATTs is called', substitute(att_list))
+    print('Your list of ATT summary objects (w/ SEs) is called', substitute(att_summary_obj_list))
+    # return() # i think the above setup is good
+  }
+  
+  if (estim_meth == 'lm') {
+    att_list <- list()
+    # att_summary_obj_list_rob = list()
+    att_summary_obj_list = list()
+    
+    att = (as.data.frame(lm(data = match.data(m), formula = lm_estim, weights = m$weights)[1])[2,]) # fix this...
+    att_summary_obj = summary(att)
+    # att_summary_obj_rob = lmtest::coeftest(att, vcov = vcovHC(att, type = "HC2"))
+    att_list <- append(att_list, att)
+    # att_summary_obj_list_rob = append(att_summary_obj_list_rob, att_summary_obj_rob)
+    att_summary_obj_list = append(att_summary_obj_list, att_summary_obj)
+    
+    return(att_list)
+    # return(att_summary_obj_list_rob)
+    return(att_summary_obj_list)
+  
+    print('Your list of ATTs is called', substitute(att_list))
+    print('Your list of ATT summary objects (w/ SEs) is called', substitute(att_summary_obj_list))
+    
+  }
+}
+
+
+```
+
+
+## Sandboxing
+
+Trying a few things out:
+
+```{r}
+
+### trying to go from matchit objects to estimates (w/ summaries, etc.)
+
+match_out_exp <<- matchit(treat ~ age + education + black + hispanic + married + re74 + re75,
+                            data = nsw_dehejia_wahba, estimand = 'ATT',
+                            method = 'subclass', subclass = 5)
+match_out_bench <<- matchit(treat ~ age + education + black + hispanic + married + re74 + re75,
+                            data = df_bench_for_use, estimand = 'ATT',
+                            method = 'subclass', subclass = 5) # relax this for user input later
+
+plot(match_out_exp, type = 'hist')
+
+## now try the function
+
+# create vector of matchit objects
+match_objects_list <- list(match_out_bench, match_out_exp)
+
+# broken: 
+bal_estim(match_objects_list, estim_meth = 'lm', formula = lm_estim)
+
+## patching
+
+for (m in match_objects_list) {
+  # print(substitute(m))
+  # print(head(match.data(m)))
+  # print(mean(m$subclass, na.rm = TRUE))
+  
+  att_list <- list()
+  # att_summary_obj_list_rob = list()
+  att_summary_obj_list = list()
+  att = (as.data.frame(lm(data = match.data(m), formula = lm_estim, weights = m$weights)[1])[2,]) # fix this...
+  att_summary_obj = summary(att)
+  # att_summary_obj_rob = lmtest::coeftest(att, vcov = vcovHC(att, type = "HC2"))
+  att_list <- append(att_list, att)
+  # att_summary_obj_list_rob = append(att_summary_obj_list_rob, att_summary_obj_rob)
+  att_summary_obj_list = append(att_summary_obj_list, att_summary_obj)
+  
+}
+
 
 
 ```
