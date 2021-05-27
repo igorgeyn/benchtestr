@@ -158,6 +158,17 @@ se_dim
 
 ```
 
+## Installing `benchtestr`
+
+Does it work? Let's find out.
+
+```{r}
+
+remotes::install_github("igorgeyn/benchtestr/benchtestr")
+
+```
+
+
 ## Data on negative campaign ads
 
 Pulling in data on negative campaign ads from Experimental estimation of heterogeneous treatment effects related to self-selection.
