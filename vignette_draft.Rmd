@@ -2,7 +2,9 @@
 title: "Rough Draft of the `benchtestr` vignette for 200C - Spring 2021"
 author: "Igor Geyn"
 date: "5/26/2021"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
