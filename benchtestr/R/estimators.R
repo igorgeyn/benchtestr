@@ -22,7 +22,7 @@ dim_estimator = function(df_exp, df_base, treatment, outcome){
   dim_bench = difference_in_means(as.formula(paste(outcome, "~", treatment)), data = rbind(df_exp, df_base)) %>%
     tidy() %>% mutate(nature = "benched")
 
-  return(rbind(dim_exp, dim_base, dim_bench) %>% unique() %>% dplyr::mutate(estimator = 'dim') %>% dplyr::select(nature, everything()))
+  return(rbind(dim_exp, dim_base, dim_bench) %>% unique() %>% dplyr::mutate(estimator = 'dim') %>% dplyr::select(estimator, nature, everything()))
 }
 
 ### LM estimator
@@ -55,8 +55,8 @@ lm_estimator = function(df_exp, df_base, treatment, outcome, delete_vars = "id|s
                                     df_base %>% dplyr::select(matches(paste(treatment, outcome, gsub(" \\+ ", "|", controls), sep = "|"))))) %>%
     tidy() %>% mutate(nature = "benched")
 
-  return(rbind(lm_exp, lm_base, lm_bench) %>% unique() %>% dplyr::select(nature, everything()) %>%
-           filter(term == "treat") %>% mutate(control = controls))
+  return(rbind(lm_exp, lm_base, lm_bench) %>% unique() %>% dplyr::mutate(control = controls, estimator = 'lm')) %>% dplyr::select(estimator, nature, everything()) %>%
+           filter(term == "treat")
 }
 
 ### IV estimator
@@ -100,7 +100,7 @@ iv_estimator = function(df_exp, df_base, treatment, outcome, delete_vars = "id|s
   iv_bench = iv_robust(as.formula(paste(outcome, "~", treatment, "+", controls, "|", iv_var, "+", controls)),
                        data = rbind(df_exp, df_base)) %>%
     tidy() %>% mutate(nature = "benched")
-  return(rbind(iv_exp, iv_base, iv_bench) %>% unique() %>% dplyr::select(nature, everything()) %>%
-           filter(term == "treat") %>% mutate(iv_var = iv_var, control = controls))
+  return(rbind(iv_exp, iv_base, iv_bench) %>% unique() %>% mutate(iv_var = iv_var, control = controls, estimator = 'iv')) %>% dplyr::select(estimator, nature, everything()) %>%
+           filter(term == "treat")
 }
 
