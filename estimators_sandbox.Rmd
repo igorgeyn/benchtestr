@@ -36,13 +36,16 @@ load('C:/Users/Igor Geyn/Desktop/grad school/coursework/SPRING 21/benchtestr/ben
 load('C:/Users/Igor Geyn/Desktop/grad school/coursework/SPRING 21/benchtestr/benchtestr/data/cps_controls_dw.rda')
 
 # from desktop (IG)
+
+load('C:/Users/Igor/Desktop/grad school/coursework/SP21/200C/package/benchmarkr/benchtestr/data/lalonde.rda')
+
 load('C:/Users/Igor/Desktop/grad school/coursework/SP21/200C/package/benchmarkr/benchtestr/data/nsw_dehejia_wahba.rda')
 load('C:/Users/Igor/Desktop/grad school/coursework/SP21/200C/package/benchmarkr/benchtestr/data/psid_controls_dw.rda')
 load('C:/Users/Igor/Desktop/grad school/coursework/SP21/200C/package/benchmarkr/benchtestr/data/cps_controls_dw.rda')
 
 
 
-data(nsw_dehejia_wahba.rda)
+data()
 data(psid_controls_dw)
 head(cps_controls_dw)
 
