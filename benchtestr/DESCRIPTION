@@ -7,5 +7,8 @@ Maintainer: Igor Geyn <igorgeyn@gmail.com>
 Description: This is a package to benchmark experimental findings/effects using observational data. Analysts interested in causal inference may be familiar with using Lalonde (1986) and Dehejia and Wahba (1999) data on the National Work Study program (NWS) for similar purposes. This package wrangles together other similar datasets for benchmarking causal estimators, with a number of classical estimators included.
     This package was produced as part of the Spring 2021 session of UCLA PS200C (Causal Inference) taught by Chad Hazlett and TA'd by Ciara Sterbenz.
 License: MIT
+Depends:
+    R (?= 3.5.0)
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.1.0

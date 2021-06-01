@@ -40,9 +40,13 @@ load('C:/Users/Igor/Desktop/grad school/coursework/SP21/200C/package/benchmarkr/
 load('C:/Users/Igor/Desktop/grad school/coursework/SP21/200C/package/benchmarkr/benchtestr/data/psid_controls_dw.rda')
 load('C:/Users/Igor/Desktop/grad school/coursework/SP21/200C/package/benchmarkr/benchtestr/data/cps_controls_dw.rda')
 
-head(nsw_dehejia_wahba)
-head(psid_controls_dw)
+
+
+data(nsw_dehejia_wahba.rda)
+data(psid_controls_dw)
 head(cps_controls_dw)
+
+data(ajps)
 
 ```
 
