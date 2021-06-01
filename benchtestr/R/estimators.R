@@ -2,7 +2,9 @@
 ### working versions of DIM, lm/regression, and instrumental variables estimators:
 
 dim_estimator = function(df_exp, df_base, treatment, outcome){
-  require(estimatr)
+  # hopefully a temp solution:
+  packages <- c('dplyr', 'estimatr')
+  lapply(packages, require, character.only = TRUE)
   
   # Select only the treatment and outcome variables
   df_exp = df_exp %>% dplyr::select(matches(paste(treatment, outcome, sep = "|"))) %>% mutate_at(treatment, as.numeric)
@@ -28,7 +30,9 @@ dim_estimator(df_exp = nsw_dehejia_wahba, df_base = psid_controls_dw,
 ### LM estimator
 
 lm_estimator = function(df_exp, df_base, treatment, outcome, delete_vars = "id|source"){
-  require(estimatr)
+  # hopefully a temp solution:
+  packages <- c('dplyr', 'estimatr')
+  lapply(packages, require, character.only = TRUE)
   
   # Avoid problems with logical treatment variables
   df_exp = df_exp %>% mutate_at(treatment, as.numeric)
@@ -62,7 +66,9 @@ lm_estimator(df_exp = nsw_dehejia_wahba, df_base = psid_controls_dw,
 ### IV estimator
 
 iv_estimator = function(df_exp, df_base, treatment, outcome, delete_vars = "id|source", ...){
-  require(estimatr)
+  # hopefully a temp solution:
+  packages <- c('dplyr', 'estimatr')
+  lapply(packages, require, character.only = TRUE)
   
   # Avoid problems with logical treatment variables
   df_exp = df_exp %>% mutate_at(treatment, as.numeric) %>% dplyr::select(!matches(delete_vars))
