@@ -22,7 +22,7 @@ dim_estimator = function(df_exp, df_base, treatment, outcome){
   dim_bench = difference_in_means(as.formula(paste(outcome, "~", treatment)), data = rbind(df_exp, df_base)) %>%
     tidy() %>% mutate(nature = "benched")
 
-  return(rbind(dim_exp, dim_base, dim_bench) %>% unique() %>% dplyr::select(nature, everything()))
+  return(rbind(dim_exp, dim_base, dim_bench) %>% unique() %>% dplyr::mutate(estimator = 'dim') %>% dplyr::select(nature, everything()))
 }
 
 ### LM estimator
