@@ -25,37 +25,11 @@ dplyr_manip <- function(df, var_half, var_double) {
            var_double_new = new_var2)
 }
 
-
-## Nonparametric estimation of robustness value
-## Slow, suggest putting R = 10 to test
-require(sensemakr); require(boot); require(randomizr)
-benchmakr_rvq = function(sensitivity_stats = "rv_q",
-                         data = darfur,
-                         formula = "peacefactor ~ directlyharmed + age + farmer_dar + herder_dar +
-                         pastvoted + hhsize_darfur + female + village",
-                         slice_prop = .5,
-                         treatment = "directlyharmed",
-                         bm_cov = "female",
-                         kd = 1:3,
-                         R = 250){
-  slice = simple_ra(nrow(data), prob = slice_prop)
-  boot_fun = function(data, slice){
-    data = rbind(data, data[slice,])
-    model = lm(formula = as.formula(formula), data = data)
-    out = sensemakr(model, treatment = treatment, benchmark_covariates = bm_cov, kd = kd)
-    #out = out[["sensitivity_stats"]][[sensitivity_stats]] %>% as.numeric()   # Not working, set "rv_q" by default
-    out = out[["sensitivity_stats"]][["rv_q"]] %>% as.numeric()
-    print(out)
-  }
-  out = boot(data = data, statistic = boot_fun, R = R, parallel = "multicore")
-  print(out)
-}
-
-benchmakr_rvq_test = benchmakr_rvq(data = darfur, R = 10)
-
 ## this is just a little toy function to get the counts of
 ## treated and control from a df
 ## for use in SE calculation, etc.
+
+## THIS NEEDS DOCUMENTATION IF IT'S GOING TO BE USED.
 get_group_counts <- function(df, treatment) {
   treatment_count <<- length(df$treatment[df$treatment == 1])
   control_count <<- length(df$treatment[df$treatment == 0])
