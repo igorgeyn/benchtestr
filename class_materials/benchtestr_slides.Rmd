@@ -1,0 +1,55 @@
+---
+title: "`benchtestr`"
+author: "Igor Geyn and Shing Hon Lam"
+date: "6/1/2021"
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+devtools::install_github('igorgeyn/benchtestr/benchtestr')
+library(benchtestr)
+
+```
+
+# What did we do?
+
+- Collect datasets for benchmarking experimental findings
+- Write up a variety of classical estimators (DIM, linear regression, matching, etc.)
+- Draft up instructional documentation (vigneettes)
+- **Compile everything into an R package called `benchtestr`**
+
+# Motivation
+
+- Experiments are common throughout (social) science disciplines, and proliferating
+- Past work has shown miscalibration in observational findings using experimental benchmarks
+  - LaLonde (1986); but see Dehejia and Wahba (1999)
+  - Green, et al (2009)
+  - 
+  
+# Examples
+
+- STUDY 1
+- STUDY 2
+- Colnet, et al (2020)
+  - Description
+  - Analysis
+
+# What is `benchtestr`?
+
+- One-stop shop for benchmarking experimental findings (test new estimators, compare across datasets, etc.)
+- Robust support for matching (balance testing, estimation, etc.)
+- Saving time (let the defaults do the work)
+  
+- Let's take a look (vignette)
+
+# What else could we do?
+
+- Lots of things:
+  - Continue to add estimators
+  - Continue to add data
+  - Push for CRAN-readiness
+
+
+

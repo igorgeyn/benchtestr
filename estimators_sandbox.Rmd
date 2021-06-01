@@ -19,6 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # devtools
 library(devtools)
 devtools::install_github("igorgeyn/benchtestr/benchtestr")
+library(benchtestr) ### DON'T FORGET!!
 
 # remotes -- is lighter!
 install.packages('remotes')
@@ -292,6 +293,7 @@ library(lmtest)
 # change this to make the treatment the same as default; update with status
 bal_match <- function(df_exp, treat_exp, df_bench, treat_bench, 
                             outcome, match_meth, balance_vars, ...) {
+  require(MatchIt)
  
   ## make the df with bench control
   
@@ -374,7 +376,7 @@ balance_list <- c('treat', 're78','age','education', 'black', 'hispanic', 'marri
 exact_def <- ~black + hisp + married + re74 + re75
 
 # cem
-bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
+bal_match(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
                 df_bench = psid_controls_dw, treat_bench = 'treat',
                 outcome = 're78', match_meth = 'cem', balance_vars = balance_list)
 
@@ -389,6 +391,154 @@ bal_estim(df_exp = nsw_dehejia_wahba, treat_exp = 'treat',
 #                 outcome = 're78', match_meth = 'nearest')
 
 ```
+
+Working with balance some more.
+
+```{r}
+
+library(MatchIt)
+library(cobalt)
+library(ggplotify)
+
+dim_estimator(df_exp = nsw_dehejia_wahba, df_base = psid_controls_dw, treatment = 'treat', outcome = 're78')
+
+# matching for the experimental data
+nsw_formula = treat ~ age + education + black + hispanic + married + re74 + re75
+nsw_formula_reduced = treat ~ age + education + black + hispanic + married + re74 + re75
+nsw_cem = matchit(formula = nsw_formula, data = nsw_dehejia_wahba, method = 'nearest', estimand = 'ATT')
+plot(nsw_cem, type = 'hist')
+plot(summary(nsw_cem), var.order = 'unmatched')
+love.plot(nsw_cem, binary = 'std')
+bal.plot(nsw_cem, var.name = 'distance', which = 'both', type = 'histogram', mirror = TRUE)
+
+
+# matching for the observational data
+
+nsw_obs_data_for_match <-
+  rbind(nsw_dehejia_wahba %>% filter(treat == 1) %>% select(c('treat', 'age', 'education', 'black', 'hispanic', 'married', 're74', 're75', 're78')),
+        psid_controls_dw %>% select(c('treat', 'age', 'education', 'black', 'hispanic', 'married', 're74', 're75', 're78')))
+nsw_obs_data_for_match
+
+
+nsw_cem_bench = matchit(formula = nsw_formula_reduced, 
+                  data = nsw_obs_data_for_match,
+                  method = 'nearest', estimand = 'ATT')
+plot(nsw_cem_bench, type = 'hist')
+plot(summary(nsw_cem_bench), var.order = 'unmatched')
+love.plot(nsw_cem_bench, binary = 'std')
+bal.plot(nsw_cem_bench)
+
+nsw_cem_bench_subclass = matchit(formula = nsw_formula_reduced, 
+                  data = nsw_obs_data_for_match,
+                  method = 'subclass', subclass = 5, estimand = 'ATT')
+plot(nsw_cem_bench_subclass, type = 'hist')
+plot(summary(nsw_cem_bench_subclass), var.order = 'unmatched')
+# love.plot(nsw_cem_bench_subclass, binary = 'std')
+# bal.plot(nsw_cem_bench_subclass, var.name = 'distance', which = 'both', type = 'histogram', mirror = TRUE)
+
+
+balance_assess <- function(df_exp, df_bench, treat, outcome, covars, formula_arg, ...) {
+  require('dplyr')
+  require('gridExtra')
+  # First get the data ready
+  data_for_balance_assess = rbind(df_exp %>% filter(!!sym(treat) == 1) %>% select(treat, all_of(covars)), df_bench %>% filter(!!sym(treat) == 0) %>% select(treat, all_of(covars)))
+  match_cem = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'cem', estimand = 'ATT')
+  match_nearest = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'nearest', estimand = 'ATT') # leaving ATT as the default, can be overriden
+  match_full = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'full', estimand = 'ATT')
+  match_subclass = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'subclass', subclass = 5, estimand = 'ATT') # 5 subclass default, can be overriden
+  return(grid.arrange(
+    love.plot(match_cem, binary = 'std'),
+    love.plot(match_nearest, binary = 'std'),
+    love.plot(match_full, binary = 'std'),
+    ncol = 2))
+}
+
+nsw_formula_reduced = treat ~ age + education + black + hispanic + married + re74 + re75 # from above
+covars_list = c('age', 'education', 'black', 'hispanic', 'married', 're74', 're75')
+balance_assess(df_exp = nsw_dehejia_wahba, df_bench = psid_controls_dw, 
+               treat = 'treat', outcome = 're78', covars = covars_list,
+               formula_arg = nsw_formula_reduced)
+
+match_cem = matchit(formula = nsw_formula_reduced, data = nsw_obs_data_for_match, method = 'cem', estimand = 'ATT')
+match_nearest = matchit(formula = nsw_formula_reduced, data = nsw_obs_data_for_match, method = 'nearest', estimand = 'ATT') 
+match_full = matchit(formula = nsw_formula_reduced, data = nsw_obs_data_for_match, method = 'full', estimand = 'ATT')
+match_subclass = matchit(formula = nsw_formula_reduced, data = nsw_obs_data_for_match, method = 'subclass', subclass = 5, estimand = 'ATT')
+
+love.plot(match_cem, binary = 'std')
+love.plot(match_nearest, binary = 'std')
+# love.plot(match_subclass, binary = 'std')
+
+grid.arrange(love.plot(match_cem, binary = 'std'),
+             love.plot(match_nearest, binary = 'std'),
+             love.plot(match_full, binary = 'std'),
+             ncol = 2)
+
+## recovering att estimates from matched data
+
+match.data(nsw_cem)
+head(match.data(nsw_cem_bench))
+summary(lm(data = match.data(nsw_cem), re78 ~ treat))$coefficients[2] # ATT
+summary(lm(data = match.data(nsw_cem_bench) %>% filter(weights > 0.1 & weights < 1.0), re78 ~ treat))
+
+formula_arg = nsw_formula_reduced
+match_cem = matchit(formula = nsw_formula_reduced, data = nsw_obs_data_for_match, method = 'cem', estimand = 'ATT')
+match_nearest = matchit(formula = nsw_formula_reduced, data = nsw_obs_data_for_match, method = 'nearest', estimand = 'ATT') # leaving ATT as the default, can be overriden
+match_full = matchit(formula = nsw_formula_reduced, data = nsw_obs_data_for_match, method = 'full', estimand = 'ATT')
+match_subclass = matchit(formula = nsw_formula_reduced, data = nsw_obs_data_for_match, method = 'subclass', subclass = 5, estimand = 'ATT') # 5 subclass default, can be overriden
+  
+match_objects <- list(match_cem, match_nearest, match_full, match_subclass)
+
+atts_list <- list()
+for (m in match_objects) {
+  # print('hi')  
+  m_out_att = summary(lm(data = match.data(m), re78 ~ treat))$coefficients[2]
+  atts_list <- rbind(atts_list, m_out_att)
+  # return(atts_list)
+}
+m_out_df <- cbind(c('cem', 'nearest', 'full', 'subclass'), atts_list)
+m_out_df
+
+data_tester <- function(df_exp, df_bench, treat, outcome, 
+                            covars, formula_arg, reg_formula, ...) {
+  # Note that user can specify which matched dfs should be used for analysis here.
+  data_for_balance_assess = rbind(df_exp %>% filter(!!sym(treat) == 1) %>% select(treat, outcome, all_of(covars)), df_bench %>% filter(!!sym(treat) == 0) %>% select(treat, outcome, all_of(covars)))
+  return(head(data_for_balance_assess))
+}
+
+data_tester(df_exp = nsw_dehejia_wahba, df_bench = psid_controls_dw, 
+               treat = 'treat', outcome = 're78', covars = covars_list,
+               formula_arg = nsw_formula_reduced, reg_formula = re78 ~ treat)
+
+match_estimator <- function(df_exp, df_bench, treat, outcome, 
+                            covars, formula_arg, reg_formula, ...) {
+  # Note that user can specify which matched dfs should be used for analysis here.
+  data_for_balance_assess = rbind(df_exp %>% filter(!!sym(treat) == 1) %>% select(treat, outcome, all_of(covars)), 
+                                  df_bench %>% filter(!!sym(treat) == 0) %>% select(treat, outcome, all_of(covars)))
+  
+  match_cem = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'cem', estimand = 'ATT')
+  match_nearest = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'nearest', estimand = 'ATT') # leaving ATT as the default, can be overriden
+  match_full = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'full', estimand = 'ATT')
+  match_subclass = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'subclass', subclass = 5, estimand = 'ATT') # 5 subclass default, can be overriden
+  
+  match_objects <- list(match_cem, match_nearest, match_full, match_subclass)
+  atts_list <- list()
+
+  for (m in match_objects) {
+    # print('hi')  
+    m_out_att = summary(lm(data = match.data(m), reg_formula))$coefficients[2]
+    atts_list <- rbind(atts_list, m_out_att)
+    # return(atts_list)
+  }
+  m_out_df <- cbind(c('cem', 'nearest', 'full', 'subclass'), atts_list)
+  names(m_out_df) <- c('index', 'match_method', 'estimate')
+}
+
+match_estimator(df_exp = nsw_dehejia_wahba, df_bench = psid_controls_dw, 
+               treat = 'treat', outcome = 're78', covars = covars_list,
+               formula_arg = nsw_formula_reduced, reg_formula = re78 ~ treat)
+
+```
+
 
 #### Estimator function
 
