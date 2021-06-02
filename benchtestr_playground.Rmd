@@ -188,4 +188,95 @@ head(ajps)
 
 ```
 
+## Working on a way to compare across estimators (running into stupid R issues)
+
+```{r}
+
+## Compile the estimates into a single df
+## for comparison across estimators:
+
+#### building this manually for now
+
+## robust version
+estim_args_list <- c(dim_for_out, lm_for_out)
+meas_args_list <- c('p.value', 'df')
+
+estimate_comparison <- function(estim_args, meas_args, ...) {
+  # a bit of setup
+  estim_comp_df <- as.data.frame(matrix())
+  meas_quo <- rlang::quos(meas_args)
+  # the actual fxn
+  for (e in estim_args) {
+    estim_out <- e %>% 
+      # select(c('estimator', 'nature', !!! meas_quo))
+      select(!!! meas_quo)
+    estim_comp_df <<- rbind(estim_comp_df, estim_out)
+  }
+  return(estim_comp_df)
+}
+
+estimate_comparison(estim_args = estim_args_list, meas_args = meas_args_list)
+
+## neat version
+estim_args_list <- list(dim_for_out, lm_for_out)
+
+estim_comp_df <- as.data.frame(matrix())
+
+for (e in estim_args_list) {
+  estim_out <- e %>% ungroup %>% select(c('estimator', 'nature', 'estimate'))
+  print(estim_out)
+  # rbind(estim_comp_df, estim_out)
+}
+
+estimate_comparison <- function(estim_args, incl_all, ...) {
+  # a bit of setup
+  estim_comp_df <- as.data.frame(matrix())
+  # the actual fxn
+  print(length(estim_args))
+  if(incl_all == 0) {
+    for (e in estim_args) {
+      # print(substitute(e))
+      # print('Just the key columns selected')
+      # print(ncol(e))
+      estim_out <- e %>%
+        select(c('estimator', 'nature', 'estimate'))
+      estim_comp_df <- rbind(estim_comp_df, estim_out)
+      estim_comp_df_glob <<- rbind(estim_comp_df, estim_out)
+      return(estim_comp_df)
+    }}
+  else {
+    for (e in estim_args) {
+      # print(substitute(e))
+      # print('All columns selected')
+      # print(ncol(e))
+      estim_out <- e
+      estim_comp_df <- rbind(estim_comp_df, estim_out)
+      estim_comp_df_glob <<- rbind(estim_comp_df, estim_out)
+      return(estim_comp_df)
+    }
+    }}
+
+estimate_comparison(estim_args = estim_args_list, incl_all = 0)
+
+dim_for_out <-
+  as.data.frame(cbind(
+  c('dim','dim'),
+  dim_output %>% select(c('nature', 'estimate', 'p.value', 'df'))
+))
+names(dim_for_out) <- c('estimator', 'nature', 'estimate', 'p.value', 'df')
+dim_for_out
+
+lm_for_out <-
+  as.data.frame(cbind(
+  c('lm','lm'),
+  lm_output %>% select(c('nature', 'estimate', 'p.value', 'df'))
+))
+names(lm_for_out) <- c('estimator', 'nature', 'estimate', 'p.value', 'df')
+lm_for_out
+
+final_output <- rbind(dim_for_out, lm_for_out)
+head(final_output)
+
+```
+
 

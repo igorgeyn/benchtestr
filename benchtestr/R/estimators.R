@@ -110,6 +110,7 @@ balance_assess <- function(df_exp, df_bench, treat, outcome, covars, formula_arg
   require('cobalt')
   require('dplyr')
   require('gridExtra')
+  require('MatchIt')
   # First get the data ready
   data_for_balance_assess = rbind(df_exp %>% filter(!!sym(treat) == 1) %>% select(treat, all_of(covars)), df_bench %>% filter(!!sym(treat) == 0) %>% select(treat, all_of(covars)))
   match_cem = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'cem', estimand = 'ATT')
@@ -127,25 +128,44 @@ balance_assess <- function(df_exp, df_bench, treat, outcome, covars, formula_arg
 
 match_estimator <- function(df_exp, df_bench, treat, outcome, 
                             covars, formula_arg, reg_formula, ...) {
-  # Note that user can specify which matched dfs should be used for analysis here.
+  # Note that user can specify which matched dfs should be used for analysis here,
+  # as well as override the number of subclasses used, and so on.
   data_for_balance_assess = rbind(df_exp %>% filter(!!sym(treat) == 1) %>% select(treat, outcome, all_of(covars)), 
                                   df_bench %>% filter(!!sym(treat) == 0) %>% select(treat, outcome, all_of(covars)))
   
-  match_cem = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'cem', estimand = 'ATT')
-  match_nearest = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'nearest', estimand = 'ATT') # leaving ATT as the default, can be overriden
-  match_full = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'full', estimand = 'ATT')
-  match_subclass = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'subclass', subclass = 5, estimand = 'ATT') # 5 subclass default, can be overriden
+  # print(head(data_for_balance_assess))
   
-  match_objects <- list(match_cem, match_nearest, match_full, match_subclass)
+  # match_cem <- matchit(formula = formula_arg,
+  #                      data = data_for_balance_assess,
+  #                      method = 'cem',
+  #                      estimand = 'ATT')
+  # match_nearest <- matchit(formula = formula_arg,
+  #                          data = data_for_balance_assess,
+  #                          method = 'nearest',
+  #                          estimand = 'ATT') # leaving ATT as the default, can be overriden
+  # match_full <- matchit(formula = formula_arg,
+  #                      data = data_for_balance_assess,
+  #                      method = 'full',
+  #                      estimand = 'ATT')
+  # match_subclass <- matchit(formula = formula_arg,
+  #                          data = data_for_balance_assess,
+  #                          method = 'subclass',
+  #                          subclass = 5, estimand = 'ATT') # 5 subclass default, can be overriden
+  
+  match_objects <- list(match_cem = matchit(formula = formula_arg,data = data_for_balance_assess,method = 'cem',estimand = 'ATT'), 
+                        match_nearest = matchit(formula = formula_arg,data = data_for_balance_assess,method = 'nearest',estimand = 'ATT'),
+                        match_full = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'full', estimand = 'ATT'), 
+                        match_subclass = matchit(formula = formula_arg, data = data_for_balance_assess,method = 'subclass',subclass = 5, estimand = 'ATT'))
   atts_list <- list()
-
+  # 
   for (m in match_objects) {
-    # print('hi')  
+    print('hi')
+    print(head(match.data(m)))
     m_out_att = summary(lm(data = match.data(m), reg_formula))$coefficients[2]
     atts_list <- rbind(atts_list, m_out_att)
-    # return(atts_list)
+    return(atts_list)
   }
   m_out_df <- cbind(c('cem', 'nearest', 'full', 'subclass'), atts_list)
   names(m_out_df) <- c('index', 'match_method', 'estimate')
-  return(m_out_df %>% select(c('match_method', 'estimate')))
+}
 }
