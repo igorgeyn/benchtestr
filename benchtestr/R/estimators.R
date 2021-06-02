@@ -96,7 +96,7 @@ lm_estimator = function(df_exp, df_base, treatment, outcome, delete_vars = "id|s
   # Three different ways of LM estimators
   lm_exp = lm_robust(as.formula(paste(outcome, "~", treatment, "+", controls)), data = df_exp) %>%
     tidy() %>% mutate(nature = "experimental")
-  if(mean(df_base["treat"][,1]) > 0){
+  if(mean(df_base[treatment][,1]) > 0){
     lm_base = lm_robust(as.formula(paste(outcome, "~", treatment, "+", controls)), data = df_base) %>%
       tidy() %>% mutate(nature = "base")
   } else {
@@ -113,7 +113,7 @@ lm_estimator = function(df_exp, df_base, treatment, outcome, delete_vars = "id|s
 
 ### IV estimator
 
-iv_estimator = function(df_exp, df_base, treatment, outcome, delete_vars = "id|source", ...){
+iv_estimator = function(df_exp, df_base, treatment, outcome, delete_vars = "id|source", iv_var_arg = NA, ...){
   # hopefully a temp solution:
   packages <- c('dplyr', 'estimatr')
   lapply(packages, require, character.only = TRUE)
@@ -123,7 +123,7 @@ iv_estimator = function(df_exp, df_base, treatment, outcome, delete_vars = "id|s
   df_base = df_base %>% mutate_at(treatment, as.numeric) %>% dplyr::select(!matches(delete_vars))
 
   # Find out the instrumental variable
-  if(missing(iv_var_arg)) {
+  if(is.na(iv_var_arg)) {
     iv_var = cor(df_exp) %>% as.data.frame() %>% mutate(term = colnames(.)) %>%
     dplyr::select(matches(paste("term", treatment, outcome, sep = "|"))) %>%
     filter(term != treatment & term != outcome) %>%
@@ -143,7 +143,7 @@ iv_estimator = function(df_exp, df_base, treatment, outcome, delete_vars = "id|s
   # Three different ways of IV estimators
   iv_exp = iv_robust(as.formula(paste(outcome, "~", treatment, "+", controls, "|", iv_var, "+", controls)), data = df_exp) %>%
     tidy() %>% mutate(nature = "experimental")
-  if(mean(df_base["treat"][,1]) > 0){
+  if(mean(df_base[treatment][,1]) > 0){
     iv_base = iv_robust(as.formula(paste(outcome, "~", treatment, "+", controls, "|", iv_var, "+", controls)), data = df_base) %>%
      tidy() %>% mutate(nature = "base")
   } else {
