@@ -13,7 +13,7 @@ dim_estimator = function(df_exp, df_base, treatment, outcome){
   # Estimate three different ways of DIM
   dim_exp = difference_in_means(as.formula(paste(outcome, "~", treatment)), data = df_exp) %>%
     tidy() %>% mutate(nature = "experimental")
-  if(mean(df_base["treat"][,1]) > 0){
+  if(mean(df_base[treatment][,1]) > 0){
     dim_base = difference_in_means(as.formula(paste(outcome, "~", treatment)), data = df_base) %>%
     tidy() %>% mutate(nature = "base")
   } else {
