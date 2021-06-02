@@ -55,16 +55,16 @@ library(benchtestr)
 ### What's in here?
 ### A few datasets, all of which are documented.
 
-data('ajps')
+# data('ajps')
 data('Comparison_Students')
 data('cps_controls_dw')
 data('lalonde')
 data('nsw_dehejia_wahba')
 data('psid_controls_dw')
-data('roaches_gelman')
-data('STAR_High_Schools')
-data('STAR_K-3_Schools')
-data('STAR_Students')
+# data('roaches_gelman')
+# data('STAR_High_Schools')
+# data('STAR_K-3_Schools')
+# data('STAR_Students')
 data('star_tenn_comparison')
 data('star_tenn_experiment')
 
@@ -77,8 +77,9 @@ head(nsw_dehejia_wahba)
 head(cps_controls_dw)
 head(psid_controls_dw)
 
-## What can we do?
 ```
+
+What can we do with this?
 
 ```{r}
 
@@ -87,6 +88,8 @@ head(psid_controls_dw)
 
 ?benchtestr::dim_estimator
 ?benchtestr::lm_estimator
+?benchtestr::match_estimator
+?benchtestr::dim_estimator_multi
 # Save space for matching
 # ?benchtestr::iv_estimator ## Save for later
 
@@ -108,6 +111,12 @@ comparison_df <- rbind(
   lm_output %>% filter(term == 'treat') %>% select('estimator', 'nature', 'estimate', 'outcome')
   )
 comparison_df
+
+# Plot the different estimates
+ggplot(data = comparison_df) + 
+  geom_boxplot(aes(x = nature, y = estimate)) +
+  facet_wrap(.~estimator) +
+  theme_minimal()
 
 ```
 
@@ -201,7 +210,7 @@ match_estimator(df_exp = nsw_dehejia_wahba, df_bench = psid_controls_dw,
                formula_arg = nsw_formula_reduced, reg_formula = re78 ~ treat)
 
 m_out_df <- m_out_df %>% rename(match_method = V1, estimate = V2)
-view(m_out_df)
+kableExtra::kable(x = m_out_df, format = 'html', caption = 'Estimates by Match Method')
 
 ```
 
@@ -276,10 +285,10 @@ dim_estimator_multi(df_exp = tenn_star_df, df_base = tenn_compar_df,
                     treatment = 'treat', 
                     # outcomes_list = c('g2treadss', 'g2tmathss', 'g2wordskillss'),
                     outcomes_list = c('g1treadss', 'g1tmathss' , 
-                                      # 'g1wordskillss', 'g2treadss','g2tmathss', 'g2wordskillss',
-                                      # 'gkwordskillss', 'gktreadss', 'gktmathss'
+                                      'g1wordskillss', 'g2treadss','g2tmathss', 'g2wordskillss',
+                                      'gkwordskillss', 'gktreadss', 'gktmathss'
                                       ),
-                    plot = 1)
+                    plot = 1) ## toggles on and off
 
 ### Balancing and Matching
 
