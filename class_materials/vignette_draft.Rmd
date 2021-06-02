@@ -288,20 +288,7 @@ dim_estimator_multi(df_exp = tenn_star_df, df_base = tenn_compar_df,
                                       'g1wordskillss', 'g2treadss','g2tmathss', 'g2wordskillss',
                                       'gkwordskillss', 'gktreadss', 'gktmathss'
                                       ),
-                    plot = 1) ## toggles on and off
-
-### Balancing and Matching
-
-balance_assess(df_exp = nsw_dehejia_wahba, df_bench = psid_controls_dw, 
-               treat = 'treat', outcome = 're78', covars = covars_list,
-               formula_arg = nsw_formula_reduced)
-
-match_estimator(df_exp = nsw_dehejia_wahba, df_bench = psid_controls_dw, 
-               treatment = 'treat', outcome = 're78', covars = covars_list,
-               formula_arg = nsw_formula_reduced, reg_formula = re78 ~ treat)
-
-m_out_df <- m_out_df %>% rename(match_method = V1, estimate = V2)
-view(m_out_df)
+                    plot = 0) ## toggles on and off
 
 ```
 

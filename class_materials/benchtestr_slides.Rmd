@@ -17,16 +17,16 @@ library(benchtestr)
 
 - Collect datasets for benchmarking experimental findings
 - Write up a variety of classical estimators (DIM, linear regression, matching, etc.)
-- Draft up instructional documentation (vigneettes)
+- Draft up instructional documentation (vignettes)
 - **Compile everything into an R package called `benchtestr`**
 
 # Motivation
 
 - Experiments are common throughout (social) science disciplines, and proliferating
-- Past work has shown miscalibration in observational findings using experimental benchmarks
+- Past work has shown differences between observational findings and experimental benchmarks
   - LaLonde (1986); Dehejia and Wahba (1999)
-  - Green, et al (2009)
   - Gerber and Green (2000); Imai (2005)
+  - Green, et al (2009)
   
 # What is `benchtestr`?
 
