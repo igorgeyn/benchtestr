@@ -547,7 +547,71 @@ m_out_df
 
 
 
+```
 
+
+```{r}
+
+### Messing some more with dim_estimator
+
+dim_estimator_multi <- function(df_exp, df_base, treatment, outcomes_list, plot, ...) {
+  # Prompt user to define outcomes of interest
+  outputs <- list()
+  # print(length(outcomes_list))
+  
+  if (plot == 1) {
+    outcome_length = length(outcomes_list)
+    if (outcome_length > 2) {
+      for (o in outcomes_list) {
+        output = dim_estimator(df_exp = df_exp, df_base = df_base, treatment = treatment, outcome = o)
+        outputs <- rbind(outputs, output)
+        }
+      outputs <- outputs %>% mutate(nature_simple = case_when(nature == 'experimental'~'e',
+                                                              nature == 'benched'~'b'))
+      plot = ggplot(data = outputs) + 
+      geom_boxplot(aes(x = nature_simple, y = estimate, fill = nature)) + 
+      facet_grid(.~outcome) + theme_minimal()
+      # return(outputs)
+      return(plot)
+      # return(list(outputs, plot))
+      }
+    else {
+      for (o in outcomes_list) {
+      output = dim_estimator(df_exp = df_exp, df_base = df_base, treatment = treatment, outcome = o)
+      outputs <- rbind(outputs, output)
+      }
+      plot = ggplot(data = outputs) + 
+      geom_boxplot(aes(x = nature, y = estimate, fill = nature)) + 
+      facet_grid(.~outcome) + theme_minimal()
+      # return(outputs)
+      return(plot)
+      # return(list(outputs, plot))
+    }
+  }
+  else if (plot == 0) {
+     for (o in outcomes_list) {
+      output = dim_estimator(df_exp = df_exp, df_base = df_base, treatment = treatment, outcome = o)
+      outputs <- rbind(outputs, output)
+      }
+    return(outputs)
+  }
+  else {
+    for (o in outcomes_list) {
+      output = dim_estimator(df_exp = df_exp, df_base = df_base, treatment = treatment, outcome = o)
+      outputs <- rbind(outputs, output)
+    }
+    return(outputs)
+  }
+}
+
+dim_estimator_multi(df_exp = tenn_star_df, df_base = tenn_compar_df, 
+                    treatment = 'treat', 
+                    # outcomes_list = c('g2treadss', 'g2tmathss', 'g2wordskillss'),
+                    outcomes_list = c('g1treadss', 'g1tmathss', 'g1wordskillss',
+                                      'g2treadss' # , 
+                                      # 'g2tmathss', 'g2wordskillss'
+                                      ),
+                    plot = 1)
 
 ```
 

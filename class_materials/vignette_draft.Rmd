@@ -200,7 +200,102 @@ match_estimator(df_exp = nsw_dehejia_wahba, df_bench = psid_controls_dw,
                treatment = 'treat', outcome = 're78', covars = covars_list,
                formula_arg = nsw_formula_reduced, reg_formula = re78 ~ treat)
 
+m_out_df <- m_out_df %>% rename(match_method = V1, estimate = V2)
+view(m_out_df)
+
 ```
+
+Let's replicate the above analysis for a different study.
+
+```{r}
+
+data("star_tenn_comparison")
+data("star_tenn_experiment")
+
+### Some data prep and basic descriptives.
+
+tenn_star_df <- tenn_star_df %>% mutate(treat = case_when(yearsstar == 4 ~ 1, yearsstar < 4 ~ 0))
+tenn_compar_df <- tenn_star_df %>% mutate(treat = 0)
+
+tenn_star_df %>% 
+  group_by(yearsstar) %>% # number of years in STAR program (range: 1 to 4 yrs)
+  tally()
+
+tenn_star_df %>% 
+  group_by(flagsg1) %>% # number of years in STAR program (range: 1 to 4 yrs)
+  tally()
+
+## Treatment Data
+
+# kindergarten
+tenn_star_df %>% group_by(treat) %>% 
+  summarise(avg_read_k = mean(gktreadss, na.rm = TRUE),
+            avg_math_k = mean(gktmathss, na.rm = TRUE),
+            avg_words_k = mean(gkwordskillss, na.rm = TRUE))
+
+# 1st g
+tenn_star_df %>% group_by(treat) %>% 
+  summarise(avg_read_1g = mean(g1treadss, na.rm = TRUE),
+            avg_math_1g = mean(g1tmathss, na.rm = TRUE),
+            avg_words_1g = mean(g1wordskillss, na.rm = TRUE))
+
+# 2nd g
+tenn_star_df %>% group_by(treat) %>% 
+  summarise(avg_read_2d = mean(g2treadss, na.rm = TRUE),
+            avg_math_2d = mean(g2tmathss, na.rm = TRUE),
+            avg_words_2g = mean(g2wordskillss, na.rm = TRUE))
+
+## Comparison (Control) Data
+
+# kindergarten
+# comparison data begins in 1st grade
+
+# 1st g
+tenn_compar_df %>% 
+  # group_by(treat) %>% 
+  summarise(avg_read_1g = mean(g1treadss, na.rm = TRUE),
+            avg_math_1g = mean(g1tmathss, na.rm = TRUE),
+            avg_words_1g = mean(g1wordskillss, na.rm = TRUE))
+
+# 2nd g
+tenn_compar_df %>% 
+  # group_by(treat) %>% 
+  summarise(avg_read_2d = mean(g2treadss, na.rm = TRUE),
+            avg_math_2d = mean(g2tmathss, na.rm = TRUE),
+            avg_words_2g = mean(g2wordskillss, na.rm = TRUE))
+
+### Start with DIM and regression estimates.
+
+dim_output_star <- dim_estimator(df_exp = tenn_star_df, df_base = tenn_compar_df,
+                                 treatment = 'treat', outcome = 'g2treadss')
+dim_output_star
+
+## Plotting multi
+
+dim_estimator_multi(df_exp = tenn_star_df, df_base = tenn_compar_df, 
+                    treatment = 'treat', 
+                    # outcomes_list = c('g2treadss', 'g2tmathss', 'g2wordskillss'),
+                    outcomes_list = c('g1treadss', 'g1tmathss' , 
+                                      # 'g1wordskillss', 'g2treadss','g2tmathss', 'g2wordskillss',
+                                      # 'gkwordskillss', 'gktreadss', 'gktmathss'
+                                      ),
+                    plot = 1)
+
+### Balancing and Matching
+
+balance_assess(df_exp = nsw_dehejia_wahba, df_bench = psid_controls_dw, 
+               treat = 'treat', outcome = 're78', covars = covars_list,
+               formula_arg = nsw_formula_reduced)
+
+match_estimator(df_exp = nsw_dehejia_wahba, df_bench = psid_controls_dw, 
+               treatment = 'treat', outcome = 're78', covars = covars_list,
+               formula_arg = nsw_formula_reduced, reg_formula = re78 ~ treat)
+
+m_out_df <- m_out_df %>% rename(match_method = V1, estimate = V2)
+view(m_out_df)
+
+```
+
 
 Assuming you decided to use `benchtestr` to the fullest extent (i.e. you ran Step 3 above), you should now have a table of matching-based estimates of the observational treatment effect using your observational benchmarking data. This can be compared against your experiment benchmark -- that is, against the estimate of the treatment effect using whatever estimator you brought to bear on the experimental data.
 

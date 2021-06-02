@@ -25,6 +25,58 @@ dim_estimator = function(df_exp, df_base, treatment, outcome){
   return(rbind(dim_exp, dim_base, dim_bench) %>% unique() %>% dplyr::mutate(estimator = 'dim') %>% dplyr::select(estimator, nature, everything()))
 }
 
+## an add-on to dim_estimator that concatenates estimates of multiple measures and plots them
+
+dim_estimator_multi <- function(df_exp, df_base, treatment, outcomes_list, plot, ...) {
+  # Prompt user to define outcomes of interest
+  outputs <- list()
+  # print(length(outcomes_list))
+  
+  if (plot == 1) {
+    outcome_length = length(outcomes_list)
+    if (outcome_length > 2) {
+      for (o in outcomes_list) {
+        output = dim_estimator(df_exp = df_exp, df_base = df_base, treatment = treatment, outcome = o)
+        outputs <- rbind(outputs, output)
+        }
+      outputs <- outputs %>% mutate(nature_simple = case_when(nature == 'experimental'~'e',
+                                                              nature == 'benched'~'b'))
+      plot = ggplot(data = outputs) + 
+      geom_boxplot(aes(x = nature_simple, y = estimate, fill = nature)) + 
+      facet_grid(.~outcome) + theme_minimal()
+      # return(outputs)
+      return(plot)
+      # return(list(outputs, plot))
+      }
+    else {
+      for (o in outcomes_list) {
+      output = dim_estimator(df_exp = df_exp, df_base = df_base, treatment = treatment, outcome = o)
+      outputs <- rbind(outputs, output)
+      }
+      plot = ggplot(data = outputs) + 
+      geom_boxplot(aes(x = nature, y = estimate, fill = nature)) + 
+      facet_grid(.~outcome) + theme_minimal()
+      # return(outputs)
+      return(plot)
+      # return(list(outputs, plot))
+    }
+  }
+  else if (plot == 0) {
+     for (o in outcomes_list) {
+      output = dim_estimator(df_exp = df_exp, df_base = df_base, treatment = treatment, outcome = o)
+      outputs <- rbind(outputs, output)
+      }
+    return(outputs)
+  }
+  else {
+    for (o in outcomes_list) {
+      output = dim_estimator(df_exp = df_exp, df_base = df_base, treatment = treatment, outcome = o)
+      outputs <- rbind(outputs, output)
+    }
+    return(outputs)
+  }
+}
+
 ### LM estimator
 
 lm_estimator = function(df_exp, df_base, treatment, outcome, delete_vars = "id|source"){
@@ -152,3 +204,4 @@ match_estimator <- function(df_exp, df_bench, treatment, outcome,
   names(m_out_df) <- c('index', 'match_method', 'estimate')
   m_out_df <<- as.data.frame(m_out_df)
   }
+
