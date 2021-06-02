@@ -196,9 +196,9 @@ balance_assess(df_exp = nsw_dehejia_wahba, df_bench = psid_controls_dw,
 
 ## 3) Run the following function to get an estimate using `benchtestr` on each of the matched datases.
 
-# match_estimator(df_exp = nsw_dehejia_wahba, df_bench = psid_controls_dw, 
-#                treat = 'treat', outcome = 're78', covars = covars_list,
-#                formula_arg = nsw_formula_reduced, reg_formula = re78 ~ treat)
+match_estimator(df_exp = nsw_dehejia_wahba, df_bench = psid_controls_dw, 
+               treatment = 'treat', outcome = 're78', covars = covars_list,
+               formula_arg = nsw_formula_reduced, reg_formula = re78 ~ treat)
 
 ```
 

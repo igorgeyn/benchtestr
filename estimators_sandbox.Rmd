@@ -511,54 +511,41 @@ data_tester(df_exp = nsw_dehejia_wahba, df_bench = psid_controls_dw,
                treat = 'treat', outcome = 're78', covars = covars_list,
                formula_arg = nsw_formula_reduced, reg_formula = re78 ~ treat)
 
-match_estimator <- function(df_exp, df_bench, treat, outcome, 
+
+match_estimator <- function(df_exp, df_bench, treatment, outcome,
                             covars, formula_arg, reg_formula, ...) {
-  # Note that user can specify which matched dfs should be used for analysis here.
-  data_for_balance_assess = rbind(df_exp %>% filter(!!sym(treat) == 1) %>% select(treat, outcome, all_of(covars)), 
-                                  df_bench %>% filter(!!sym(treat) == 0) %>% select(treat, outcome, all_of(covars)))
+  require(dplyr); require(MatchIt)
   
-  # match_cem <- matchit(formula = formula_arg,
-  #                      data = data_for_balance_assess,
-  #                      method = 'cem',
-  #                      estimand = 'ATT')
-  # match_nearest <- matchit(formula = formula_arg,
-  #                          data = data_for_balance_assess,
-  #                          method = 'nearest',
-  #                          estimand = 'ATT') # leaving ATT as the default, can be overriden
-  # match_full <- matchit(formula = formula_arg,
-  #                      data = data_for_balance_assess,
-  #                      method = 'full',
-  #                      estimand = 'ATT')
-  # match_subclass <- matchit(formula = formula_arg,
-  #                          data = data_for_balance_assess,
-  #                          method = 'subclass',
-  #                          subclass = 5, estimand = 'ATT') # 5 subclass default, can be overriden
+  data_for_match <<- as.data.frame(
+    rbind(df_exp %>% filter(!!sym(treatment) == 1) %>% select(c(treatment, outcome, all_of(covars))),
+          df_bench %>% filter(!!sym(treatment) == 0) %>% select(c(treatment, outcome, all_of(covars))))
+    )
   
-  match_objects <- list(match_cem = matchit(formula = formula_arg,data = data_for_balance_assess,method = 'cem',estimand = 'ATT'), 
-                        match_nearest = matchit(formula = formula_arg,data = data_for_balance_assess,method = 'nearest',estimand = 'ATT'),
-                        # match_full = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'full', estimand = 'ATT'), 
-                        match_subclass = matchit(formula = formula_arg, data = data_for_balance_assess,method = 'subclass',subclass = 5, estimand = 'ATT'))
-  atts_list <- list()
-  # 
-  for (m in match_objects) {
-    # print('hi')
-    # print(head(match.data(m)))
-    m_out_att = summary(lm(data = match.data(m), reg_formula))$coefficients[2]
-    atts_list <- rbind(atts_list, m_out_att)
-    # return(atts_list)
+  match_cem = matchit(formula = formula_arg, data = data_for_match, method = 'cem', estimand = 'ATT')
+  match_nearest = matchit(formula = formula_arg, data = data_for_match, method = 'nearest', estimand = 'ATT')
+  match_full = matchit(formula = formula_arg, data = data_for_match, method = 'full', estimand = 'ATT')
+  match_subclass = matchit(formula = formula_arg, data = data_for_match, method = 'subclass', subclass = 5, estimand = 'ATT')
+  
+  match_objs <- list(match_cem, match_nearest, match_full, match_subclass)
+  effect_ests_list = list()
+  
+  for (m in match_objs) {
+    m_out_effect_est <- summary(lm(data = match.data(m), reg_formula))$coefficients[2]
+    effect_ests_list <- rbind(effect_ests_list, m_out_effect_est)
   }
-  m_out_df <- cbind(c('cem', 'nearest', 
-                      # 'full', 
-                      'subclass'), atts_list)
+  
+  m_out_df <- cbind(c('cem', 'nearest', 'full', 'subclass'), effect_ests_list)
   names(m_out_df) <- c('index', 'match_method', 'estimate')
-  return(m_out_df)
-  # m_out_df <<- m_out_df
-}
+  m_out_df <<- as.data.frame(m_out_df)
+  
+                            }
 
 match_estimator(df_exp = nsw_dehejia_wahba, df_bench = psid_controls_dw, 
-               treat = 'treat', outcome = 're78', covars = covars_list,
+               treatment = 'treat', outcome = 're78', covars = covars_list,
                formula_arg = nsw_formula_reduced, reg_formula = re78 ~ treat)
 m_out_df
+
+
 
 
 

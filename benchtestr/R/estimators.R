@@ -123,3 +123,32 @@ balance_assess <- function(df_exp, df_bench, treat, outcome, covars, formula_arg
     love.plot(match_full, binary = 'std'),
     ncol = 2))
 }
+
+### Matching estimator
+
+match_estimator <- function(df_exp, df_bench, treatment, outcome,
+                            covars, formula_arg, reg_formula, ...) {
+  require(dplyr); require(MatchIt)
+  
+  data_for_match <<- as.data.frame(
+    rbind(df_exp %>% filter(!!sym(treatment) == 1) %>% select(c(treatment, outcome, all_of(covars))),
+          df_bench %>% filter(!!sym(treatment) == 0) %>% select(c(treatment, outcome, all_of(covars))))
+    )
+  
+  match_cem = matchit(formula = formula_arg, data = data_for_match, method = 'cem', estimand = 'ATT')
+  match_nearest = matchit(formula = formula_arg, data = data_for_match, method = 'nearest', estimand = 'ATT')
+  match_full = matchit(formula = formula_arg, data = data_for_match, method = 'full', estimand = 'ATT')
+  match_subclass = matchit(formula = formula_arg, data = data_for_match, method = 'subclass', subclass = 5, estimand = 'ATT')
+  
+  match_objs <- list(match_cem, match_nearest, match_full, match_subclass)
+  effect_ests_list = list()
+  
+  for (m in match_objs) {
+    m_out_effect_est <- summary(lm(data = match.data(m), reg_formula))$coefficients[2]
+    effect_ests_list <- rbind(effect_ests_list, m_out_effect_est)
+  }
+  
+  m_out_df <- cbind(c('cem', 'nearest', 'full', 'subclass'), effect_ests_list)
+  names(m_out_df) <- c('index', 'match_method', 'estimate')
+  m_out_df <<- as.data.frame(m_out_df)
+  }
