@@ -164,7 +164,7 @@ balance_assess <- function(df_exp, df_bench, treat, outcome, covars, formula_arg
   require('gridExtra')
   require('MatchIt')
   # First get the data ready
-  data_for_balance_assess = rbind(df_exp %>% filter(!!sym(treat) == 1) %>% select(treat, all_of(covars)), df_bench %>% filter(!!sym(treat) == 0) %>% select(treat, all_of(covars)))
+  data_for_balance_assess = rbind(df_exp %>% filter(!!sym(treat) == 1) %>% dplyr::select(treat, all_of(covars)), df_bench %>% filter(!!sym(treat) == 0) %>% dplyr::select(treat, all_of(covars)))
   match_cem = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'cem', estimand = 'ATT')
   match_nearest = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'nearest', estimand = 'ATT') # leaving ATT as the default, can be overriden
   match_full = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'full', estimand = 'ATT')
@@ -183,8 +183,8 @@ match_estimator <- function(df_exp, df_bench, treatment, outcome,
   require(dplyr); require(MatchIt)
   
   data_for_match <<- as.data.frame(
-    rbind(df_exp %>% filter(!!sym(treatment) == 1) %>% select(c(treatment, outcome, all_of(covars))),
-          df_bench %>% filter(!!sym(treatment) == 0) %>% select(c(treatment, outcome, all_of(covars))))
+    rbind(df_exp %>% filter(!!sym(treatment) == 1) %>% dplyr::select(c(treatment, outcome, all_of(covars))),
+          df_bench %>% filter(!!sym(treatment) == 0) %>% dplyr::select(c(treatment, outcome, all_of(covars))))
     )
   
   match_cem = matchit(formula = formula_arg, data = data_for_match, method = 'cem', estimand = 'ATT')
