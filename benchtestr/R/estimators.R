@@ -13,7 +13,7 @@ dim_estimator = function(df_exp, df_base, treatment, outcome){
   # Estimate three different ways of DIM
   dim_exp = difference_in_means(as.formula(paste(outcome, "~", treatment)), data = df_exp) %>%
     tidy() %>% mutate(nature = "experimental")
-  if(mean(df_base["treat"][,1]) > 0){
+  if(mean(df_base[treatment][,1]) > 0){
     dim_base = difference_in_means(as.formula(paste(outcome, "~", treatment)), data = df_base) %>%
     tidy() %>% mutate(nature = "base")
   } else {
@@ -96,7 +96,7 @@ lm_estimator = function(df_exp, df_base, treatment, outcome, delete_vars = "id|s
   # Three different ways of LM estimators
   lm_exp = lm_robust(as.formula(paste(outcome, "~", treatment, "+", controls)), data = df_exp) %>%
     tidy() %>% mutate(nature = "experimental")
-  if(mean(df_base["treat"][,1]) > 0){
+  if(mean(df_base[treatment][,1]) > 0){
     lm_base = lm_robust(as.formula(paste(outcome, "~", treatment, "+", controls)), data = df_base) %>%
       tidy() %>% mutate(nature = "base")
   } else {
@@ -113,7 +113,7 @@ lm_estimator = function(df_exp, df_base, treatment, outcome, delete_vars = "id|s
 
 ### IV estimator
 
-iv_estimator = function(df_exp, df_base, treatment, outcome, delete_vars = "id|source", ...){
+iv_estimator = function(df_exp, df_base, treatment, outcome, delete_vars = "id|source", iv_var_arg = NA, ...){
   # hopefully a temp solution:
   packages <- c('dplyr', 'estimatr')
   lapply(packages, require, character.only = TRUE)
@@ -123,7 +123,7 @@ iv_estimator = function(df_exp, df_base, treatment, outcome, delete_vars = "id|s
   df_base = df_base %>% mutate_at(treatment, as.numeric) %>% dplyr::select(!matches(delete_vars))
 
   # Find out the instrumental variable
-  if(missing(iv_var_arg)) {
+  if(is.na(iv_var_arg)) {
     iv_var = cor(df_exp) %>% as.data.frame() %>% mutate(term = colnames(.)) %>%
     dplyr::select(matches(paste("term", treatment, outcome, sep = "|"))) %>%
     filter(term != treatment & term != outcome) %>%
@@ -143,7 +143,7 @@ iv_estimator = function(df_exp, df_base, treatment, outcome, delete_vars = "id|s
   # Three different ways of IV estimators
   iv_exp = iv_robust(as.formula(paste(outcome, "~", treatment, "+", controls, "|", iv_var, "+", controls)), data = df_exp) %>%
     tidy() %>% mutate(nature = "experimental")
-  if(mean(df_base["treat"][,1]) > 0){
+  if(mean(df_base[treatment][,1]) > 0){
     iv_base = iv_robust(as.formula(paste(outcome, "~", treatment, "+", controls, "|", iv_var, "+", controls)), data = df_base) %>%
      tidy() %>% mutate(nature = "base")
   } else {
@@ -164,7 +164,7 @@ balance_assess <- function(df_exp, df_bench, treat, outcome, covars, formula_arg
   require('gridExtra')
   require('MatchIt')
   # First get the data ready
-  data_for_balance_assess = rbind(df_exp %>% filter(!!sym(treat) == 1) %>% select(treat, all_of(covars)), df_bench %>% filter(!!sym(treat) == 0) %>% select(treat, all_of(covars)))
+  data_for_balance_assess = rbind(df_exp %>% filter(!!sym(treat) == 1) %>% dplyr::select(treat, all_of(covars)), df_bench %>% filter(!!sym(treat) == 0) %>% dplyr::select(treat, all_of(covars)))
   match_cem = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'cem', estimand = 'ATT')
   match_nearest = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'nearest', estimand = 'ATT') # leaving ATT as the default, can be overriden
   match_full = matchit(formula = formula_arg, data = data_for_balance_assess, method = 'full', estimand = 'ATT')
@@ -183,8 +183,8 @@ match_estimator <- function(df_exp, df_bench, treatment, outcome,
   require(dplyr); require(MatchIt)
   
   data_for_match <<- as.data.frame(
-    rbind(df_exp %>% filter(!!sym(treatment) == 1) %>% select(c(treatment, outcome, all_of(covars))),
-          df_bench %>% filter(!!sym(treatment) == 0) %>% select(c(treatment, outcome, all_of(covars))))
+    rbind(df_exp %>% filter(!!sym(treatment) == 1) %>% dplyr::select(c(treatment, outcome, all_of(covars))),
+          df_bench %>% filter(!!sym(treatment) == 0) %>% dplyr::select(c(treatment, outcome, all_of(covars))))
     )
   
   match_cem = matchit(formula = formula_arg, data = data_for_match, method = 'cem', estimand = 'ATT')
