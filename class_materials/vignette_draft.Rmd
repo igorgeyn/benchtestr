@@ -1,0 +1,228 @@
+---
+title: "Rough Draft of the `benchtestr` vignette for 200C - Spring 2021"
+author: "Igor Geyn"
+date: "5/26/2021"
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+
+```
+
+
+## Introduction
+
+This document serves to introduce the R package `benchtestr`. It is co-authored and co-mainted by Igor Geyn (PhD Student, Department of Political Science UCLA) and Shing Hon Lam (PhD Student, Department of Political Science UCLA). Original inspiration for the project comes from Professor Chad Hazlett (UCLA Political Science and Statistics) who taught 200C with Ciara Sterbenz in Spring 2021.
+
+## Purpose
+
+As has been made famous by Dehejia and Wahba (1999), [citation], and [citation], benchmarking experimental findings with observational data is an important and informative exercise. When executed properly, an observational benchmark of an experimental study can reveal key information about the generalizability of the experiment. Unfortunately, while high-quality benchmarking data exists and has been leveraged in a number of past benchmarking efforts as well as meta analyses of benchmarking, this data is not readily available to the researcher.
+
+This package compiles data across substantive fields including political science, medicine, and education to allow for robust benchmarking of causal estimates. Specifically, `benchtestr` enables the user to leverage common estimation techniques -- including a range of matching approaches -- on the above-mentioned datasets. `benchtestr` presents a number of intuitive functions, helpful defaults, and diverse datasets that can be tested using existing classical estimators (e.g., naive difference-in-means) as well as those defined by the user.
+
+## Vignette / Examples
+
+The best way to learn `benchtestr` is by doing. Let's take a look at a couple of scenarios.
+
+### Example 1: The Kitchen Sink
+
+Let's say you are working on an estimator that you think is effective for estimating the average treatment effect on the treated (i.e. ATT, ATET, etc.) You would like to see how this estimator performs in the experimental setting vs. in the observational setting. What would you do?
+
+Follow a few easy steps:
+
+1. **Examine the documentation on datasets.** Included with `benchtestr`, and made available on the package's Github repo, is documentation describing the data that's shipped with the package. This includes a summary of the accompanying paper's findings (where appropriate), a synopsis of the estimators and estimates in the original anlaysis, a brief description of the variables, and links to past benchmarking efforts (focused mostly on published academic work, for the time being).
+
+2. **Make dataset selections.** Choose which datasets are most relevant and appropriate, or simply use the default option (all datasets) and examine the output. 
+
+3. **Make decision about matching.** Do you want to look at your balance on observed covariates across the selected datasets? Do you want to try different matching approaches? The default is to apply three classical matching techniques and output two summaries of balance -- a balance table and a Love plot -- for each of the three technques.
+
+4. **Run the corresponding `benchtestr` functions to get your results.** With your decisions in-hand, all you have to do is pass parameters to a series of `benchtestr` functions.
+
+For example:
+
+```{r}
+
+devtools::install_github('igorgeyn/benchtestr/benchtestr')
+library(benchtestr)
+# library(rlang)
+
+### What's in here?
+### A few datasets, all of which are documented.
+
+data('ajps')
+data('Comparison_Students')
+data('cps_controls_dw')
+data('lalonde')
+data('nsw_dehejia_wahba')
+data('psid_controls_dw')
+data('roaches_gelman')
+data('STAR_High_Schools')
+data('STAR_K-3_Schools')
+data('STAR_Students')
+data('star_tenn_comparison')
+data('star_tenn_experiment')
+
+# head(ajps)
+
+### Let's look at the NSW study.
+
+head(lalonde)
+head(nsw_dehejia_wahba)
+head(cps_controls_dw)
+head(psid_controls_dw)
+
+## What can we do?
+```
+
+```{r}
+
+## Generate estimator-based comparisons 
+## for a single study:
+
+?benchtestr::dim_estimator
+?benchtestr::lm_estimator
+# Save space for matching
+# ?benchtestr::iv_estimator ## Save for later
+
+# Generate DIM estimate
+dim_output <-
+  dim_estimator(df_exp = nsw_dehejia_wahba, df_base = psid_controls_dw,
+                treatment = 'treat', outcome = 're78')
+dim_output
+
+# Generate regression estimate
+lm_output <-
+  lm_estimator(df_exp = nsw_dehejia_wahba, df_base = psid_controls_dw,
+               treatment = 'treat', outcome = 're78')
+lm_output
+
+# Quickly compare estimates across estimators
+comparison_df <- rbind(
+  dim_output %>% select('estimator', 'nature', 'estimate', 'outcome'),
+  lm_output %>% filter(term == 'treat') %>% select('estimator', 'nature', 'estimate', 'outcome')
+  )
+comparison_df
+
+```
+
+```{r eval=FALSE, include=FALSE}
+
+###########
+## IGNORE THIS FOR THE TIME BEING
+###########
+
+## Generate estimator-based comparisons 
+## for multiple studies:
+
+# Generate DIM estimate for study1 (NSW)
+dim_output <-
+  dim_estimator(df_exp = nsw_dehejia_wahba, df_base = psid_controls_dw,
+                treatment = 'treat', outcome = 're78')
+dim_output
+
+# Generate regression estimate for study1 (NSW)
+lm_output <-
+  lm_estimator(df_exp = nsw_dehejia_wahba, df_base = psid_controls_dw,
+               treatment = 'treat', outcome = 're78')
+lm_output
+
+# Generate DIM estimate for study2 (STAR)
+dim_output <-
+  dim_estimator(df_exp = nsw_dehejia_wahba, df_base = psid_controls_dw,
+                treatment = 'treat', outcome = 're78')
+dim_output
+
+# Generate regression estimate for study2 (STAR)
+lm_output <-
+  lm_estimator(df_exp = nsw_dehejia_wahba, df_base = psid_controls_dw,
+               treatment = 'treat', outcome = 're78')
+lm_output
+
+# Compare across studies for a single estimator
+comparison_df <- rbind(
+  dim_output %>% select('estimator', 'nature', 'estimate', 'outcome'),
+  lm_output %>% filter(term == 'treat') %>% select('estimator', 'nature', 'estimate', 'outcome')
+  )
+comparison_df
+
+# Compare across estimators for a single study
+comparison_df <- rbind(
+  dim_output %>% select('estimator', 'nature', 'estimate', 'outcome'),
+  lm_output %>% filter(term == 'treat') %>% select('estimator', 'nature', 'estimate', 'outcome')
+  )
+comparison_df
+
+```
+
+### Example 2: The Balance Check (and Match-based Estimator)
+
+In the previous example, we compared a few different estimators' performance across several datasets. Already, we saw that two estimators that should yield identical, or at least similar, results (the linear regression and the DIM) in fact yielded different estimates. In other situations, these differences could be even more stark.
+
+We can use `benchtestr` to explore the possibility of covariate imbalance, opportunities for matching-based estimation, and finally some comparison to non-matching estimators (e.g., DIM and linear regression).
+
+```{r}
+
+### Of course, you are welcome to use MatchIt and other packages for 
+### manual matching and evaluation.
+### But here is the `benchtestr` case:
+
+## Let's say you've been running your estimator(s) on multiple datasets.
+## You can test them all at the same time by passing them 
+## as arguments to a function.
+
+# Set up your inputs
+nsw_formula_reduced = treat ~ age + education + black + hispanic + married + re74 + re75
+covars_list = c('age', 'education', 'black', 'hispanic', 'married', 're74', 're75')
+
+# And then run the function with a few additional arguments
+# Note that the function takes extra arguments, so you can do things like
+# specify the number of subclasses (via subclass = X), and so on.
+balance_assess(df_exp = nsw_dehejia_wahba, df_bench = psid_controls_dw, 
+               treat = 'treat', outcome = 're78', covars = covars_list,
+               formula_arg = nsw_formula_reduced)
+
+## Having observed imbalance in the covariates, you can do a number of things:
+
+## 1) Settle on your preferred matching method and proceed with your analyis outside of `benchtestr`.
+
+## 2) Extract the matched datasets and run classical estimators within `benchtestr` (i.e.
+##    DIM, lm estimator, etc.).
+
+## 3) Run the following function to get an estimate using `benchtestr` on each of the matched datases.
+
+# match_estimator(df_exp = nsw_dehejia_wahba, df_bench = psid_controls_dw, 
+#                treat = 'treat', outcome = 're78', covars = covars_list,
+#                formula_arg = nsw_formula_reduced, reg_formula = re78 ~ treat)
+
+```
+
+Assuming you decided to use `benchtestr` to the fullest extent (i.e. you ran Step 3 above), you should now have a table of matching-based estimates of the observational treatment effect using your observational benchmarking data. This can be compared against your experiment benchmark -- that is, against the estimate of the treatment effect using whatever estimator you brought to bear on the experimental data.
+
+Depending on your results, you can either be satisfied that your observational approach yields a relatively similar results when compared to experimental findings, or you might engage in additional analysis. Currently, `benchtestr` is not equipped for additoinal analysis, so these next steps would need to take place in another environment.
+
+## References
+
+### Publications
+
+Brian J. Gaines and James H. Kuklinski, (2011), "Experimental Estimation of Heterogeneous Treatment Effects Related to Self-Selection," American Journal of Political Science 55(3): 724-736, doi:10.1111/j.1540-5907.2011.00518.x.
+
+### software
+
+`GK2011`, Gaines and Kuklinski (2011) Estimators for Hybrid Experiments, *Github user*: `leeper`, *Name on Github*: Thomas J. Leeper. https://github.com/leeper/GK2011.
+
+
+
+
+
+
+
+
+
+
+
