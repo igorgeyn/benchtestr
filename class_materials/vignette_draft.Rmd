@@ -310,10 +310,99 @@ Brian J. Gaines and James H. Kuklinski, (2011), "Experimental Estimation of Hete
 
 
 
+```{r}
+
+install.packages('gtools')
+library(gtools)
+
+```
 
 
+```{r}
+
+## ask user to specify covars, formula_arg (for covars), and reg_formula for match if match included
+
+compar_ests = function(dim, lm, match, df_exp, df_base, treatment, outcome, covars, formula_arg, reg_formula) {
+  if(dim == 1) {
+    dim_output = dim_estimator(df_exp = df_exp, df_base = df_base, treatment = treatment, outcome = outcome) %>% 
+      select(c('estimator', 'nature', 'term', 'estimate', 'conf.low', 'conf.high', 'outcome'))
+    }
+  else {
+    dim_output = X
+  }
+  if(lm == 1) {
+    lm_output = lm_estimator(df_exp = df_exp, df_base = df_base, treatment = treatment, outcome = outcome) %>% 
+      select(c('estimator', 'nature', 'term', 'estimate', 'conf.low', 'conf.high', 'outcome')) %>% 
+      filter(term == 'treat')
+  }
+  else {
+    lm_output = X
+  }
+  if(match == 1) {
+    match_out_stage = match_estimator(df_exp = df_exp, df_bench = df_base, treatment = treatment, 
+                                      outcome = outcome, covars = covars,
+                                      formula_arg = formula_arg, 
+                                      reg_formula = reg_formula)
+    match_out_stage = as.data.frame(t(apply(match_out_stage,1,unlist))) %>% 
+      mutate(match_method = trimws(V1), estimate = as.numeric(V2)) %>% 
+      select(c('match_method', 'estimate'))
+    match_out = melt(match_out_stage, id.vars = 'match_method') %>% select(c('match_method', 'value')) %>%
+      rename(estimator = match_method, estimate = value)
+    # match_out = dcast(match_out_stage, variable ~ match_method) %>% select(-variable)
+  }
+  else {
+    match_out = X
+  }
+  compare_out <<- smartbind(list = list(dim_output, lm_output, match_out))
+  # return(compare_out)
+}
+
+```
+
+```{r}
+
+covars_list <- c('age', 'education', 'black', 'hispanic')
+# formula_arg = treat ~ age + education + black + hispanic, reg_formula = re78 ~ treat)
+
+compar_ests(dim = 1, lm = 1, match = 1, df_exp = nsw_dehejia_wahba, df_base = psid_controls_dw,
+            treatment = 'treat', outcome = 're78', 
+            covars = c('age', 'education', 'black', 'hispanic'),
+            formula_arg = treat ~ age + education + black + hispanic,
+            reg_formula = re78 ~ treat
+            )
+
+```
 
 
+```{r}
 
+library('reshape2')
+
+compare_out <- 
+  compar_ests(dim = 1, lm = 1, match = 1, df_exp = nsw_dehejia_wahba, df_base = psid_controls_dw,
+              treatment = 'treat', outcome = 're78', 
+              covars = c('age', 'education', 'black', 'hispanic'),
+              formula_arg = treat ~ age + education + black + hispanic,
+              reg_formula = re78 ~ treat)
+compare_out
+
+## Plot just the experimental results with matched results
+
+ggplot(compare_out %>% filter(nature == ('experimental') | is.na(nature))) + 
+  geom_boxplot(aes(x = estimator, y = estimate, color = estimator)) + theme_minimal()
+
+## Plot just the obs. benchmark results with matched results
+
+ggplot(compare_out %>% filter(nature == ('benched') | is.na(nature))) + 
+  geom_boxplot(aes(x = estimator, y = estimate, color = estimator)) + theme_minimal()
+
+## plot all three
+
+ggplot(compare_out) + 
+  geom_boxplot(aes(x = estimator, y = estimate, color = estimator)) + 
+  facet_wrap(.~nature) +
+  theme(axis.title.x = element_blank(), axis.text.x = element_blank(), axis.ticks.x = element_blank())
+
+```
 
 

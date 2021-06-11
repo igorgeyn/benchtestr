@@ -1,9 +1,9 @@
 
 ### A function to compare estimates from different estimators
-## need to figure out the else statements, and to code out gtools dep.
+## need to figure out the else statements, and to code out dependencies.
 
 compar_ests = function(dim, lm, match, df_exp, df_base, treatment, outcome, covars, formula_arg, reg_formula) {
-  require('gtools')
+  require('gtools'); require('reshape2')
   if(dim == 1) {
     dim_output = dim_estimator(df_exp = df_exp, df_base = df_base, treatment = treatment, outcome = outcome) %>% 
       select(c('estimator', 'nature', 'term', 'estimate', 'conf.low', 'conf.high', 'outcome'))
